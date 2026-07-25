@@ -1,0 +1,50 @@
+# Dependabot configuration for festes-gata
+#
+# Repository-as-code for dependency updates. The CI workflow at
+# `.github/workflows/ci.yml` runs `pnpm run check:content`,
+# `pnpm run check` and `pnpm run build` on every PR, so any dep bump
+# lands pre-validated.
+#
+# Pinned schedule: weekly Monday 09:00 Europe/Madrid — frequent enough
+# to surface security advisories without flooding the PR queue.
+#
+# Grouping: keep production and dev bumps in separate PRs so a major
+# bump in, say, `astro` doesn't entangle with a Prettier patch. Astro
+# core (`astro`, `@astrojs/*`) is grouped together since they share a
+# release cadence.
+
+version: 2
+
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Europe/Madrid"
+    open-pull-requests-limit: 5
+    # Ignore major bumps for tools that touch lots of files on upgrade;
+    # we want humans reviewing those, not auto-PRs.
+    ignore:
+      - dependency-name: "astro"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@astrojs/*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "eslint"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@typescript-eslint/*"
+        update-types: ["version-update:semver-major"]
+    groups:
+      astro-stack:
+        applies-to: version-updates
+        patterns:
+          - "astro"
+          - "@astrojs/*"
+      production-dependencies:
+        applies-to: version-updates
+        patterns:
+          - "zod"
+      dev-dependencies:
+        applies-to: version-updates
+        dependency-type: "development"
