@@ -38,6 +38,7 @@ npm run format:check   # prettier --check .
 ```
 
 **Recommended local verification order before pushing:**
+
 1. `npm run check:content` — fastest signal, catches data drift.
 2. `npm run build` — Zod schema validation + static generation.
 3. `npm run lint` and `npm run format:check` — style hygiene.
@@ -152,11 +153,16 @@ authoring flow is documented in `src/content/days/README.md`.
   400-line review budget per PR, with stacked-to-main merging (single
   author). When proposing changes, keep them small and self-contained.
   PRD roadmap is in `openspec/changes/festes-gata-2026/tasks.md`.
-- **No tests, no CI yet.** Phase 4 adds `.github/workflows/deploy.yml`
-  using Node 20, `actions/setup-node@v4`, `actions/upload-pages-artifact`,
-  `actions/deploy-pages@v4`. Don't add a test runner before PR #4
-  unless the user asks — the rules in `openspec/config.yaml` set
-  `testing.strict_tdd: false` and `testing.runner: none`.
+- **No tests; CI ships Phase 4 deploy.** `.github/workflows/deploy.yml`
+  triggers on push to `main` (and `workflow_dispatch`), runs on Node 22
+  (matches `package.json` `engines.node: ">=22.12.0"`), uses
+  `actions/setup-node@v4`, `actions/upload-pages-artifact@v4`, and
+  `actions/deploy-pages@v4`, and deploys to the `github-pages`
+  environment. Workflow concurrency (`group: pages`,
+  `cancel-in-progress: false`) serialises deploys without aborting an
+  in-flight publish. Don't add a test runner before the rules in
+  `openspec/config.yaml` change — they set `testing.strict_tdd: false`
+  and `testing.runner: none`.
 - **Content changes are JSON edits + push.** Authoring flow is
   documented in `src/content/days/README.md`. Spec workflow lives
   under `openspec/`.
