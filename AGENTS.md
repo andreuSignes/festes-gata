@@ -148,6 +148,9 @@ authoring flow is documented in `src/content/days/README.md`.
 
 ## Workflow conventions
 
+- **Always work in a dedicated Git worktree.** Create or reuse a worktree for every
+  task, including documentation-only changes; never make changes directly in the
+  primary checkout.
 - **PRs are chained and budget-bounded.** The change plan targets a
   400-line review budget per PR, with stacked-to-main merging (single
   author). When proposing changes, keep them small and self-contained.
