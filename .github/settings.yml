@@ -34,28 +34,44 @@ repository:
   squash_merge_commit_title: PR_TITLE
 
 # Branch protection: a single protected branch (`main`).
-# Tight enough to keep main green, loose enough to not block fast
-# iteration by the solo author.
+# The repository-settings app expects the schema documented in
+# docs/plugins/branches.md of the app repo: every protection
+# sub-section must be present (or explicitly null), otherwise the app
+# drops the whole block.
 branches:
   - name: main
-    # Block direct push — force-push via `git push --force-with-lease`
-    # is still allowed from a branch that has a passing CI run.
-    allow_force_pushes: false
-    allow_deletions: false
-    # Linear history enforced via squash-merge in `repository:` above.
-    required_linear_history: true
-    # Keep PR conversations relevant: stale approvals drop on new push.
-    dismiss_stale_reviews: true
-    # Solo maintainer; no CODEOWNERS gate. The required status check
-    # from PR #5 is the gate that keeps main releasable.
-    require_code_owner_reviews: false
-    # Require the PR validation CI to pass before merging.
-    required_status_checks:
-      strict: true
-      contexts:
-        - Validate PR
-    # Allow squash (the only allowed merge method).
-    restrictions: null
+    protection:
+      # PR review requirements. Solo maintainer + no CODEOWNERS, so
+      # required_approving_review_count is 0 (don't gate on count,
+      # gate on the CI check below).
+      required_pull_request_reviews:
+        required_approving_review_count: 0
+        # Keep PR conversations relevant: stale approvals drop on new push.
+        dismiss_stale_reviews: true
+        # Solo maintainer; no CODEOWNERS gate. The required status
+        # check is the gate that keeps main releasable.
+        require_code_owner_reviews: false
+        # Personal repo → no user/team dismissal restrictions.
+        dismissal_restrictions:
+          users: []
+          teams: []
+      # Require the PR validation CI to pass before merging.
+      required_status_checks:
+        # Require branches to be up to date before merging.
+        strict: true
+        # Contexts: the job name reported by .github/workflows/ci.yml.
+        contexts:
+          - Validate PR
+      # Apply all of the above to administrators too.
+      enforce_admins: true
+      # Block merge commits from being pushed — matches the squash-only
+      # convention configured in `repository:` above.
+      required_linear_history: true
+      # No push restrictions (solo maintainer; can't create teams).
+      restrictions:
+        apps: []
+        users: []
+        teams: []        
 
 # Labels used across issues and PRs. Kept tiny on purpose: a small set
 # is easier to use than an undisciplined taxonomy.
