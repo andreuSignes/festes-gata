@@ -1,0 +1,65 @@
+{
+  "date": "2026-07-31",
+  "weekday": "Divendres",
+  "theme": "Festigata",
+  "events": [
+    {
+      "time": "08:00",
+      "title": "3ª Despertà a càrrec de la Quintà 2026 L'ANRAMÀ",
+      "description": "3ª Despertà a càrrec de la Quintà 2026 L'ANRAMÀ.",
+      "type": "pasacalles"
+    },
+    {
+      "time": "11:00",
+      "title": "Divertido i refrescante parc aquàtic en el passeig d'Alacant a càrrec",
+      "description": "Divertido i refrescante parc aquàtic en el passeig d'Alacant a càrrec d'Espectacles L'afició i festa de l'escuma.",
+      "type": "infantil",
+      "location": "passeig d'Alacant"
+    },
+    {
+      "time": "13:00",
+      "title": "Bous al Carrer en el baret dels bous a càrrec del GRUPO Ñ patrocinat per la",
+      "description": "Bous al Carrer en el baret dels bous a càrrec del GRUPO Ñ patrocinat per la Comissió 2026.",
+      "type": "bous",
+      "location": "baret dels bous"
+    },
+    {
+      "time": "17:00",
+      "title": "3ª i 4ª eliminatòria del Campionat Mundial de TRUC en el parc Enric Valor",
+      "description": "3ª i 4ª eliminatòria del Campionat Mundial de TRUC en el parc Enric Valor.",
+      "type": "otro",
+      "location": "parc Enric Valor"
+    },
+    {
+      "time": "19:00",
+      "title": "Entrada de bous i vaques de la ramaderia Cristian Soler de Gata de Gorgos",
+      "description": "Entrada de bous i vaques de la ramaderia Cristian Soler de Gata de Gorgos.",
+      "type": "bous"
+    },
+    {
+      "time": "19:15",
+      "title": "Solta de vaques i bou a càrrec de la ramaderia Fdo",
+      "description": "Solta de vaques i bou a càrrec de la ramaderia Fdo. Machancoses de Cheste.",
+      "type": "bous"
+    },
+    {
+      "time": "22:00",
+      "title": "Sopar en les barraques",
+      "description": "Sopar en les barraques.",
+      "type": "festes"
+    },
+    {
+      "time": "23:00",
+      "title": "Cordà infantil a càrrec de la Pirotecnia BORREDÀ en la carrer Moreres per als",
+      "description": "Cordà infantil a càrrec de la Pirotecnia BORREDÀ en la carrer Moreres per als xiquets i xiquetes entre 8 i 16 anis que tengan el carnet CRE.",
+      "type": "infantil",
+      "location": "carrer Moreres"
+    },
+    {
+      "time": "23:30",
+      "title": "FESTIGATA con les actuacions de DJ CABARAFOTUDA, ROMÀNTIC DIMONI i SANDRA",
+      "description": "FESTIGATA con les actuacions de DJ CABARAFOTUDA, ROMÀNTIC DIMONI i SANDRA MONFORT.",
+      "type": "musica"
+    }
+  ]
+}

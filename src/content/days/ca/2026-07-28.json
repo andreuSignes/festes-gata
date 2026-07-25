@@ -1,0 +1,60 @@
+{
+  "date": "2026-07-28",
+  "weekday": "Dimarts",
+  "theme": "Dia del Pregó",
+  "events": [
+    {
+      "time": "10:30",
+      "title": "Concentració de carros i cavalls en el parc Enric Valor",
+      "description": "Concentració de carros i cavalls en el parc Enric Valor.",
+      "type": "otro",
+      "location": "parc Enric Valor"
+    },
+    {
+      "time": "11:00",
+      "title": "Entrada de la Murta amb la participació dels quintos i quintes maiores i",
+      "description": "Entrada de la Murta amb la participació dels quintos i quintes maiores i pequeños i tota la gent que vulga participar, acompaniats per la Colla Montgó Benimussa.",
+      "type": "pasacalles"
+    },
+    {
+      "time": "13:00",
+      "title": "Volteig general de campanes i vint-i-una salves que ens recorden que el",
+      "description": "Volteig general de campanes i vint-i-una salves que ens recorden que el Santísimo Cristo está en la església i GATA ESTÁ EN FIESTAS.",
+      "type": "festes"
+    },
+    {
+      "time": "17:00",
+      "title": "1ª i 2ª eliminatòria del Campionat Mundial de TRUC, organitzat per la Comissió",
+      "description": "1ª i 2ª eliminatòria del Campionat Mundial de TRUC, organitzat per la Comissió 2027 en el parc Enric Valor.",
+      "type": "otro",
+      "location": "parc Enric Valor"
+    },
+    {
+      "time": "20:00",
+      "title": "Concentració de quintes, quintos, penies i poble en general en la plaça Nova",
+      "description": "Concentració de quintes, quintos, penies i poble en general en la plaça Nova amb l'animació de xarangues XARANGATA i la GARANXA. La Comissió 2026 repartirà selecció de embotits, fruita seca i cazalla. Cervesa a gogó patrocinada per Francisco Tomás e Hijos.",
+      "type": "musica",
+      "location": "plaça Nova"
+    },
+    {
+      "time": "21:00",
+      "title": "Tots junts fins l'Ajuntament per a dar por comenzadas les festas con el Pregón",
+      "description": "Tots junts fins l'Ajuntament per a dar por comenzadas les festas con el Pregón a càrrec de Sílvia Leida Fornes i Vicen Mulet Ferrer juntament amb les autoritats locals. En acabar continuarem la festa en el parc Enric Valor.",
+      "type": "festes",
+      "location": "parc Enric Valor"
+    },
+    {
+      "time": "22:30",
+      "title": "Sopar de cabasset en el parc Enric Valor",
+      "description": "Sopar de cabasset en el parc Enric Valor. La Comissió 2026 repartirà cervesa. Vi patrocinat per BODEGA XÀLO.",
+      "type": "otro",
+      "location": "parc Enric Valor"
+    },
+    {
+      "time": "00:00",
+      "title": "Actuació de BATISJAUS con el millor Pop-Rock de sempre i DJ MOISES CARDONA i DJ",
+      "description": "Actuació de BATISJAUS con el millor Pop-Rock de sempre i DJ MOISES CARDONA i DJ WIBA fins que isca el sol.",
+      "type": "musica"
+    }
+  ]
+}

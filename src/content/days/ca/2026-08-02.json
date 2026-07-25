@@ -1,0 +1,58 @@
+{
+  "date": "2026-08-02",
+  "weekday": "Diumenge",
+  "theme": "Dia de les Carrosses",
+  "events": [
+    {
+      "time": "08:00",
+      "title": "5ª Despertà a càrrec de la Quintà 2026 L'ANRAMÀ",
+      "description": "5ª Despertà a càrrec de la Quintà 2026 L'ANRAMÀ.",
+      "type": "pasacalles"
+    },
+    {
+      "time": "10:00",
+      "title": "Campionat d'escacs Festas 2026 en el CSI patrocinat per la Regidoria d'Esports",
+      "description": "Campionat d'escacs Festas 2026 en el CSI patrocinat per la Regidoria d'Esports de l'Ajuntament de Gata de Gorgos. Premis patrocinats per la Comissió 2026.",
+      "type": "festes"
+    },
+    {
+      "time": "12:00",
+      "title": "Santa Missa",
+      "description": "Santa Missa.",
+      "type": "liturgia"
+    },
+    {
+      "time": "13:00",
+      "title": "Bous al Carrer en el baret dels bous amb el grup REMAKE patrocinat per la",
+      "description": "Bous al Carrer en el baret dels bous amb el grup REMAKE patrocinat per la Comissió 2026.",
+      "type": "bous",
+      "location": "baret dels bous"
+    },
+    {
+      "time": "19:00",
+      "title": "Concentració de carrosses i grups a peu en la explanada del Grup Escolar",
+      "description": "Concentració de carrosses i grups a peu en la explanada del Grup Escolar. A continuació gran desfile de carrosses amenizada amb xarangues, Colla Montgó Benimussa, Batukada Gatukada i Banda Unió Musical de Gata.",
+      "type": "musica",
+      "location": "Grup Escolar"
+    },
+    {
+      "time": "23:00",
+      "title": "Espectacular actuació del grupo AVALANX PROJECT venidos de Menorca con un",
+      "description": "Espectacular actuació del grupo AVALANX PROJECT venidos de Menorca con un espectacle electroacústico que ens deixarà bocabadats.",
+      "type": "musica"
+    },
+    {
+      "time": "01:30",
+      "title": "Gran CORREFOC amb l'espectacle \"THE PURGE\" a càrrec de la Colla de Dimonis de",
+      "description": "Gran CORREFOC amb l'espectacle \"THE PURGE\" a càrrec de la Colla de Dimonis de Mislata. Comenzará en la carrer la Pau i acabarà en el passeig d'Alacant amb un final lleno de fuego.",
+      "type": "festes",
+      "location": "passeig d'Alacant"
+    },
+    {
+      "time": "02:30",
+      "title": "Solta de vaques i bou a càrrec de la ramaderia Els Coves de Pedreguer",
+      "description": "Solta de vaques i bou a càrrec de la ramaderia Els Coves de Pedreguer.",
+      "type": "bous"
+    }
+  ]
+}

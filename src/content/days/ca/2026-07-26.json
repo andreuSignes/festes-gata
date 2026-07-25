@@ -1,0 +1,13 @@
+{
+  "date": "2026-07-26",
+  "weekday": "Diumenge",
+  "theme": null,
+  "events": [
+    {
+      "time": "20:00",
+      "title": "Passacarrer con dulzaina i tabal a càrrec de la Comissió 2026 i dels quintos",
+      "description": "Passacarrer con dulzaina i tabal a càrrec de la Comissió 2026 i dels quintos majors i menuts, que recorreran les carrers engalanats del poble. Durant el mateix passacarrer comptarem amb un jurat que decidirà els premis al millor carrer engalanat.",
+      "type": "pasacalles"
+    }
+  ]
+}

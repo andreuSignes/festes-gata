@@ -1,0 +1,57 @@
+{
+  "date": "2026-07-29",
+  "weekday": "Dimecres",
+  "theme": "Dia de les Inauguracions",
+  "events": [
+    {
+      "time": "07:00",
+      "title": "1ª Despertà a càrrec de la Quintà 2026 L'ANRAMÀ",
+      "description": "1ª Despertà a càrrec de la Quintà 2026 L'ANRAMÀ.",
+      "type": "pasacalles"
+    },
+    {
+      "time": "08:00",
+      "title": "Entrada de bous i vaques a càrrec de la ramaderia local CRISTIAN SOLER i a",
+      "description": "Entrada de bous i vaques a càrrec de la ramaderia local CRISTIAN SOLER i a continuació solta de vaques de la misma ramaderia.",
+      "type": "bous"
+    },
+    {
+      "time": "09:30",
+      "title": "La Comissió 2026 repartirà coques i cervesa per a tots els assistents",
+      "description": "La Comissió 2026 repartirà coques i cervesa per a tots els assistents.",
+      "type": "otro"
+    },
+    {
+      "time": "13:00",
+      "title": "Bous al Carrer en el baret dels bous amb el grup MALECÓN patrocinat per la",
+      "description": "Bous al Carrer en el baret dels bous amb el grup MALECÓN patrocinat per la Comissió 2026.",
+      "type": "bous",
+      "location": "baret dels bous"
+    },
+    {
+      "time": "18:00",
+      "title": "Inauguración oficial del recinte taurí amenitzada per la Batukada Gatukada i",
+      "description": "Inauguración oficial del recinte taurí amenitzada per la Batukada Gatukada i Xarangata acompaniats per les quintes i quintos majors i menuts, penies i poble en general.",
+      "type": "musica"
+    },
+    {
+      "time": "19:30",
+      "title": "Solta de vaques i bou de la ramaderia LA HERMANDAD de Xàbia",
+      "description": "Solta de vaques i bou de la ramaderia LA HERMANDAD de Xàbia.",
+      "type": "bous"
+    },
+    {
+      "time": "22:00",
+      "title": "Inauguración oficial de les barraques en el Grup Escolar i sopar",
+      "description": "Inauguración oficial de les barraques en el Grup Escolar i sopar. Es recomana vindre amb el traje de la inauguració per a beure REBUJITO que repartirà la Comissió 2026. Es donaràn els premis a les barraques millor engalanades.",
+      "type": "festes",
+      "location": "Grup Escolar"
+    },
+    {
+      "time": "00:00",
+      "title": "Espectacular actuació de la orquestra MONACO PARTY fins les 5 de la matinada",
+      "description": "Espectacular actuació de la orquestra MONACO PARTY fins les 5 de la matinada.",
+      "type": "musica"
+    }
+  ]
+}
