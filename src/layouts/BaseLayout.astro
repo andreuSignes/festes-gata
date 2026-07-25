@@ -12,7 +12,7 @@ interface Props {
 const {
   title,
   description,
-  ogImage = '/og/default.png',
+  ogImage = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/og/default.svg`,
 } = Astro.props;
 
 const siteName = 'Festes de Gata 2026';
