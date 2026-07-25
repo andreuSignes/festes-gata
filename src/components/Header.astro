@@ -1,0 +1,32 @@
+---
+const base = import.meta.env.BASE_URL;
+const homeHref = `${base}/`;
+const pathname = Astro.url.pathname;
+const navLinks = [{ href: `${base}/programa/`, label: 'Programa' }];
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href={homeHref} class="brand">
+      <span class="brand-name">Festes de Gata</span>
+      <span class="brand-year">2026</span>
+    </a>
+    <nav aria-label="Principal">
+      <ul class="nav-list">
+        {
+          navLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class:list={['nav-link', { 'is-active': pathname.startsWith(link.href) }]}
+                aria-current={pathname.startsWith(link.href) ? 'page' : undefined}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

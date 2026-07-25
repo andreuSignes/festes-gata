@@ -1,0 +1,53 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+type Event = CollectionEntry<'days'>['data']['events'][number];
+
+interface Props {
+  event: Event;
+}
+
+const { event } = Astro.props;
+
+const badgeLabels: Record<Event['type'], string> = {
+  pasacalles: 'Pasacalles',
+  bous: 'Bous',
+  verbena: 'Verbena',
+  musica: 'Música',
+  liturgia: 'Liturgia',
+  infantil: 'Infantil',
+  paelles: 'Paelles',
+  festes: 'Festes',
+  otro: 'Otro',
+};
+---
+
+<article class="event-item">
+  <div class="event-meta">
+    <time datetime={event.time} class="event-time">{event.time}</time>
+    <span class:list={['badge', `badge--${event.type}`]}>{badgeLabels[event.type]}</span>
+  </div>
+  <h3 class="event-title">{event.title}</h3>
+  {
+    event.location && (
+      <p class="event-location">
+        <span class="visually-hidden">Lugar: </span>
+        {event.location}
+      </p>
+    )
+  }
+  {
+    event.description && (
+      <p class="event-description">{event.description}</p>
+    )
+  }
+  {
+    event.sponsor && (
+      <p class="event-sponsor">
+        <small>
+          Patrocinado por <strong>{event.sponsor}</strong>
+        </small>
+      </p>
+    )
+  }
+</article>

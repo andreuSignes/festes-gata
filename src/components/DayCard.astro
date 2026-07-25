@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import EventItem from './EventItem.astro';
+
+interface Props {
+  day: CollectionEntry<'days'>;
+}
+
+const { day } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const previewEvents = day.data.events.slice(0, 3);
+const remainingCount = Math.max(0, day.data.events.length - previewEvents.length);
+---
+
+<article class="day-card">
+  <header class="day-card-header">
+    <a href={`${base}/programa/${day.id}/`} class="day-card-date-link">
+      <time datetime={day.data.date} class="day-date">{day.data.date}</time>
+      <span class="day-weekday">{day.data.weekday}</span>
+    </a>
+    {
+      day.data.theme && <p class="day-theme">{day.data.theme}</p>
+    }
+  </header>
+  <ol class="day-events">
+    {
+      previewEvents.map((event) => (
+        <li>
+          <EventItem event={event} />
+        </li>
+      ))
+    }
+  </ol>
+  {
+    remainingCount > 0 && (
+      <p class="day-card-more">
+        <a href={`${base}/programa/${day.id}/`}>
+          + {remainingCount} actos más
+        </a>
+      </p>
+    )
+  }
+</article>
