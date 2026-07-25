@@ -1,9 +1,39 @@
 ---
+/**
+ * Footer — token-driven site chrome.
+ *
+ * Maps the legacy `site-footer` class onto the muted surface +
+ * muted text tokens so the Footer reads as a low-emphasis surface
+ * distinct from the primary-coloured Header. Copy is preserved
+ * verbatim (Comissió 2026 · Gata de Gorgos · © {year}).
+ */
 const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
-  <div class="container">
+  <div class="site-footer-inner">
     <p>Comissió 2026 · Gata de Gorgos · &copy; {year}</p>
   </div>
 </footer>
+
+<style>
+  .site-footer {
+    background: var(--color-surface-muted);
+    color: var(--color-text-muted);
+    border-top: 1px solid var(--color-border);
+    padding-block: var(--spacing-5);
+    margin-top: var(--spacing-8);
+  }
+
+  .site-footer-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding: 0 var(--spacing-4);
+  }
+
+  .site-footer p {
+    text-align: center;
+    font-size: var(--font-size-sm, 0.875rem);
+  }
+</style>
