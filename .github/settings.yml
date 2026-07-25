@@ -1,0 +1,81 @@
+# Repository settings for festes-gata
+#
+# Declarative repo settings, applied via a Probot-style GitHub App
+# (e.g. https://github.com/probot/settings) that picks up this file
+# and pushes it to the GitHub REST API. Without such a Probot app
+# installed on the repo, this file is **declarative documentation
+# only** — it does NOT affect the repo by itself. PRs that touch this
+# file will surface its intent in code review and let humans audit
+# before anything actually changes.
+#
+# Convention used in this repo: stacked-to-main with single author
+# and squash-merge only. Merge options below enforce that.
+#
+# Schema reference:
+# https://github.com/probot/settings/blob/master/docs/SETTINGS.md
+
+repository:
+  # Squash-merge only — keeps history linear and one commit per PR.
+  allow_merge_commit: false
+  allow_rebase_merge: false
+  allow_squash_merge: true
+  # Auto-merge is useful for Dependabot patch bumps that pass CI.
+  # PRs still need an explicit "enable auto-merge" interaction; this
+  # just allows the API path. Default commit message for squash is
+  # fine for our convention.
+  allow_auto_merge: true
+  delete_branch_on_merge: true
+
+  # Security defaults — usually on; declaring for explicitness.
+  enable_vulnerability_alerts: true
+  enable_automated_security_fixes: true
+
+  # Squash-merge default message preference: PR title + body, single
+  # paragraph. Matches the convention commits style used in this repo.
+  squash_merge_commit_message: PR_BODY
+  squash_merge_commit_title: PR_TITLE
+
+# Branch protection: a single protected branch (`main`).
+# Tight enough to keep main green, loose enough to not block fast
+# iteration by the solo author.
+branches:
+  - name: main
+    # Block direct push — force-push via `git push --force-with-lease`
+    # is still allowed from a branch that has a passing CI run.
+    allow_force_pushes: false
+    allow_deletions: false
+    # Linear history enforced via squash-merge in `repository:` above.
+    required_linear_history: true
+    # Keep PR conversations relevant: stale approvals drop on new push.
+    dismiss_stale_reviews: true
+    # Solo maintainer; no CODEOWNERS gate. The required status check
+    # from PR #5 is the gate that keeps main releasable.
+    require_code_owner_reviews: false
+    # Require the PR validation CI to pass before merging.
+    required_status_checks:
+      strict: true
+      contexts:
+        - Validate PR
+    # Allow squash (the only allowed merge method).
+    restrictions: null
+
+# Labels used across issues and PRs. Kept tiny on purpose: a small set
+# is easier to use than an undisciplined taxonomy.
+labels:
+  - name: bug
+    color: d73a4a
+    description: Something isn't working
+  - name: documentation
+    color: 0075ca
+    description: Improvements or additions to documentation
+  - name: enhancement
+    color: a2eeef
+    description: New feature or request
+  - name: dependencies
+    color: 0366d6
+    description: Pull requests that update a dependency file
+    # Mark Dependabot PRs automatically.
+    pullrequest: dependencies
+  - name: ci
+    color: fbca04
+    description: Pull requests that affect CI / GitHub Actions
