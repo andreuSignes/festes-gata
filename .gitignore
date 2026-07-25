@@ -33,3 +33,6 @@ openspec/specs/
 # runtime artifacts
 .atl/
 .codegraph/
+
+# local git worktrees live here so they don't pollute the repo root
+.worktrees/
