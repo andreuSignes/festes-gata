@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate PR
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Validate content (filename + date parity + enum)
+        run: pnpm run check:content
+
+      - name: Astro check (TypeScript + Astro diagnostics)
+        run: pnpm run check
+
+      # Lint and format:check are intentionally out of scope for this PR.
+      # The repo has 4 pre-existing ESLint parsing errors on .astro files
+      # (DayCard, EventItem, BaseLayout, programa/[date]) and 2 Prettier
+      # warnings on AGENTS.md and src/styles/global.css. Per the repo's
+      # standing rule, those are addressed in a dedicated follow-up PR,
+      # not by widening the CI scope here. Once that PR lands, re-add
+      # `pnpm run lint` and `pnpm run format:check` steps in order.
+      - name: Build (Zod schemas + static generation)
+        run: pnpm run build
