@@ -22,11 +22,18 @@ const ogImgUrl = new URL(ogImage, Astro.site).toString();
 ---
 
 <!doctype html>
+<!--
+  theme-color mirrors the festive primary from the cover image
+  (docs/FESTES_GATA_2026_PORTADA-727x1024.jpg). Kept as a literal hex
+  because <meta name="theme-color"> does not resolve CSS custom
+  properties. The authoritative token is --color-primary in
+  src/styles/global.css.
+-->
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#c0162f" />
+    <meta name="theme-color" content="#e5318a" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
