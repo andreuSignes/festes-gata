@@ -1,0 +1,35 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment
+.env
+.env.production
+.env.local
+
+# macOS
+.DS_Store
+
+# editors
+.vscode/
+.idea/
+
+# local planning artifacts (not deployed; spec-driven workflow lives here)
+# Track openspec/README.md so newcomers can find the plan, but keep the
+# plan files themselves (proposal, design, tasks, specs, config) local.
+openspec/config.yaml
+openspec/changes/
+openspec/specs/
+
+# runtime artifacts
+.atl/
+.codegraph/
