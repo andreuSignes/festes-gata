@@ -24,6 +24,7 @@
     "zod": "^3.25.0"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.9",
     "@eslint/js": "^10.0.0",
     "@tailwindcss/vite": "^4.3.3",
     "eslint": "^10.0.0",
