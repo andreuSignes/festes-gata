@@ -1,49 +1,57 @@
 # Festes de Gata — 2026
 
-> **This is a work in progress.** The site is being scaffolded under the
-> spec-driven workflow described in `openspec/`. The first preview is
-> expected after PR #3 (components + pages); the first deployable
-> artefact ships with PR #4 (GitHub Actions + Pages).
+Programa web de las fiestas de **Gata de Gorgos**, del 26 de julio al 6 de agosto de 2026.
 
-Bilingual static site for the **Gata de Gorgos** festival program
-(Sunday 26 July → Thursday 6 August 2026), built with
-[Astro](https://astro.build) and zero client JS on the landing page.
+## Stack
 
-- **Default locale**: Valencià (`/ca/`)
-- **Secondary locale**: Castellano (`/es/`)
-- **Output**: pure static HTML/CSS, hosted on GitHub Pages under
-  [`andreuSignes.github.io/festes-gata`](https://andreuSignes.github.io/festes-gata).
+- [Astro 7](https://astro.build) con salida estática
+- HTML semántico y CSS vanilla; la portada no envía JavaScript al navegador
+- Colecciones de contenido validadas con Zod
+- GitHub Pages para alojamiento
 
-## Status
+## Desarrollo local
 
-| Phase | Scope                                             | Status      |
-| ----- | ------------------------------------------------- | ----------- |
-| PR #1 | Scaffold (Astro, i18n, sitemap, TypeScript)       | in progress |
-| PR #2 | Content model + 22 day JSON files + content check | pending     |
-| PR #3 | Components + bilingual pages                      | pending     |
-| PR #4 | GitHub Actions deploy + README + OG assets        | pending     |
-
-The full plan, scenarios and design rationale live in
-[`openspec/`](openspec/). See in particular:
-
-- [`openspec/changes/festes-gata-2026/proposal.md`](openspec/changes/festes-gata-2026/proposal.md)
-- [`openspec/changes/festes-gata-2026/design.md`](openspec/changes/festes-gata-2026/design.md)
-- [`openspec/changes/festes-gata-2026/tasks.md`](openspec/changes/festes-gata-2026/tasks.md)
-- Specs: `openspec/changes/festes-gata-2026/specs/`
-
-## Quick look (operators)
+Requiere Node.js 22.12 o posterior.
 
 ```bash
-npm install         # install dependencies
-npm run dev         # local dev server
-npm run build       # produce dist/
-npm run preview     # serve dist/ locally
+npm install
+npm run dev
 ```
 
-See the deploy-ready README in PR #4 for the full developer and
-content-authoring guide.
+Astro mostrará en la terminal la URL del servidor local.
 
-## License
+## Comprobación y build
 
-Programme data is owned by the Comissió de Festes 2026. Source code is
-released under the terms stated in `LICENSE` (TBD).
+```bash
+npm run check:content
+npm run build
+```
+
+La primera orden comprueba los nombres, fechas y campos del programa. La segunda valida la
+colección con Zod y genera el sitio estático en `dist/`.
+
+## Deploy
+
+GitHub Actions construye y publica el sitio automáticamente con cada push a `main`; también se
+puede lanzar manualmente desde la pestaña **Actions**. Antes del primer despliegue hay que elegir
+**Settings → Pages → Source → GitHub Actions** en el repositorio.
+
+El sitio se publica en <https://andreuSignes.github.io/festes-gata/>. La imagen social provisional
+es un SVG de marca; algunas plataformas sociales ofrecen mejor compatibilidad con PNG, que queda
+pendiente para una futura mejora.
+
+## Editar el programa
+
+Los días están en `src/content/days/es/`, con un archivo JSON por fecha. El esquema está en
+`src/content.config.ts` y la guía detallada de tipos de acto en `src/content/days/README.md`.
+
+Para añadir un día:
+
+1. Crea `src/content/days/es/AAAA-MM-DD.json` copiando la estructura de un día existente.
+2. Haz coincidir el campo `date` con el nombre del archivo y completa `weekday`, `theme` y `events`.
+3. Ejecuta `npm run check:content` y `npm run build` antes de enviar el cambio.
+
+## Roadmap
+
+La versión 1 publica únicamente el programa en castellano. La versión 2 añadirá internacionalización
+y archivos de contenido separados para valenciano y castellano.
