@@ -1,0 +1,94 @@
+---
+/**
+ * Badge — event-type tone chip with paired Spanish label.
+ *
+ * Each tone maps to a background + text-on-tone pair declared in the
+ * @theme event-type tokens (see design.md §2.2). The class
+ * `badge--{tone}` matches the legacy convention so existing
+ * EventItem consumers continue to work during the dual-CSS window;
+ * the new component-scoped rules own the visual tokens and the
+ * legacy global selectors retire in PR #2 unit 2.8.
+ *
+ * The badge is informational only — no interactive semantics — so it
+ * is rendered as a non-focusable <span>.
+ */
+type Tone =
+  | 'pasacalles'
+  | 'bous'
+  | 'verbena'
+  | 'musica'
+  | 'liturgia'
+  | 'infantil'
+  | 'paelles'
+  | 'festes'
+  | 'otro';
+
+interface Props {
+  tone: Tone;
+  class?: string;
+}
+
+const { tone, class: className } = Astro.props;
+
+const toneLabels: Record<Tone, string> = {
+  pasacalles: 'Pasacalles',
+  bous: 'Bous',
+  verbena: 'Verbena',
+  musica: 'Música',
+  liturgia: 'Liturgia',
+  infantil: 'Infantil',
+  paelles: 'Paelles',
+  festes: 'Festes',
+  otro: 'Otro',
+};
+---
+
+<span class:list={['badge', `badge--${tone}`, className]}>{toneLabels[tone]}</span>
+
+<style>
+  .badge {
+    display: inline-block;
+    padding: var(--spacing-1) var(--spacing-2);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm, 0.875rem);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .badge--pasacalles {
+    background: var(--color-pasacalles);
+    color: var(--color-pasacalles-fg);
+  }
+  .badge--bous {
+    background: var(--color-bous);
+    color: var(--color-bous-fg);
+  }
+  .badge--verbena {
+    background: var(--color-verbena);
+    color: var(--color-verbena-fg);
+  }
+  .badge--musica {
+    background: var(--color-musica);
+    color: var(--color-musica-fg);
+  }
+  .badge--liturgia {
+    background: var(--color-liturgia);
+    color: var(--color-liturgia-fg);
+  }
+  .badge--infantil {
+    background: var(--color-infantil);
+    color: var(--color-infantil-fg);
+  }
+  .badge--paelles {
+    background: var(--color-paelles);
+    color: var(--color-paelles-fg);
+  }
+  .badge--festes {
+    background: var(--color-festes);
+    color: var(--color-festes-fg);
+  }
+  .badge--otro {
+    background: var(--color-otro);
+    color: var(--color-otro-fg);
+  }
+</style>
