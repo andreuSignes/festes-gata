@@ -11,6 +11,8 @@
  * Exits non-zero on any mismatch.
  */
 
+/* eslint-disable no-console -- CLI tool: console.error reports validation failures, console.log prints the final OK summary. */
+
 import { readFileSync, readdirSync } from 'node:fs';
 import { join, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -67,7 +69,7 @@ function validate(date, day) {
       (!Array.isArray(ev.tags) || ev.tags.some((t) => typeof t !== 'string'))
     )
       errors.push(`events[${i}].tags`);
-    if (!TYPES.has(ev.type)) errors.push(`events[${i}].type "${ev.type}"`);
+    if (!TYPES.has(ev.type)) errors.push(`events[${i}}.type "${ev.type}"`);
   });
   eventCount += day.events.length;
   if (errors.length) fail(`${date}.json: ${errors.join('; ')}`);
