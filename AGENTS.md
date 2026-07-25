@@ -11,7 +11,7 @@ exist yet. See `README.md` for the phased PR plan and
 
 ## Stack & prerequisites
 
-- Node **≥ 22.12.0** (enforced in `package.json` `engines`).
+- Node **≥ 22.13.0** (enforced in `package.json` `engines`; required by pnpm 11.17).
 - Astro 7, `@astrojs/sitemap`, `zod` runtime deps.
 - ESLint 10 + Prettier 3 + `eslint-plugin-astro` for dev tooling.
 - Output: pure static HTML/CSS into `dist/`. Zero client JS on the
@@ -25,22 +25,22 @@ exist yet. See `README.md` for the phased PR plan and
 All scripts are in `package.json`.
 
 ```bash
-npm run dev            # Astro dev server with HMR
-npm run build          # static build → dist/ (runs Zod schema check)
-npm run preview        # serve dist/ locally
-npm run check          # astro check (TS + Astro diagnostics)
-npm run check:content  # scripts/check-content.mjs — filename/date parity,
+pnpm dev               # Astro dev server with HMR
+pnpm build             # static build → dist/ (runs Zod schema check)
+pnpm preview           # serve dist/ locally
+pnpm check             # astro check (TS + Astro diagnostics)
+pnpm check:content     # scripts/check-content.mjs — filename/date parity,
                        #   shape, event enum, event-field sanity
-npm run lint           # eslint . (Astro plugin + Prettier compat)
-npm run lint:fix       # eslint . --fix
-npm run format         # prettier --write .
-npm run format:check   # prettier --check .
+pnpm lint              # eslint . (Astro plugin + Prettier compat)
+pnpm lint:fix          # eslint . --fix
+pnpm format            # prettier --write .
+pnpm format:check      # prettier --check .
 ```
 
 **Recommended local verification order before pushing:**
-1. `npm run check:content` — fastest signal, catches data drift.
-2. `npm run build` — Zod schema validation + static generation.
-3. `npm run lint` and `npm run format:check` — style hygiene.
+1. `pnpm check:content` — fastest signal, catches data drift.
+2. `pnpm build` — Zod schema validation + static generation.
+3. `pnpm lint` and `pnpm format:check` — style hygiene.
 
 There is no test runner. CI is not yet wired (PR #4).
 
@@ -78,7 +78,7 @@ reflects v1 reality. If you change anything, trust the code in
 - Zod schema lives in `src/content.config.ts` (root of `src/`, **not**
   `src/content/config.ts` — Astro 7 moved to this location; the
   design.md still says the old path).
-- `npm run build` re-validates every JSON file against the Zod schema
+- `pnpm build` re-validates every JSON file against the Zod schema
   and fails with the file + field name on any mismatch.
 
 ### Event shape
@@ -155,10 +155,12 @@ authoring flow is documented in `src/content/days/README.md`.
   400-line review budget per PR, with stacked-to-main merging (single
   author). When proposing changes, keep them small and self-contained.
   PRD roadmap is in `openspec/changes/festes-gata-2026/tasks.md`.
-- **No tests, no CI yet.** Phase 4 adds `.github/workflows/deploy.yml`
-  using Node 20, `actions/setup-node@v4`, `actions/upload-pages-artifact`,
-  `actions/deploy-pages@v4`. Don't add a test runner before PR #4
-  unless the user asks — the rules in `openspec/config.yaml` set
+- **No tests yet, CI on pnpm.** Phase 4 adds `.github/workflows/deploy.yml`
+  using Node 22, `actions/setup-node@v4` (with `cache: pnpm`),
+  Corepack for the pnpm version pin, and
+  `actions/upload-pages-artifact` + `actions/deploy-pages@v4` for
+  publication. Don't add a test runner before PR #4 unless the user
+  asks — the rules in `openspec/config.yaml` set
   `testing.strict_tdd: false` and `testing.runner: none`.
 - **Content changes are JSON edits + push.** Authoring flow is
   documented in `src/content/days/README.md`. Spec workflow lives
