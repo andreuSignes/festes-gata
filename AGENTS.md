@@ -38,6 +38,7 @@ pnpm format:check      # prettier --check .
 ```
 
 **Recommended local verification order before pushing:**
+
 1. `pnpm check:content` — fastest signal, catches data drift.
 2. `pnpm build` — Zod schema validation + static generation.
 3. `pnpm lint` and `pnpm format:check` — style hygiene.
