@@ -1,31 +1,34 @@
 ---
-/**
- * Build-time fallback for PR #1 (Scaffold).
- *
- * The proper 302 redirect to /ca/ lives in src/pages/index.astro and
- * ships with PR #3 (components + pages). Until then, this minimal
- * page keeps `npm run build` green and gives the site an entry point
- * so the static output is not a 404.
- *
- * The meta refresh keeps the page static (zero client JS) and lands
- * a visitor who hits / on the default locale once `/ca/index.astro`
- * exists in PR #3.
- */
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DayCard from '../components/DayCard.astro';
+
+const days = (await getCollection('days')).sort(
+  (a, b) => a.data.date.localeCompare(b.data.date),
+);
 ---
 
-<!doctype html>
-<html lang="ca">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Festès de Gata 2026</title>
-    <meta http-equiv="refresh" content="0; url=/festes-gata/ca/" />
-    <link rel="canonical" href="/festes-gata/ca/" />
-  </head>
-  <body>
+<BaseLayout
+  title="Festes de Gata 2026"
+  description="Programa oficial de las fiestas en honor al Santísimo Cristo del Calvario de Gata de Gorgos. Del 26 de julio al 6 de agosto de 2026."
+>
+  <section class="hero">
+    <h1>Festes de Gata 2026</h1>
     <p>
-      Festès de Gata 2026 — en construcció. Sigueu a
-      <a href="/festes-gata/ca/">/ca/</a>.
+      Programa oficial de las fiestas en honor al Santísimo Cristo del Calvario.
+      Del 26 de julio al 6 de agosto de 2026.
     </p>
-  </body>
-</html>
+  </section>
+  <section>
+    <h2 class="visually-hidden">Programa por días</h2>
+    <ul class="days-grid">
+      {
+        days.map((day) => (
+          <li>
+            <DayCard day={day} />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

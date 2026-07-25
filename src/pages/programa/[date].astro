@@ -1,0 +1,55 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EventItem from '../../components/EventItem.astro';
+
+export async function getStaticPaths() {
+  const days = await getCollection('days');
+  return days.map((day) => ({
+    params: { date: day.id },
+    props: { day },
+  }));
+}
+
+interface Props {
+  day: CollectionEntry<'days'>;
+}
+
+const { day } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const homeHref = `${base}/`;
+const themeSuffix = day.data.theme ? `: ${day.data.theme}` : '';
+---
+
+<BaseLayout
+  title={`${day.data.weekday} ${day.data.date}`}
+  description={`Programa del ${day.data.date} (${day.data.weekday})${themeSuffix} — Festes de Gata 2026.`}
+>
+  <article class="day-detail">
+    <p>
+      <a href={homeHref} class="back-link">← Volver al inicio</a>
+    </p>
+    <header class="day-detail-header">
+      <time datetime={day.data.date} class="day-detail-date">
+        {day.data.date}
+      </time>
+      <h1>
+        {day.data.weekday}
+        {
+          day.data.theme && (
+            <span class="day-detail-theme"> · {day.data.theme}</span>
+          )
+        }
+      </h1>
+    </header>
+    <ol class="day-detail-events">
+      {
+        day.data.events.map((event) => (
+          <li>
+            <EventItem event={event} />
+          </li>
+        ))
+      }
+    </ol>
+  </article>
+</BaseLayout>

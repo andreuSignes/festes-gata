@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+const homeHref = `${base}/`;
+---
+
+<BaseLayout
+  title="Página no encontrada"
+  description="La página que buscas no existe."
+>
+  <section class="not-found">
+    <h1>404 — Página no encontrada</h1>
+    <p>No hemos encontrado la página que buscas.</p>
+    <p><a href={homeHref}>← Volver al inicio</a></p>
+  </section>
+</BaseLayout>
