@@ -1,0 +1,52 @@
+{
+  "date": "2026-07-30",
+  "weekday": "Jueves",
+  "theme": "Día de las Paellas",
+  "events": [
+    {
+      "time": "08:00",
+      "title": "2ª Despertà a cargo de la quinta 2026 L'ANRAMÀ",
+      "description": "2ª Despertà a cargo de la quinta 2026 L'ANRAMÀ.",
+      "type": "pasacalles"
+    },
+    {
+      "time": "13:00",
+      "title": "Bous a banda en el bareto de los toros a cargo del grupo PLANET 8 patrocinado",
+      "description": "Bous a banda en el bareto de los toros a cargo del grupo PLANET 8 patrocinado por la comisión 2026.",
+      "type": "bous",
+      "location": "bareto de los toros"
+    },
+    {
+      "time": "18:00",
+      "title": "En la carpa del parque Enric Valor, espectáculo infantil patrocinado por la",
+      "description": "En la carpa del parque Enric Valor, espectáculo infantil patrocinado por la Diputación Provincial de Alicante.",
+      "type": "infantil",
+      "location": "parque Enric Valor"
+    },
+    {
+      "time": "19:00",
+      "title": "Entrada de 10 TOROS de la ganadería La Paloma de Xaló",
+      "description": "Entrada de 10 TOROS de la ganadería La Paloma de Xaló.",
+      "type": "bous"
+    },
+    {
+      "time": "19:15",
+      "title": "Suelta de vacas y toro a cargo de la ganadería Gregorio de Jesús de Sueca",
+      "description": "Suelta de vacas y toro a cargo de la ganadería Gregorio de Jesús de Sueca.",
+      "type": "bous"
+    },
+    {
+      "time": "22:00",
+      "title": "CONCURSO DE PAELLAS en el Grupo Escolar",
+      "description": "CONCURSO DE PAELLAS en el Grupo Escolar. La comisión 2026 dará un premio a la mejor paella hecha en el recinto. Amenizado por la Xaranga Toca't un ou.",
+      "type": "paelles",
+      "location": "Grupo Escolar"
+    },
+    {
+      "time": "00:00",
+      "title": "Espectacular actuación de la orquesta LA FLAMA hasta las 5 de la madrugada",
+      "description": "Espectacular actuación de la orquesta LA FLAMA hasta las 5 de la madrugada.",
+      "type": "musica"
+    }
+  ]
+}

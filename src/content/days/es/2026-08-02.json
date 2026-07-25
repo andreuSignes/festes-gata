@@ -1,0 +1,58 @@
+{
+  "date": "2026-08-02",
+  "weekday": "Domingo",
+  "theme": "Día de las Carrozas",
+  "events": [
+    {
+      "time": "08:00",
+      "title": "5ª Despertà a cargo de la Quintà 2026 L'ANRAMÀ",
+      "description": "5ª Despertà a cargo de la Quintà 2026 L'ANRAMÀ.",
+      "type": "pasacalles"
+    },
+    {
+      "time": "10:00",
+      "title": "Campeonato de ajedrez Fiestas 2026 en el CSI patrocinado por la Concejalía de",
+      "description": "Campeonato de ajedrez Fiestas 2026 en el CSI patrocinado por la Concejalía de Deportes del Ayuntamiento de Gata de Gorgos. Premios patrocinados por la comisión 2026.",
+      "type": "festes"
+    },
+    {
+      "time": "12:00",
+      "title": "Santa Misa",
+      "description": "Santa Misa.",
+      "type": "liturgia"
+    },
+    {
+      "time": "13:00",
+      "title": "Bous a banda en el bareto de los toros con el grupo REMAKE patrocinado por la",
+      "description": "Bous a banda en el bareto de los toros con el grupo REMAKE patrocinado por la comisión 2026.",
+      "type": "bous",
+      "location": "bareto de los toros"
+    },
+    {
+      "time": "19:00",
+      "title": "Concentración de carrozas y grupos a pie en la explanada del Grupo Escolar",
+      "description": "Concentración de carrozas y grupos a pie en la explanada del Grupo Escolar. A continuación gran desfile de carrozas amenizada con charangas, Colla Montgó Benimussa, Batukada Gatukada y Banda Unión Musical de Gata.",
+      "type": "musica",
+      "location": "Grupo Escolar"
+    },
+    {
+      "time": "23:00",
+      "title": "Espectacular actuación del grupo AVALANX PROJECT venidos de Menorca con un",
+      "description": "Espectacular actuación del grupo AVALANX PROJECT venidos de Menorca con un espectáculo electroacústico que nos dejará boquiabiertos.",
+      "type": "musica"
+    },
+    {
+      "time": "01:30",
+      "title": "Gran CORREFOC con el espectáculo \"THE PURGE\" a cargo de la Colla de DIMONIS DE",
+      "description": "Gran CORREFOC con el espectáculo \"THE PURGE\" a cargo de la Colla de DIMONIS DE MISLATA. Comenzará en la calle la Pau y acabará en el paseo de Alicante con un final lleno de fuego.",
+      "type": "festes",
+      "location": "paseo de Alicante"
+    },
+    {
+      "time": "02:30",
+      "title": "Suelta de vacas y toro a cargo de la ganadería Els Coves de Pedreguer",
+      "description": "Suelta de vacas y toro a cargo de la ganadería Els Coves de Pedreguer.",
+      "type": "bous"
+    }
+  ]
+}

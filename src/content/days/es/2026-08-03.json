@@ -1,0 +1,70 @@
+{
+  "date": "2026-08-03",
+  "weekday": "Lunes",
+  "theme": "Día de los Disfraces y Día del Niño",
+  "events": [
+    {
+      "time": "08:00",
+      "title": "6ª Despertà a cargo de la quinta 2026 L'ANRAMÀ",
+      "description": "6ª Despertà a cargo de la quinta 2026 L'ANRAMÀ.",
+      "type": "pasacalles"
+    },
+    {
+      "time": "10:30",
+      "title": "Concentración en la plaza Nova de la quinta infantil ELS ALOCATS para hacer la",
+      "description": "Concentración en la plaza Nova de la quinta infantil ELS ALOCATS para hacer la despertà. Cada uno lleva su utensilio para hacer ruido.",
+      "type": "pasacalles",
+      "location": "plaza Nova"
+    },
+    {
+      "time": "11:30",
+      "title": "Hinchables y espectáculo de magia en el CSI para los más pequeños",
+      "description": "Hinchables y espectáculo de magia en el CSI para los más pequeños. A continuación la comisión ofrecerá comida a la Quintà infantil ELS ALOCATS.",
+      "type": "infantil"
+    },
+    {
+      "time": "13:00",
+      "title": "Bous a banda en el bareto de los toros a cargo del grupo MONROE BAND ROCK",
+      "description": "Bous a banda en el bareto de los toros a cargo del grupo MONROE BAND ROCK patrocinado por la comisión 2026.",
+      "type": "bous",
+      "location": "bareto de los toros"
+    },
+    {
+      "time": "18:00",
+      "title": "Entrada y suelta de carretones para todos los niños y niñas",
+      "description": "Entrada y suelta de carretones para todos los niños y niñas. A continuación se repartirá agua limón para los más pequeños patrocinada por \"CA EL TRAMUSSER\".",
+      "type": "bous"
+    },
+    {
+      "time": "19:00",
+      "title": "Entrada de 10 animales colorados y pintos a cargo de la ganadería Els Coves",
+      "description": "Entrada de 10 animales colorados y pintos a cargo de la ganadería Els Coves patrocinado por KIROS GATA.",
+      "type": "bous"
+    },
+    {
+      "time": "19:15",
+      "title": "Suelta de vacas y toro a cargo de la ganadería La Paloma de Xaló",
+      "description": "Suelta de vacas y toro a cargo de la ganadería La Paloma de Xaló.",
+      "type": "bous"
+    },
+    {
+      "time": "22:00",
+      "title": "Cena en las barracas",
+      "description": "Cena en las barracas.",
+      "type": "festes"
+    },
+    {
+      "time": "23:30",
+      "title": "Concentración de disfraces en la plaza Nova donde comenzará un pasacalle hasta",
+      "description": "Concentración de disfraces en la plaza Nova donde comenzará un pasacalle hasta el Grupo Escolar, acompañados por la GATUKADA y Xaranga L'EMBOLIC.",
+      "type": "pasacalles",
+      "location": "plaza Nova"
+    },
+    {
+      "time": "00:00",
+      "title": "Actuación de la orquesta LA VIVA y DJ hasta las 5:30 de la madrugada",
+      "description": "Actuación de la orquesta LA VIVA y DJ hasta las 5:30 de la madrugada.",
+      "type": "musica"
+    }
+  ]
+}

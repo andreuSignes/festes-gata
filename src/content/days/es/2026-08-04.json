@@ -1,0 +1,72 @@
+{
+  "date": "2026-08-04",
+  "weekday": "Martes",
+  "theme": "Día del Toro",
+  "events": [
+    {
+      "time": "08:00",
+      "title": "7ª Despertà a cargo de la Quintà 2026 L'ANRAMÀ",
+      "description": "7ª Despertà a cargo de la Quintà 2026 L'ANRAMÀ.",
+      "type": "pasacalles"
+    },
+    {
+      "time": "09:00",
+      "title": "Entrada de toros y vacas a cargo de la ganadería Cristian Soler de Gata de",
+      "description": "Entrada de toros y vacas a cargo de la ganadería Cristian Soler de Gata de Gorgos y a continuación suelta de vacas de la misma ganadería.",
+      "type": "bous"
+    },
+    {
+      "time": "13:00",
+      "title": "Bous a banda en el bareto de los toros a cargo del grupo LOS CIGÜEÑOS",
+      "description": "Bous a banda en el bareto de los toros a cargo del grupo LOS CIGÜEÑOS patrocinado por la comisión 2026.",
+      "type": "bous",
+      "location": "bareto de los toros"
+    },
+    {
+      "time": "17:00",
+      "title": "Semifinales y final del Campeonato Mundial de TRUC en el parque Enric Valor",
+      "description": "Semifinales y final del Campeonato Mundial de TRUC en el parque Enric Valor.",
+      "type": "otro",
+      "location": "parque Enric Valor"
+    },
+    {
+      "time": "18:00",
+      "title": "Entrada Trashumancia de mansos, salida de la calle Doctor Moratal hasta el corro",
+      "description": "Entrada Trashumancia de mansos, salida de la calle Doctor Moratal hasta el corro.",
+      "type": "bous",
+      "location": "calle Doctor Moratal"
+    },
+    {
+      "time": "19:00",
+      "title": "Entrada de mansos y caballos, salida de la calle Doctor Moratal hasta el corro",
+      "description": "Entrada de mansos y caballos, salida de la calle Doctor Moratal hasta el corro a cargo de la ganadería Benavent y caballistas de Gata y pueblos vecinos. A continuación suelta de vacas y toro de la ganadería Benavent.",
+      "type": "bous",
+      "location": "calle Doctor Moratal"
+    },
+    {
+      "time": "22:00",
+      "title": "Cena en las barracas",
+      "description": "Cena en las barracas.",
+      "type": "festes"
+    },
+    {
+      "time": "22:00",
+      "title": "Marcha nocturna organizada por el GEG con salida desde su sede, Grupo Escolar",
+      "description": "Marcha nocturna organizada por el GEG con salida desde su sede, Grupo Escolar.",
+      "type": "otro",
+      "location": "Grupo Escolar"
+    },
+    {
+      "time": "23:00",
+      "title": "Actuación de URBALIA RURANA en formato baile celebrando su 35 aniversario",
+      "description": "Actuación de URBALIA RURANA en formato baile celebrando su 35 aniversario. La comisión repartirá mistela para todos los asistentes. Se recomienda venir en indumentaria tradicional.",
+      "type": "musica"
+    },
+    {
+      "time": "01:00",
+      "title": "Entrada de 6 toros y 6 vacas de la ganadería Fdo",
+      "description": "Entrada de 6 toros y 6 vacas de la ganadería Fdo. Machancoses. A continuación suelta de vacas y toro de la ganadería Cristian Soler.",
+      "type": "bous"
+    }
+  ]
+}

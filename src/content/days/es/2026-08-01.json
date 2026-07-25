@@ -1,0 +1,51 @@
+{
+  "date": "2026-08-01",
+  "weekday": "Sábado",
+  "theme": "Día de las Quintadas",
+  "events": [
+    {
+      "time": "08:00",
+      "title": "4ª Despertà a cargo de la Quintà 2026 L'ANRAMÀ",
+      "description": "4ª Despertà a cargo de la Quintà 2026 L'ANRAMÀ.",
+      "type": "pasacalles"
+    },
+    {
+      "time": "10:00",
+      "title": "Solemne misa para todas las quintadas del pueblo",
+      "description": "Solemne misa para todas las quintadas del pueblo.",
+      "type": "liturgia"
+    },
+    {
+      "time": "13:00",
+      "title": "Bous a Banda a cargo del grupo LOLIPOP patrocinado por la comisión 2026",
+      "description": "Bous a Banda a cargo del grupo LOLIPOP patrocinado por la comisión 2026.",
+      "type": "bous"
+    },
+    {
+      "time": "18:00",
+      "title": "Actuación de CAPITAL 90 y DJ hasta las 24:00 en el paseo de Alicante",
+      "description": "Actuación de CAPITAL 90 y DJ hasta las 24:00 en el paseo de Alicante.",
+      "type": "musica",
+      "location": "paseo de Alicante"
+    },
+    {
+      "time": "19:30",
+      "title": "Santa Misa",
+      "description": "Santa Misa.",
+      "type": "liturgia"
+    },
+    {
+      "time": "22:00",
+      "title": "Cena en las barracas",
+      "description": "Cena en las barracas.",
+      "type": "festes"
+    },
+    {
+      "time": "23:30",
+      "title": "Actuación del grupo Sweet SoultZ en el Grupo Escolar",
+      "description": "Actuación del grupo Sweet SoultZ en el Grupo Escolar.",
+      "type": "musica",
+      "location": "Grupo Escolar"
+    }
+  ]
+}

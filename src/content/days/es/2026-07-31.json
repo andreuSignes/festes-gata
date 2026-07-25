@@ -1,0 +1,65 @@
+{
+  "date": "2026-07-31",
+  "weekday": "Viernes",
+  "theme": "Festigata",
+  "events": [
+    {
+      "time": "08:00",
+      "title": "3ª Despertà a cargo de la quinta 2026 L'ANRAMÀ",
+      "description": "3ª Despertà a cargo de la quinta 2026 L'ANRAMÀ.",
+      "type": "pasacalles"
+    },
+    {
+      "time": "11:00",
+      "title": "Divertido y refrescante parque acuático en el paseo de Alicante a cargo de",
+      "description": "Divertido y refrescante parque acuático en el paseo de Alicante a cargo de Espectacles L'afició y fiesta de la espuma.",
+      "type": "infantil",
+      "location": "paseo de Alicante"
+    },
+    {
+      "time": "13:00",
+      "title": "Bous a banda en el bareto de los toros a cargo del GRUPO Ñ patrocinado por la",
+      "description": "Bous a banda en el bareto de los toros a cargo del GRUPO Ñ patrocinado por la comisión 2026.",
+      "type": "bous",
+      "location": "bareto de los toros"
+    },
+    {
+      "time": "17:00",
+      "title": "3ª y 4ª eliminatoria del Campeonato Mundial de TRUC en el parque Enric Valor",
+      "description": "3ª y 4ª eliminatoria del Campeonato Mundial de TRUC en el parque Enric Valor.",
+      "type": "otro",
+      "location": "parque Enric Valor"
+    },
+    {
+      "time": "19:00",
+      "title": "Entrada de toros y vacas de la ganadería Cristian Soler de Gata de Gorgos",
+      "description": "Entrada de toros y vacas de la ganadería Cristian Soler de Gata de Gorgos.",
+      "type": "bous"
+    },
+    {
+      "time": "19:15",
+      "title": "Suelta de vacas y toro a cargo de la ganadería Fdo",
+      "description": "Suelta de vacas y toro a cargo de la ganadería Fdo. Machancoses de Cheste.",
+      "type": "bous"
+    },
+    {
+      "time": "22:00",
+      "title": "Cena en las barracas",
+      "description": "Cena en las barracas.",
+      "type": "festes"
+    },
+    {
+      "time": "23:00",
+      "title": "Cordà infantil a cargo de la PIROTECNIA BORREDÀ en la calle Moreres para los",
+      "description": "Cordà infantil a cargo de la PIROTECNIA BORREDÀ en la calle Moreres para los niños y niñas entre 8 y 16 años que tengan el carné CRE.",
+      "type": "infantil",
+      "location": "calle Moreres"
+    },
+    {
+      "time": "23:30",
+      "title": "FESTIGATA con las actuaciones de DJ CABARAFOTUDA, ROMÀNTIC DIMONI y SANDRA",
+      "description": "FESTIGATA con las actuaciones de DJ CABARAFOTUDA, ROMÀNTIC DIMONI y SANDRA MONFORT.",
+      "type": "musica"
+    }
+  ]
+}

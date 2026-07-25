@@ -1,0 +1,67 @@
+{
+  "date": "2026-08-05",
+  "weekday": "Miércoles",
+  "theme": "Día del Mayor",
+  "events": [
+    {
+      "time": "08:00",
+      "title": "8ª Despertà a cargo de la Quintà 2026 L'ANRAMÀ",
+      "description": "8ª Despertà a cargo de la Quintà 2026 L'ANRAMÀ.",
+      "type": "pasacalles"
+    },
+    {
+      "time": "12:00",
+      "title": "Solemne misa en acción de gracias para nuestros mayores del pueblo",
+      "description": "Solemne misa en acción de gracias para nuestros mayores del pueblo.",
+      "type": "liturgia"
+    },
+    {
+      "time": "13:00",
+      "title": "Actuación del Grupo de DANSES LA LLATA en el Centro Social",
+      "description": "Actuación del Grupo de DANSES LA LLATA en el Centro Social. La comisión 2026 repartirá VERMUT y frutos secos.",
+      "type": "musica",
+      "location": "Centro Social"
+    },
+    {
+      "time": "13:30",
+      "title": "Bous a banda en el bareto de los toros con el grupo FERRETERIA ROSARIO",
+      "description": "Bous a banda en el bareto de los toros con el grupo FERRETERIA ROSARIO patrocinado por la comisión 2026.",
+      "type": "bous",
+      "location": "bareto de los toros"
+    },
+    {
+      "time": "14:00",
+      "title": "La comisión ofrecerá un vino de honor para nuestros mayores en el Centro Social",
+      "description": "La comisión ofrecerá un vino de honor para nuestros mayores en el Centro Social. Después bailamos al ritmo de TONI CATALA.",
+      "type": "musica",
+      "location": "Centro Social"
+    },
+    {
+      "time": "17:30",
+      "title": "Espectaculares partidas de Pilota en el trinquete Xiquet de Gata",
+      "description": "Espectaculares partidas de Pilota en el trinquete Xiquet de Gata. 1ª partida de raspall pro2 entre Ximo y Ferrando contra Favarero y TerradesII patrocinada por Signes Grimalt con premio de 100 euros. 2ª partida de escala i corda Pro1 entre Giner y TomàsII contra Francés y Nacho patrocinada por la Concejalía de Deportes del Ayuntamiento de Gata de Gorgos. Premio de 200 euros patrocinado por la Comisión 2026.",
+      "type": "infantil",
+      "location": "trinquete Xiquet de Gata"
+    },
+    {
+      "time": "19:30",
+      "title": "Misa y, a continuación, ofrenda de flores",
+      "description": "Misa y, a continuación, ofrenda de flores.",
+      "type": "liturgia"
+    },
+    {
+      "time": "20:00",
+      "title": "Concentración de quintos y quintas infantiles y mayores, peñas y pueblo en",
+      "description": "Concentración de quintos y quintas infantiles y mayores, peñas y pueblo en general en la plaza Nova para participar en la ofrenda al Santísimo Cristo del Calvario, acompañados por la Colla Montgó Benimussa y la Banda de Coda.",
+      "type": "liturgia",
+      "location": "plaza Nova"
+    },
+    {
+      "time": "00:00",
+      "title": "Concierto de la verbena",
+      "description": "Concierto de la verbena. La BANDA UNIÓN MUSICAL DE GATA ofrecerá un año más un espectacular concierto en la plaza de la Iglesia. Al acabar se disparará la CORDÀ en el parque Enric Valor a cargo de la pirotecnia BORREDÀ. AL RECINTO SOLO PODRÁN ACCEDER PERSONAS CON CARNÉ CRE.",
+      "type": "verbena",
+      "location": "parque Enric Valor"
+    }
+  ]
+}
