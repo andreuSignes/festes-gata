@@ -16,12 +16,12 @@ Bilingual static site for the **Gata de Gorgos** festival program
 
 ## Status
 
-| Phase | Scope | Status |
-|------|-------|--------|
-| PR #1 | Scaffold (Astro, i18n, sitemap, TypeScript) | in progress |
-| PR #2 | Content model + 22 day JSON files + content check | pending |
-| PR #3 | Components + bilingual pages | pending |
-| PR #4 | GitHub Actions deploy + README + OG assets | pending |
+| Phase | Scope                                             | Status      |
+| ----- | ------------------------------------------------- | ----------- |
+| PR #1 | Scaffold (Astro, i18n, sitemap, TypeScript)       | in progress |
+| PR #2 | Content model + 22 day JSON files + content check | pending     |
+| PR #3 | Components + bilingual pages                      | pending     |
+| PR #4 | GitHub Actions deploy + README + OG assets        | pending     |
 
 The full plan, scenarios and design rationale live in
 [`openspec/`](openspec/). See in particular:

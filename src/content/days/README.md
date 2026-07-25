@@ -58,17 +58,17 @@ const day = {
 
 The `type` field is the badge shown next to each event. Use the closest match:
 
-| `type`     | Use for |
-| ---------- | ------- |
-| `pasacalles` | `pasacalle(s)`, `despertà`, `Entrada de la Murta` |
-| `bous`       | bulls / cows / `ganadería` / `corro` / `bous a banda` / `trashumancia` / `mansos` |
-| `verbena`    | open-air dance / `verbena` |
-| `musica`     | `actuación`, `concierto`, `orquesta`, `DJ`, `banda musical`, `festa de la espuma` |
-| `liturgia`   | `misa`, `novena`, `procesión`, `ofrenda` |
-| `infantil`   | `parque acuático`, `hinchables`, `magia`, `carretones`, `quintà infantil`, kids-only |
-| `paelles`    | paella contests / `concurs de paelles` |
+| `type`       | Use for                                                                                  |
+| ------------ | ---------------------------------------------------------------------------------------- |
+| `pasacalles` | `pasacalle(s)`, `despertà`, `Entrada de la Murta`                                        |
+| `bous`       | bulls / cows / `ganadería` / `corro` / `bous a banda` / `trashumancia` / `mansos`        |
+| `verbena`    | open-air dance / `verbena`                                                               |
+| `musica`     | `actuación`, `concierto`, `orquesta`, `DJ`, `banda musical`, `festa de la espuma`        |
+| `liturgia`   | `misa`, `novena`, `procesión`, `ofrenda`                                                 |
+| `infantil`   | `parque acuático`, `hinchables`, `magia`, `carretones`, `quintà infantil`, kids-only     |
+| `paelles`    | paella contests / `concurs de paelles`                                                   |
 | `festes`     | generic festival events: `inauguración`, `barracas`, `carrozas`, `disfraces`, `correfoc` |
-| `otro`       | everything else (e.g. `Campeonato de TRUC`, `ajedrez`) |
+| `otro`       | everything else (e.g. `Campeonato de TRUC`, `ajedrez`)                                   |
 
 ## Parity
 
