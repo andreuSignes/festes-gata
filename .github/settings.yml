@@ -1,18 +1,16 @@
 # Repository settings for festes-gata
 #
-# Declarative repo settings, applied via a Probot-style GitHub App
-# (e.g. https://github.com/probot/settings) that picks up this file
-# and pushes it to the GitHub REST API. Without such a Probot app
-# installed on the repo, this file is **declarative documentation
-# only** — it does NOT affect the repo by itself. PRs that touch this
-# file will surface its intent in code review and let humans audit
-# before anything actually changes.
+# Declarative repo settings, applied via the `repository-settings`
+# GitHub App (https://github.com/apps/settings). When the app is
+# installed on this repo AND has the right scopes, pushes that change
+# this file on the default branch are synced to the GitHub REST API.
+# Without the app, this file is declarative documentation only.
 #
 # Convention used in this repo: stacked-to-main with single author
 # and squash-merge only. Merge options below enforce that.
 #
 # Schema reference:
-# https://github.com/probot/settings/blob/master/docs/SETTINGS.md
+# https://github.com/repository-settings/app/blob/master/docs/configuration.md
 
 repository:
   # Squash-merge only — keeps history linear and one commit per PR.
