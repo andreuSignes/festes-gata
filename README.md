@@ -11,11 +11,11 @@ Programa web de las fiestas de **Gata de Gorgos**, del 26 de julio al 6 de agost
 
 ## Desarrollo local
 
-Requiere Node.js 22.12 o posterior.
+Requiere Node.js 22.13 o posterior.
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Astro mostrará en la terminal la URL del servidor local.
@@ -23,8 +23,8 @@ Astro mostrará en la terminal la URL del servidor local.
 ## Comprobación y build
 
 ```bash
-npm run check:content
-npm run build
+pnpm check:content
+pnpm build
 ```
 
 La primera orden comprueba los nombres, fechas y campos del programa. La segunda valida la
@@ -49,7 +49,7 @@ Para añadir un día:
 
 1. Crea `src/content/days/es/AAAA-MM-DD.json` copiando la estructura de un día existente.
 2. Haz coincidir el campo `date` con el nombre del archivo y completa `weekday`, `theme` y `events`.
-3. Ejecuta `npm run check:content` y `npm run build` antes de enviar el cambio.
+3. Ejecuta `pnpm check:content` y `pnpm build` antes de enviar el cambio.
 
 ## Roadmap
 

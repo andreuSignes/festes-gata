@@ -27,10 +27,10 @@ declared in `src/content.config.ts` (Astro 7's `glob` loader).
    `paelles`, `festes`, `otro`).
 3. The `description` field should be the full event text (everything after the
    `HH:MM horas:` prefix in the original program).
-4. Run `npm run build`. Astro 7's content collection will reject any file that
+4. Run `pnpm build`. Astro 7's content collection will reject any file that
    does not satisfy the Zod schema, with the file name and the field that
    failed.
-5. Run `npm run check:content` to confirm the two locales stay in parity (same
+5. Run `pnpm check:content` to confirm the two locales stay in parity (same
    date set, same event count per date, same time order).
 6. Commit and push. CI re-runs the same checks and deploys to Pages.
 
@@ -74,5 +74,5 @@ The `type` field is the badge shown next to each event. Use the closest match:
 
 Both locales must list the same dates, with the same number of events per date
 and the same `time` order. The script `scripts/check-content.mjs` (run as
-`npm run check:content`) walks both trees, validates shape, and exits non-zero
+`pnpm check:content`) walks both trees, validates shape, and exits non-zero
 on any mismatch.

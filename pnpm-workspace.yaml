@@ -1,0 +1,14 @@
+# pnpm 11 project configuration.
+#
+# In pnpm v11 the project-structural settings previously kept in
+# `package.json#pnpm` (onlyBuiltDependencies, auto-install-peers,
+# strict-peer-dependencies, etc.) and in `.npmrc` moved here. See
+# https://pnpm.io/migration and https://pnpm.io/settings.
+#
+# onlyBuiltDependencies → allowBuilds (map: package-name: true|false)
+allowBuilds:
+  esbuild: true
+
+# Peer-dep ergonomics compatible with Astro 7.
+autoInstallPeers: true
+strictPeerDependencies: false
