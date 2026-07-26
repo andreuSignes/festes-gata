@@ -1,0 +1,26 @@
+---
+import EventItem from './EventItem.astro';
+import type { Locale } from '../lib/event-type-labels';
+
+// Inferred event type from the days-* collections.
+type EventItem = NonNullable<
+  import('astro:content').CollectionEntry<'days-ca'>['data']['events']
+>[number];
+
+interface Props {
+  events: EventItem[];
+  lang: Locale;
+}
+
+const { events, lang } = Astro.props;
+---
+
+<ol data-event-list>
+  {
+    events.map((event) => (
+      <li data-event-type={event.type}>
+        <EventItem event={event} lang={lang} />
+      </li>
+    ))
+  }
+</ol>
