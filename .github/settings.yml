@@ -73,7 +73,7 @@ branches:
       restrictions:
         apps: []
         users: []
-        teams: []        
+        teams: []
 
 # Labels used across issues and PRs. Kept tiny on purpose: a small set
 # is easier to use than an undisciplined taxonomy.
