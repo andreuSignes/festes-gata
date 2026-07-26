@@ -35,6 +35,9 @@ jobs:
       - name: Validate content (filename + date parity + enum)
         run: pnpm run check:content
 
+      - name: Run tests
+        run: pnpm test
+
       - name: Astro check (TypeScript + Astro diagnostics)
         run: pnpm run check
 

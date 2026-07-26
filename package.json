@@ -17,6 +17,8 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "prepare": "husky"
   },
   "dependencies": {
@@ -40,7 +42,8 @@
     "lint-staged": "^17.2.0",
     "prettier": "^3.0.0",
     "tailwindcss": "^4.3.3",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vitest": "^3.1.4"
   },
   "engines": {
     "node": ">=22.13.0"
