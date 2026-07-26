@@ -1,49 +1,30 @@
 ---
+/**
+ * DayCard — compatibility shim (PR #2a).
+ *
+ * After PR #2a the landing page renders `DaySection` directly, so
+ * `DayCard` becomes a thin summary wrapper around `Card` + `DaySection`
+ * for any future "card variant" use. The legacy 3-event preview,
+ * `remainingCount`, and `day-card-more` link are retired.
+ *
+ * The hook contract (`badge--{type}`, `data-event-type`,
+ * `id="day-{date}"`, `data-day-id`) is owned by `DaySection` /
+ * `EventList` / `Badge`; this shim just composes them inside a
+ * token-driven card surface.
+ */
 import type { CollectionEntry } from 'astro:content';
-import EventItem from './EventItem.astro';
+import Card from './Card.astro';
+import DaySection from './DaySection.astro';
+import type { Locale } from '../lib/event-type-labels';
 
 interface Props {
   day: CollectionEntry<'days-ca' | 'days-es'>;
-  lang: 'ca' | 'es';
+  lang: Locale;
 }
 
 const { day, lang } = Astro.props;
-const base = import.meta.env.BASE_URL;
-const previewEvents = day.data.events.slice(0, 3);
-const remainingCount = Math.max(0, day.data.events.length - previewEvents.length);
-
-const labels = {
-  ca: { more: `+ ${remainingCount} actes més` },
-  es: { more: `+ ${remainingCount} actos más` },
-};
 ---
 
-<article class="day-card">
-  <header class="day-card-header">
-    <a href={`${base}/${lang}/programa/${day.id}/`} class="day-card-date-link">
-      <time datetime={day.data.date} class="day-date">{day.data.date}</time>
-      <span class="day-weekday">{day.data.weekday}</span>
-    </a>
-    {
-      day.data.theme && <p class="day-theme">{day.data.theme}</p>
-    }
-  </header>
-  <ol class="day-events">
-    {
-      previewEvents.map((event) => (
-        <li>
-          <EventItem event={event} />
-        </li>
-      ))
-    }
-  </ol>
-  {
-    remainingCount > 0 && (
-      <p class="day-card-more">
-        <a href={`${base}/${lang}/programa/${day.id}/`}>
-          {labels[lang].more}
-        </a>
-      </p>
-    )
-  }
-</article>
+<Card as="article" padding="md">
+  <DaySection day={day} lang={lang} />
+</Card>
