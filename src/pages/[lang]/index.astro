@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DayCard from '../../components/DayCard.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'ca' } },
+    { params: { lang: 'es' } },
+  ];
+}
+
+const { lang } = Astro.params as { lang: 'ca' | 'es' };
+
+const collectionName = lang === 'ca' ? 'days-ca' : 'days-es';
+const days = (await getCollection(collectionName)).sort(
+  (a, b) => a.data.date.localeCompare(b.data.date),
+);
+
+const titles: Record<'ca' | 'es', { page: string; description: string }> = {
+  ca: {
+    page: 'Festes de Gata 2026',
+    description: 'Programa oficial de les festes en honor al Santíssim Crist del Calvari de Gata de Gorgos. Del 26 de juliol al 6 de agost de 2026.',
+  },
+  es: {
+    page: 'Festes de Gata 2026',
+    description: 'Programa oficial de las fiestas en honor al Santísimo Cristo del Calvario de Gata de Gorgos. Del 26 de julio al 6 de agosto de 2026.',
+  },
+};
+
+const { page: title, description } = titles[lang];
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+  <section class="hero">
+    <h1>{title}</h1>
+    <p>{description}</p>
+  </section>
+  <section>
+    <h2 class="visually-hidden">Programa per dies</h2>
+    <ul class="days-grid">
+      {
+        days.map((day) => (
+          <li>
+            <DayCard day={day} lang={lang} />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

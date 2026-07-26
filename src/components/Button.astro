@@ -1,0 +1,85 @@
+---
+/**
+ * Button — native button or link with two semantic variants.
+ *
+ * Renders a static, framework-free <button> by default; when `href` is
+ * supplied, renders as <a>. The `primary` variant uses
+ * --color-primary as a solid fill (high-contrast festive action);
+ * `ghost` is a transparent surface with a primary-coloured border for
+ * secondary actions. Both variants respect the shared :focus-visible
+ * ring and a 44px minimum touch target.
+ */
+interface Props {
+  variant: 'primary' | 'ghost';
+  as?: 'button' | 'a';
+  href?: string;
+  type?: 'button' | 'submit';
+  class?: string;
+}
+
+const {
+  variant,
+  as = 'button',
+  href,
+  type = 'button',
+  class: className,
+} = Astro.props;
+const Tag = as;
+const classes = ['btn', `btn--${variant}`, className];
+---
+
+{
+  Tag === 'a' ? (
+    <a class:list={classes} href={href}>
+      <slot />
+    </a>
+  ) : (
+    <button class:list={classes} type={type}>
+      <slot />
+    </button>
+  )
+}
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2);
+    min-height: 44px;
+    padding-inline: var(--spacing-4);
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    font: inherit;
+    font-weight: 600;
+    line-height: 1.2;
+    cursor: pointer;
+    text-decoration: none;
+    background: transparent;
+    color: var(--color-text);
+  }
+
+  .btn--primary {
+    background: var(--color-primary);
+    color: #fff;
+    border-color: var(--color-primary);
+  }
+
+  .btn--primary:hover,
+  .btn--primary:focus-visible {
+    background: var(--color-secondary);
+    border-color: var(--color-secondary);
+  }
+
+  .btn--ghost {
+    background: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .btn--ghost:hover,
+  .btn--ghost:focus-visible {
+    background: var(--color-primary);
+    color: #fff;
+  }
+</style>

@@ -20,11 +20,11 @@ const VALID_EVENT_TYPES = [
 describe('content-schema', () => {
   const jsonFiles = readdirSync(DAYS_DIR).filter((f) => f.endsWith('.json'));
 
-  it('should have exactly 12 day files', () => {
-    expect(jsonFiles).toHaveLength(12);
+  it('should have exactly 13 day files', () => {
+    expect(jsonFiles).toHaveLength(13);
   });
 
-  it('should validate all 12 days with exactly 83 events total', () => {
+  it('should validate all 13 days with exactly 80 events total', () => {
     let totalEvents = 0;
     const validatedDays: string[] = [];
 
@@ -34,7 +34,10 @@ describe('content-schema', () => {
       const data = JSON.parse(raw);
 
       const result = daySchema.safeParse(data);
-      expect(result.success, `Failed to parse ${file}: ${JSON.stringify(result.error?.issues ?? result.error)}`).toBe(true);
+      expect(
+        result.success,
+        `Failed to parse ${file}: ${JSON.stringify(result.error?.issues ?? result.error)}`
+      ).toBe(true);
 
       if (result.success) {
         totalEvents += result.data.events.length;
@@ -42,11 +45,11 @@ describe('content-schema', () => {
       }
     }
 
-    expect(totalEvents).toBe(83);
-    expect(validatedDays).toHaveLength(12);
+    expect(totalEvents).toBe(80);
+    expect(validatedDays).toHaveLength(13);
   });
 
-  it('should have filename date equal to JSON date field for all 12 files', () => {
+  it('should have filename date equal to JSON date field for all 13 files', () => {
     for (const file of jsonFiles) {
       const filePath = join(DAYS_DIR, file);
       const raw = readFileSync(filePath, 'utf-8');
@@ -57,7 +60,7 @@ describe('content-schema', () => {
     }
   });
 
-  it('should have valid event types for all events across all 12 days', () => {
+  it('should have valid event types for all events across all 13 days', () => {
     for (const file of jsonFiles) {
       const filePath = join(DAYS_DIR, file);
       const raw = readFileSync(filePath, 'utf-8');

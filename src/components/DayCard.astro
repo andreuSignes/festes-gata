@@ -3,18 +3,24 @@ import type { CollectionEntry } from 'astro:content';
 import EventItem from './EventItem.astro';
 
 interface Props {
-  day: CollectionEntry<'days'>;
+  day: CollectionEntry<'days-ca' | 'days-es'>;
+  lang: 'ca' | 'es';
 }
 
-const { day } = Astro.props;
+const { day, lang } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const previewEvents = day.data.events.slice(0, 3);
 const remainingCount = Math.max(0, day.data.events.length - previewEvents.length);
+
+const labels = {
+  ca: { more: `+ ${remainingCount} actes més` },
+  es: { more: `+ ${remainingCount} actos más` },
+};
 ---
 
 <article class="day-card">
   <header class="day-card-header">
-    <a href={`${base}/programa/${day.id}/`} class="day-card-date-link">
+    <a href={`${base}/${lang}/programa/${day.id}/`} class="day-card-date-link">
       <time datetime={day.data.date} class="day-date">{day.data.date}</time>
       <span class="day-weekday">{day.data.weekday}</span>
     </a>
@@ -34,8 +40,8 @@ const remainingCount = Math.max(0, day.data.events.length - previewEvents.length
   {
     remainingCount > 0 && (
       <p class="day-card-more">
-        <a href={`${base}/programa/${day.id}/`}>
-          + {remainingCount} actos más
+        <a href={`${base}/${lang}/programa/${day.id}/`}>
+          {labels[lang].more}
         </a>
       </p>
     )

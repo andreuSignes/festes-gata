@@ -1,12 +1,11 @@
 {
   "date": "2026-07-26",
-  "weekday": "Domingo",
+  "weekday": "Sunday",
   "theme": null,
   "events": [
     {
       "time": "20:00",
-      "title": "Pasacalles con dulzaina y tabal a cargo de la Comisión 2026 y de los quintos",
-      "description": "Pasacalles con dulzaina y tabal a cargo de la Comisión 2026 y de los quintos mayores y pequeños, que recorrerán las calles engalanadas del pueblo. Durante el mismo pasacalles contaremos con un jurado que decidirá los premios a la mejor calle engalanada.",
+      "title": "Pasacalle con dulzaina y tabal, la Comisión 2026 y los quintos mayores y pequeños, para visitar las calles engalanadas la población. En el mismo pasacalle tendremos un jurado para decidir los premios a la mejor calle engalanada.",
       "type": "pasacalles"
     }
   ]

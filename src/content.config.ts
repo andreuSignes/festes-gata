@@ -5,12 +5,16 @@ import { eventSchema, daySchema } from './content/schema';
 
 export { eventSchema, daySchema };
 
-// Single collection for v1. When v2 adds more languages, we move to
-// per-locale files (e.g. days/{es,ca}/*.json) and split into `days-es`
-// and `days-ca` collections, or extend the schema with a `locale` field.
-const days = defineCollection({
+// v1: single Spanish collection
+// v2 (this change): split into days-es and days-ca parallel collections
+const daysEs = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/days/es' }),
   schema: daySchema,
 });
 
-export const collections = { days };
+const daysCa = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: './src/content/days/ca' }),
+  schema: daySchema,
+});
+
+export const collections = { 'days-es': daysEs, 'days-ca': daysCa };

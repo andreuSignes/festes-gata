@@ -1,0 +1,42 @@
+{
+  "date": "2026-08-02",
+  "weekday": "Sunday",
+  "theme": "Dia de les carrosses",
+  "events": [
+    {
+      "time": "08:00",
+      "title": "Cinquena despertà a càrrec la Quintà 2026 L'ANRAMÀ.",
+      "type": "festes"
+    },
+    {
+      "time": "10:00",
+      "title": "Campionat d'escacs Festes 2026 al CSI, patrocinat per la Regidoria d'Esports l'Ajuntament Gata Gorgos.",
+      "type": "festes"
+    },
+    {
+      "time": "13:00",
+      "title": "Bous a banda al baret dels bous amb el grup REMAKE, patrocinat per la Comissió 2026.",
+      "type": "bous"
+    },
+    {
+      "time": "19:00",
+      "title": "Concentració carrosses i grups a peu a l'esplanada Grup Escolar. A continuació gran desfilada carrosses amenitzada amb xarangues, Colla Montgó-Benimussa, batukada GATUKADA i la Banda Unió Musical Gata.",
+      "type": "pasacalles"
+    },
+    {
+      "time": "23:00",
+      "title": "Espectacular actuació grup AVALANX PROJECT, vinguts Menorca amb un espectacle electroacústic que ens deixarà bocabadats.",
+      "type": "musica"
+    },
+    {
+      "time": "01:30",
+      "title": "Gran CORREFOC amb l'espectacle «THE PURGE», a càrrec la colla DIMONIS DE MISLATA. Començarà al carrer la Pau i acabarà al passeig d'Alacant amb un final ple foc.",
+      "type": "bous"
+    },
+    {
+      "time": "02:30",
+      "title": "Solta vaques i bou a carrec la ramaderia ELS COVES Pedreguer.",
+      "type": "bous"
+    }
+  ]
+}

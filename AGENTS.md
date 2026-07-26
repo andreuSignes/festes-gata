@@ -38,11 +38,16 @@ pnpm format:check      # prettier --check .
 ```
 
 **Recommended local verification order before pushing:**
+
 1. `pnpm check:content` — fastest signal, catches data drift.
 2. `pnpm build` — Zod schema validation + static generation.
 3. `pnpm lint` and `pnpm format:check` — style hygiene.
 
 There is no test runner. CI is not yet wired (PR #4).
+
+- Commits are validated automatically by `commitlint` (message) and
+  `lint-staged` (staged files). See **Git hooks** below for details.
+  No separate npm script is needed.
 
 ## `v1 ships Spanish only` — the bilingual gotcha
 
@@ -166,6 +171,39 @@ authoring flow is documented in `src/content/days/README.md`.
 - **Content changes are JSON edits + push.** Authoring flow is
   documented in `src/content/days/README.md`. Spec workflow lives
   under `openspec/`.
+
+## Commit workflow
+
+### Conventional Commits (enforced via commitlint)
+
+- Every commit message must follow the Conventional Commits spec.
+- Format: `<type>(<scope>): <subject>` — e.g.
+  `feat(content): add Friday lineup`,
+  `fix(build): correct sitemap base URL`,
+  `chore(deps): bump astro to 7.2`.
+- Allowed types come from `@commitlint/config-conventional`: `feat`,
+  `fix`, `chore`, `docs`, `style`, `refactor`, `perf`, `test`, `build`,
+  `ci`, `revert`.
+- Subject is lowercase, imperative mood, no trailing period, ≤72 chars
+  recommended.
+- Breaking changes: append `!` before the colon
+  (`feat(api)!: drop legacy endpoint`) or add a `BREAKING CHANGE:`
+  footer.
+- The `commit-msg` hook will reject any non-conforming message — fix it
+  before pushing.
+
+### Git hooks (husky + lint-staged)
+
+- `pre-commit`: runs `lint-staged`, which executes `eslint --fix` and
+  `prettier --write` on staged files only. Unstaged files are not
+  touched.
+- `commit-msg`: runs `commitlint --edit` against the in-progress commit
+  message.
+- Hooks are installed automatically by `pnpm install` (via the
+  `prepare` script that invokes `husky`). Re-running `pnpm install`
+  after a fresh clone or worktree setup is required.
+- To bypass a hook in an emergency, use `git commit --no-verify` — but
+  this is discouraged; fix the underlying issue instead.
 
 ## Don't
 

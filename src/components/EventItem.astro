@@ -1,7 +1,13 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-
-type Event = CollectionEntry<'days'>['data']['events'][number];
+type Event = {
+  time: string;
+  title: string;
+  type: 'pasacalles' | 'bous' | 'verbena' | 'musica' | 'liturgia' | 'infantil' | 'paelles' | 'festes' | 'otro';
+  location?: string | undefined;
+  description?: string | undefined;
+  sponsor?: string | undefined;
+  tags?: string[] | undefined;
+};
 
 interface Props {
   event: Event;

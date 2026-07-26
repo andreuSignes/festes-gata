@@ -1,0 +1,17 @@
+{
+  "date": "2026-07-18",
+  "weekday": "Saturday",
+  "theme": "Día del festival",
+  "events": [
+    {
+      "time": "22:00",
+      "title": "Concentración en la plaza Nova los Quintos Infantiles y Mayores 2026, así como los representantes las quintadas 2025, festeras y festeros, visitantes, autoridades locales y vecinas para ir hasta el Grupo Escolar acompañados por la Colla Montgó-Benimussa, Banda Coda y la Banda Unió Musical Gata.",
+      "type": "pasacalles"
+    },
+    {
+      "time": "23:00",
+      "title": "Presentación la Quintá Infantil 2026 ELS ALOCATS y Quintá Mayor L'ANRAMÀ. Posteriormente procederemos a la proclamación los cargos 2026. Durante el acto tendremos la actuación la Escola Municipal Dansa Gata.",
+      "type": "liturgia"
+    }
+  ]
+}
