@@ -5,6 +5,7 @@ interface Props {
 }
 
 const { currentLocale, currentPath } = Astro.props;
+const base = import.meta.env.BASE_URL;
 
 const locales = [
   { code: 'ca', label: 'Català', flag: '🇻🇦' },
@@ -18,7 +19,7 @@ const locales = [
       locales.map((locale) => (
         <li>
           <a
-            href={`${locale.code}${currentPath}`}
+            href={`${base}/${locale.code}${currentPath}`}
             class:list={['lang-link', { 'is-active': currentLocale === locale.code }]}
             hreflang={locale.code}
             lang={locale.code}
