@@ -1,3 +1,15 @@
+/* === Cascade order (READABILITY-001 closure) ===
+ *    Declares `legacy` BEFORE `theme` so the implicit `@layer theme`
+ *    injected by `@theme { ... }` ranks ABOVE `@layer legacy` in the
+ *    cascade, regardless of byte position in the emitted CSS.
+ *    Placed BEFORE `@import 'tailwindcss';` per CSS spec: `@layer`
+ *    statements must precede all other rules except `@charset` —
+ *    placing this first guarantees `legacy` ranks BELOW `theme`
+ *    even though Tailwind's compiled bundle appends the legacy
+ *    block later in source order (which would otherwise outrank
+ *    the theme layer). */
+@layer legacy, theme;
+
 /* palette source: docs/FESTES_GATA_2026_PORTADA-727x1024.jpg
  *
  * All semantic tokens below are derived from the cover image used by
@@ -7,6 +19,48 @@
  * festes-gata-ui-2026 proposal risks.
  */
 @import 'tailwindcss';
+
+/* === Design tokens (legacy window) === */
+@layer legacy {
+  :root {
+    /* Festive palette */
+    --color-red: #c0162f;
+    --color-red-dark: #921023;
+    --color-gold: #e0a92b;
+    --color-gold-light: #f5d478;
+    --color-cream: #fff7e6;
+    --color-bg: var(--color-cream);
+    --color-text: #1a1410;
+    --color-muted: #5a5048;
+    --color-surface: #ffffff;
+    --color-border: #e8d9b8;
+
+    /* Type scale (rem-based, base 16px) */
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-md: 1.125rem;
+    --font-size-lg: 1.375rem;
+    --font-size-xl: 1.75rem;
+    --font-size-2xl: 2.25rem;
+
+    /* Spacing */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-8: 3rem;
+
+    /* Layout */
+    --container-max: 1200px;
+    --touch-target: 44px;
+    --radius: 8px;
+
+    --font-system:
+      system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+}
 
 @theme {
   /* === Surfaces, text, ring === */
@@ -71,48 +125,6 @@
   --radius-lg: 12px;
   --shadow-sm: 0 1px 2px rgba(26, 22, 18, 0.06);
   --shadow-lg: 0 12px 32px rgba(26, 22, 18, 0.12);
-}
-
-/* === Design tokens (legacy window) === */
-@layer legacy {
-  :root {
-    /* Festive palette */
-    --color-red: #c0162f;
-    --color-red-dark: #921023;
-    --color-gold: #e0a92b;
-    --color-gold-light: #f5d478;
-    --color-cream: #fff7e6;
-    --color-bg: var(--color-cream);
-    --color-text: #1a1410;
-    --color-muted: #5a5048;
-    --color-surface: #ffffff;
-    --color-border: #e8d9b8;
-
-    /* Type scale (rem-based, base 16px) */
-    --font-size-sm: 0.875rem;
-    --font-size-base: 1rem;
-    --font-size-md: 1.125rem;
-    --font-size-lg: 1.375rem;
-    --font-size-xl: 1.75rem;
-    --font-size-2xl: 2.25rem;
-
-    /* Spacing */
-    --space-1: 0.25rem;
-    --space-2: 0.5rem;
-    --space-3: 0.75rem;
-    --space-4: 1rem;
-    --space-5: 1.5rem;
-    --space-6: 2rem;
-    --space-8: 3rem;
-
-    /* Layout */
-    --container-max: 1200px;
-    --touch-target: 44px;
-    --radius: 8px;
-
-    --font-system:
-      system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  }
 }
 
 /* === Reset === */
