@@ -19,7 +19,7 @@
   --color-text: #1a1612; /* warm near-black */
   --color-text-muted: #5a5048; /* recessed façade shadow */
   --color-border: #e5d5b5; /* mortar / sandstone */
-  --color-ring: #2a6a8a; /* deep-sky band — focus contrast */
+  --color-ring: #1a1612; /* warm near-black — focus contrast vs warm surfaces and --color-primary header */
 
   /* === Event-type tones (background + text-on-tone) === */
   --color-pasacalles: #e8943a;
