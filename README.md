@@ -30,6 +30,17 @@ pnpm build
 La primera orden comprueba los nombres, fechas y campos del programa. La segunda valida la
 colección con Zod y genera el sitio estático en `dist/`.
 
+## Tests
+
+Este proyecto tiene tests unitarios (Vitest) y tests end-to-end (Playwright).
+
+```sh
+pnpm test              # Run unit tests (Vitest, non-watch)
+pnpm run test:watch    # Run unit tests in watch mode
+pnpm run check:content # Validate content files
+pnpm exec playwright test  # Run e2e tests (requires build)
+```
+
 ## Deploy
 
 GitHub Actions construye y publica el sitio automáticamente con cada push a `main`; también se
