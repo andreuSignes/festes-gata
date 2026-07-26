@@ -1,7 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import EventItem from '../../../components/EventItem.astro';
+import DaySection from '../../../components/DaySection.astro';
 
 type DayCollectionEntry = CollectionEntry<'days-ca' | 'days-es'>;
 
@@ -31,55 +31,21 @@ const { day, lang } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const homeHref = `${base}/${lang}/`;
 
-type EventType = {
-  time: string;
-  title: string;
-  type: 'pasacalles' | 'bous' | 'verbena' | 'musica' | 'liturgia' | 'infantil' | 'paelles' | 'festes' | 'otro';
-  location?: string;
-  description?: string;
-  sponsor?: string;
-  tags?: string[];
+const labels: Record<'ca' | 'es', { back: string }> = {
+  ca: { back: 'Tornar al programa' },
+  es: { back: 'Volver al programa' },
 };
-
-const labels: Record<'ca' | 'es', { back: string; themeSuffix: string }> = {
-  ca: { back: 'Tornar al programa', themeSuffix: day.data.theme ? `: ${day.data.theme}` : '' },
-  es: { back: 'Volver al inicio', themeSuffix: day.data.theme ? `: ${day.data.theme}` : '' },
-};
-
-const themeSuffix = day.data.theme ? labels[lang].themeSuffix : '';
-const events: EventType[] = day.data.events as EventType[];
 ---
 
 <BaseLayout
   title={`${day.data.weekday} ${day.data.date}`}
-  description={`Programa del ${day.data.date} (${day.data.weekday})${themeSuffix} — Festes de Gata 2026.`}
+  description={`Programa del ${day.data.date} (${day.data.weekday})${day.data.theme ? ` — ${day.data.theme}` : ''} — Festes de Gata 2026.`}
   lang={lang}
 >
-  <article class="day-detail">
+  <article>
     <p>
-      <a href={homeHref} class="back-link">{labels[lang].back}</a>
+      <a href={homeHref}>{labels[lang].back}</a>
     </p>
-    <header class="day-detail-header">
-      <time datetime={day.data.date} class="day-detail-date">
-        {day.data.date}
-      </time>
-      <h1>
-        {day.data.weekday}
-        {
-          day.data.theme && (
-            <span class="day-detail-theme"> · {day.data.theme}</span>
-          )
-        }
-      </h1>
-    </header>
-    <ol class="day-detail-events">
-      {
-        events.map((event) => (
-          <li>
-            <EventItem event={event} />
-          </li>
-        ))
-      }
-    </ol>
+    <DaySection day={day} lang={lang} headingLevel={1} />
   </article>
 </BaseLayout>
