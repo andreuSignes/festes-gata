@@ -1,0 +1,87 @@
+---
+interface Props {
+  currentLocale: string;
+  currentPath: string;
+}
+
+const { currentLocale, currentPath } = Astro.props;
+
+const locales = [
+  { code: 'ca', label: 'Català', flag: '🇻🇦' },
+  { code: 'es', label: 'Castellano', flag: '🇪🇸' },
+];
+---
+
+<div class="lang-switcher">
+  <ul class="lang-list">
+    {
+      locales.map((locale) => (
+        <li>
+          <a
+            href={`${locale.code}${currentPath}`}
+            class:list={['lang-link', { 'is-active': currentLocale === locale.code }]}
+            hreflang={locale.code}
+            lang={locale.code}
+          >
+            <span class="lang-flag" aria-hidden="true">{locale.flag}</span>
+            <span class="lang-label">{locale.label}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  .lang-switcher {
+    display: flex;
+    align-items: center;
+  }
+
+  .lang-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: var(--spacing-2);
+  }
+
+  .lang-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-1);
+    padding: var(--spacing-2) var(--spacing-3);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: inherit;
+    font-weight: 600;
+    font-size: var(--font-size-sm, 0.875rem);
+    min-height: 36px;
+    transition: background-color 0.2s ease;
+  }
+
+  .lang-link:hover,
+  .lang-link:focus-visible {
+    background: var(--color-secondary);
+  }
+
+  .lang-link.is-active {
+    background: var(--color-accent);
+    color: var(--color-primary);
+  }
+
+  .lang-flag {
+    font-size: 1.1em;
+    line-height: 1;
+  }
+
+  .lang-label {
+    display: none;
+  }
+
+  @media (min-width: 640px) {
+    .lang-label {
+      display: inline;
+    }
+  }
+</style>

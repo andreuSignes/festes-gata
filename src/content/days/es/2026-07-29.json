@@ -1,56 +1,46 @@
 {
   "date": "2026-07-29",
-  "weekday": "Miércoles",
-  "theme": "Día de las Inauguraciones",
+  "weekday": "Wednesday",
+  "theme": "Día de las inauguraciones",
   "events": [
     {
       "time": "07:00",
-      "title": "1ª Despertà a cargo de la Quintà 2026 L'ANRAMÀ",
-      "description": "1ª Despertà a cargo de la Quintà 2026 L'ANRAMÀ.",
-      "type": "pasacalles"
+      "title": "Primera despertà a cargo la Quintà 2026 L'ANRAMÀ.",
+      "type": "festes"
     },
     {
       "time": "08:00",
-      "title": "Entrada de toros y vacas a cargo de la ganadería local CRISTIAN SOLER y a",
-      "description": "Entrada de toros y vacas a cargo de la ganadería local CRISTIAN SOLER y a continuación suelta de vacas de la misma ganadería.",
+      "title": "Entrada toros y vacas a cargo la ganadería local Cristian Soler. A continuación, suelta vacas la misma ganadería.",
       "type": "bous"
     },
     {
       "time": "09:30",
-      "title": "La comisión 2026 repartirá cocas y cerveza para todos los asistentes",
-      "description": "La comisión 2026 repartirá cocas y cerveza para todos los asistentes.",
-      "type": "otro"
+      "title": "La Comisión 2026 repartirá cocas y cerveza a todos los asistentes.",
+      "type": "festes"
     },
     {
       "time": "13:00",
-      "title": "Bous a Banda en el bareto de los toros con el grupo MALECÓN patrocinado por la",
-      "description": "Bous a Banda en el bareto de los toros con el grupo MALECÓN patrocinado por la comisión 2026.",
-      "type": "bous",
-      "location": "bareto de los toros"
+      "title": "Toros en la banda en el baret los toros con el grupo MALECÓN, patrocinado por la Comisión 2026.",
+      "type": "bous"
     },
     {
       "time": "18:00",
-      "title": "Inauguración oficial del corro amenizada por la Batukada Gatukada y Xarangata",
-      "description": "Inauguración oficial del corro amenizada por la Batukada Gatukada y Xarangata acompañados por las quintas y quintos mayores y pequeños, peñas y pueblo en general.",
-      "type": "musica"
+      "title": "Inauguración oficial corro amenizada por la batucada GATUKADA y XARANGATA acompañados por las quintas y quintos mayores y pequeños, peñas y pueblo en general.",
+      "type": "festes"
     },
     {
       "time": "19:30",
-      "title": "Suelta de vacas y toro de la ganadería LA HERMANDAD de Xàbia",
-      "description": "Suelta de vacas y toro de la ganadería LA HERMANDAD de Xàbia.",
+      "title": "Suelta vacas y toro la ganadería LA HERMANDAD Xàbia.",
       "type": "bous"
     },
     {
       "time": "22:00",
-      "title": "Inauguración oficial de las barracas en el Grupo Escolar y cena",
-      "description": "Inauguración oficial de las barracas en el Grupo Escolar y cena. Se recomienda venir con el traje de la inauguración para beber REBUJITO que repartirá la comisión 2026. Se darán los premios a las barracas mejor engalanadas.",
-      "type": "festes",
-      "location": "Grupo Escolar"
+      "title": "Para continuar la fiesta inauguraremos las barracas con los disfraces la tarde y la Comisión repartirá REBUJITO para todos.",
+      "type": "festes"
     },
     {
       "time": "00:00",
-      "title": "Espectacular actuación de la orquesta MONACO PARTY hasta las 5 de la madrugada",
-      "description": "Espectacular actuación de la orquesta MONACO PARTY hasta las 5 de la madrugada.",
+      "title": "Espectacular actuación la orquesta MÓNACO PARTY hasta las 5 la madrugada.",
       "type": "musica"
     }
   ]

@@ -1,0 +1,57 @@
+{
+  "date": "2026-08-03",
+  "weekday": "Monday",
+  "theme": "Dia del xiquet i de les disfresses",
+  "events": [
+    {
+      "time": "08:00",
+      "title": "Sisena despertà a càrrec la Quintà 2026 L'ANRAMÀ.",
+      "type": "festes"
+    },
+    {
+      "time": "10:30",
+      "title": "Concentració a la plaça Nova la Quintà Infantil ELS ALOCATS. Per fer la despertà cadascú portarà el seu utensili per fer soroll.",
+      "type": "infantil"
+    },
+    {
+      "time": "11:30",
+      "title": "Unflables i espectacle màgia al CSI per als més menuts. A continuació, la Comissió oferirà dinar a la Quintà Infantil ELS ALOCATS.",
+      "type": "infantil"
+    },
+    {
+      "time": "13:00",
+      "title": "Bous a banda al baret dels bous a càrrec grup MONROE BAND ROCK, patrocinat per la Comissió 2026.",
+      "type": "bous"
+    },
+    {
+      "time": "18:00",
+      "title": "Entrà i solta carretons per a tots els xiquets i xiquetes. A continuació es repartirà aigua llimó per als més menuts patrocinada per CA EL TRAMUSSER.",
+      "type": "infantil"
+    },
+    {
+      "time": "19:00",
+      "title": "Entrà 10 animals colorats i pintos a càrrec la ramaderia ELS COVES patrocinada per KIROS GATA.",
+      "type": "festes"
+    },
+    {
+      "time": "19:15",
+      "title": "Solta vaques i bou a càrrec la ramaderia LA PALOMA Xaló.",
+      "type": "bous"
+    },
+    {
+      "time": "22:00",
+      "title": "Sopar a les barraques.",
+      "type": "paelles"
+    },
+    {
+      "time": "23:30",
+      "title": "Concentració disfresses a la plaça Nova, on començarà una cercavila fins al Grup Escolar, acompanyats per la GATUKADA i Xaranga L'EMBOLIC.",
+      "type": "festes"
+    },
+    {
+      "time": "00:00",
+      "title": "Actuació l'orquestra LA VIVA i DJ fins les 05.30 h la matinada.",
+      "type": "musica"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "date": "2026-07-30",
+  "weekday": "Thursday",
+  "theme": "juliol – Dia de les paelles",
+  "events": [
+    {
+      "time": "08:00",
+      "title": "Segona despertà a càrrec la Quintà 2026 L'ANRAMÀ.",
+      "type": "festes"
+    },
+    {
+      "time": "13:00",
+      "title": "Bous a banda al baret dels bous a càrrec grup PLANET 8, patrocinat per la Comissió 2026.",
+      "type": "bous"
+    },
+    {
+      "time": "18:00",
+      "title": "A la carpa parc Enric Valor, espectacle infantil patrocinat per la Diputació Provincial d'Alacant.",
+      "type": "infantil"
+    },
+    {
+      "time": "19:00",
+      "title": "Entrà 10 BOUS la ramaderia LA PALOMA Xaló.",
+      "type": "bous"
+    },
+    {
+      "time": "19:15",
+      "title": "Solta vaques i bou a càrrec la ramaderia GREGORIO DE JESÚS Sueca.",
+      "type": "bous"
+    },
+    {
+      "time": "22:00",
+      "title": "Concurs paelles al Grup Escolar. La Comissió 2026 donará un premi a la millor paella feta al recinte.",
+      "type": "paelles"
+    },
+    {
+      "time": "00:00",
+      "title": "Espectacular actuació l'orquestra LA FLAMA fins les 5 la matinada.",
+      "type": "musica"
+    }
+  ]
+}

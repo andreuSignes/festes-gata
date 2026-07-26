@@ -1,34 +1,42 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import DayCard from '../components/DayCard.astro';
-
-const days = (await getCollection('days')).sort(
-  (a, b) => a.data.date.localeCompare(b.data.date),
-);
+// Root index — client-side redirect to the appropriate locale
+// Default to Catalan (ca) if no match
 ---
 
-<BaseLayout
-  title="Festes de Gata 2026"
-  description="Programa oficial de las fiestas en honor al Santísimo Cristo del Calvario de Gata de Gorgos. Del 26 de julio al 6 de agosto de 2026."
->
-  <section class="hero">
-    <h1>Festes de Gata 2026</h1>
-    <p>
-      Programa oficial de las fiestas en honor al Santísimo Cristo del Calvario.
-      Del 26 de julio al 6 de agosto de 2026.
-    </p>
-  </section>
-  <section>
-    <h2 class="visually-hidden">Programa por días</h2>
-    <ul class="days-grid">
-      {
-        days.map((day) => (
-          <li>
-            <DayCard day={day} />
-          </li>
-        ))
+<!doctype html>
+<html lang="ca">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Redirecting...</title>
+    <meta name="robots" content="noindex" />
+    <script is:inline>
+      // Supported locales in priority order
+      var supportedLocales = ['ca', 'es'];
+      var defaultLocale = 'ca';
+
+      // Parse Accept-Language header simulated via navigator.languages
+      var browserLangs = navigator.languages || [navigator.language || defaultLocale];
+
+      var targetLocale = defaultLocale;
+      for (var i = 0; i < browserLangs.length; i++) {
+        var lang = browserLangs[i].split('-')[0].toLowerCase();
+        if (supportedLocales.indexOf(lang) !== -1) {
+          targetLocale = lang;
+          break;
+        }
       }
-    </ul>
-  </section>
-</BaseLayout>
+
+      // Redirect to the target locale
+      var base = '/festes-gata';
+      var targetUrl = base + '/' + targetLocale + '/';
+      window.location.href = targetUrl;
+    </script>
+    <noscript>
+      <meta http-equiv="refresh" content="0;url=/festes-gata/ca/" />
+    </noscript>
+  </head>
+  <body>
+    <p>Redirigint... <a href="/festes-gata/ca/">Fes clic ací si no es redirigeix.</a></p>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "date": "2026-08-06",
+  "weekday": "Thursday",
+  "theme": "Dia del Santíssim Crist",
+  "events": [
+    {
+      "time": "08:00",
+      "title": "Despertà a càrrec la Comissió 2026.",
+      "type": "festes"
+    },
+    {
+      "time": "11:00",
+      "title": "Cercavila per arreplegar a festers i festeres majors i infantils.",
+      "type": "infantil"
+    },
+    {
+      "time": "12:00",
+      "title": "Solemne Missa Major en honor al Santíssim Crist Calvari, cantada pel Grup Serrillàs patrocinat per la Comissió 2026. En acabar la missa es dispararà un bombardeig a càrrec la Pirotècnica BORREDÀ. Després, vi d'honor al Centre Social a càrrec la Comissió Festes 2026, on es farà lliurament dels diferents premis (carrosses, truc, carrers, disfresses…).",
+      "type": "liturgia"
+    },
+    {
+      "time": "19:30",
+      "title": "Missa i solemne processó per acompanyar al Santíssim Crist fins a l'Ermita Calvari, acompanyats per la Colla Montgó-Benimussa, Banda Coda i la Banda Unió Musical Gata. A continuació, CASTELL focs artificials a càrrec la Pirotècnica BORREDÀ.",
+      "type": "liturgia"
+    }
+  ]
+}
