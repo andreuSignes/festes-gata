@@ -1,43 +1,38 @@
 ---
-type Event = {
-  time: string;
-  title: string;
-  type: 'pasacalles' | 'bous' | 'verbena' | 'musica' | 'liturgia' | 'infantil' | 'paelles' | 'festes' | 'otro';
-  location?: string | undefined;
-  description?: string | undefined;
-  sponsor?: string | undefined;
-  tags?: string[] | undefined;
-};
+import Badge from './Badge.astro';
+import type { EventType, Locale } from '../lib/event-type-labels';
 
 interface Props {
-  event: Event;
+  event: {
+    time: string;
+    title: string;
+    type: EventType;
+    location?: string | undefined;
+    description?: string | undefined;
+    sponsor?: string | undefined;
+    tags?: string[] | undefined;
+  };
+  lang?: Locale;
 }
 
-const { event } = Astro.props;
+const { event, lang = 'es' } = Astro.props;
 
-const badgeLabels: Record<Event['type'], string> = {
-  pasacalles: 'Pasacalles',
-  bous: 'Bous',
-  verbena: 'Verbena',
-  musica: 'Música',
-  liturgia: 'Liturgia',
-  infantil: 'Infantil',
-  paelles: 'Paelles',
-  festes: 'Festes',
-  otro: 'Otro',
+const locationLabels: Record<Locale, string> = {
+  ca: 'Lloc:',
+  es: 'Lugar:',
 };
 ---
 
 <article class="event-item">
   <div class="event-meta">
     <time datetime={event.time} class="event-time">{event.time}</time>
-    <span class:list={['badge', `badge--${event.type}`]}>{badgeLabels[event.type]}</span>
+    <Badge tone={event.type} lang={lang} />
   </div>
   <h3 class="event-title">{event.title}</h3>
   {
     event.location && (
       <p class="event-location">
-        <span class="visually-hidden">Lugar: </span>
+        <span class="visually-hidden">{locationLabels[lang]} </span>
         {event.location}
       </p>
     )
@@ -51,7 +46,7 @@ const badgeLabels: Record<Event['type'], string> = {
     event.sponsor && (
       <p class="event-sponsor">
         <small>
-          Patrocinado por <strong>{event.sponsor}</strong>
+          {lang === 'ca' ? 'Patrocinat per' : 'Patrocinado por'} <strong>{event.sponsor}</strong>
         </small>
       </p>
     )
