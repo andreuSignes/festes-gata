@@ -1,49 +1,32 @@
 ---
 /**
- * Badge — event-type tone chip with paired Spanish label.
+ * Badge — event-type tone chip with locale-aware label.
  *
  * Each tone maps to a background + text-on-tone pair declared in the
  * @theme event-type tokens (see design.md §2.2). The class
  * `badge--{tone}` matches the legacy convention so existing
  * EventItem consumers continue to work during the dual-CSS window;
  * the new component-scoped rules own the visual tokens and the
- * legacy global selectors retire in PR #2 unit 2.8.
+ * legacy global selectors retire in PR #2b.
  *
  * The badge is informational only — no interactive semantics — so it
- * is rendered as a non-focusable <span>.
+ * is rendered as a non-focusable <span>. Visible labels come from
+ * `getEventTypeLabel` so the CA/ES strings stay in lockstep with the
+ * rest of the bilingual UI (FilterBar in PR #3, future copy).
  */
-type Tone =
-  | 'pasacalles'
-  | 'bous'
-  | 'verbena'
-  | 'musica'
-  | 'liturgia'
-  | 'infantil'
-  | 'paelles'
-  | 'festes'
-  | 'otro';
+import { getEventTypeLabel, type EventType, type Locale } from '../lib/event-type-labels';
 
 interface Props {
-  tone: Tone;
+  tone: EventType;
+  lang?: Locale;
   class?: string;
 }
 
-const { tone, class: className } = Astro.props;
-
-const toneLabels: Record<Tone, string> = {
-  pasacalles: 'Pasacalles',
-  bous: 'Bous',
-  verbena: 'Verbena',
-  musica: 'Música',
-  liturgia: 'Liturgia',
-  infantil: 'Infantil',
-  paelles: 'Paelles',
-  festes: 'Festes',
-  otro: 'Otro',
-};
+const { tone, lang = 'es', class: className } = Astro.props;
+const label = getEventTypeLabel(tone, lang);
 ---
 
-<span class:list={['badge', `badge--${tone}`, className]}>{toneLabels[tone]}</span>
+<span class:list={['badge', `badge--${tone}`, className]} lang={lang}>{label}</span>
 
 <style>
   .badge {
