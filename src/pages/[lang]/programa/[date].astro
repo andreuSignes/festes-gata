@@ -3,6 +3,8 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import EventItem from '../../../components/EventItem.astro';
 
+type DayCollectionEntry = CollectionEntry<'days-ca' | 'days-es'>;
+
 export async function getStaticPaths() {
   const caDays = await getCollection('days-ca');
   const esDays = await getCollection('days-es');
@@ -21,7 +23,7 @@ export async function getStaticPaths() {
 }
 
 interface Props {
-  day: CollectionEntry<'days-ca' | 'days-es'>;
+  day: DayCollectionEntry;
   lang: 'ca' | 'es';
 }
 
@@ -29,12 +31,23 @@ const { day, lang } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const homeHref = `${base}/${lang}/`;
 
-const labels = {
-  ca: { back: 'Tornar al programa', themeSuffix: `: ${day.data.theme}` },
-  es: { back: 'Volver al inicio', themeSuffix: `: ${day.data.theme}` },
+type EventType = {
+  time: string;
+  title: string;
+  type: 'pasacalles' | 'bous' | 'verbena' | 'musica' | 'liturgia' | 'infantil' | 'paelles' | 'festes' | 'otro';
+  location?: string;
+  description?: string;
+  sponsor?: string;
+  tags?: string[];
+};
+
+const labels: Record<'ca' | 'es', { back: string; themeSuffix: string }> = {
+  ca: { back: 'Tornar al programa', themeSuffix: day.data.theme ? `: ${day.data.theme}` : '' },
+  es: { back: 'Volver al inicio', themeSuffix: day.data.theme ? `: ${day.data.theme}` : '' },
 };
 
 const themeSuffix = day.data.theme ? labels[lang].themeSuffix : '';
+const events: EventType[] = day.data.events as EventType[];
 ---
 
 <BaseLayout
@@ -61,7 +74,7 @@ const themeSuffix = day.data.theme ? labels[lang].themeSuffix : '';
     </header>
     <ol class="day-detail-events">
       {
-        day.data.events.map((event) => (
+        events.map((event) => (
           <li>
             <EventItem event={event} />
           </li>

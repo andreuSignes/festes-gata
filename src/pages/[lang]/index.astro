@@ -10,14 +10,14 @@ export function getStaticPaths() {
   ];
 }
 
-const { lang } = Astro.params;
+const { lang } = Astro.params as { lang: 'ca' | 'es' };
 
 const collectionName = lang === 'ca' ? 'days-ca' : 'days-es';
 const days = (await getCollection(collectionName)).sort(
   (a, b) => a.data.date.localeCompare(b.data.date),
 );
 
-const titles = {
+const titles: Record<'ca' | 'es', { page: string; description: string }> = {
   ca: {
     page: 'Festes de Gata 2026',
     description: 'Programa oficial de les festes en honor al Santíssim Crist del Calvari de Gata de Gorgos. Del 26 de juliol al 6 de agost de 2026.',
