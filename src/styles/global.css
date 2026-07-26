@@ -49,22 +49,28 @@
   --spacing-5: 1.5rem;
   --spacing-6: 2rem;
   --spacing-8: 3rem;
-  --spacing-12: 4rem;
 
   /* === Radius === */
-  --radius-sm: 4px;
   --radius-md: 8px;
-  --radius-lg: 12px;
   --radius-full: 9999px;
 
   /* === Shadow (alpha derived from --color-text) === */
-  --shadow-sm: 0 1px 2px rgba(26, 22, 18, 0.06);
   --shadow-md: 0 4px 12px rgba(26, 22, 18, 0.08);
-  --shadow-lg: 0 12px 32px rgba(26, 22, 18, 0.12);
 
   /* === Component aliases (design.md §3) === */
   --radius-card: var(--radius-md);
   --shadow-card: var(--shadow-md);
+}
+
+/* === Tokens that are not yet consumed by any utility — emitted as
+ *    static so consumers (or future utilities) still see them in
+ *    the cascade instead of being tree-shaken away. === */
+@theme static {
+  --spacing-12: 4rem;
+  --radius-sm: 4px;
+  --radius-lg: 12px;
+  --shadow-sm: 0 1px 2px rgba(26, 22, 18, 0.06);
+  --shadow-lg: 0 12px 32px rgba(26, 22, 18, 0.12);
 }
 
 /* === Design tokens (legacy window) === */
