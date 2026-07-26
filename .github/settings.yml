@@ -13,6 +13,8 @@
 # https://github.com/repository-settings/app/blob/master/docs/configuration.md
 
 repository:
+  description: Festes de Gata de Gorgos 2026 — Static site for the festival program (26 Jul → 6 Aug 2026)
+  homepage: https://andreuSignes.github.io/festes-gata/
   # Squash-merge only — keeps history linear and one commit per PR.
   allow_merge_commit: false
   allow_rebase_merge: false
