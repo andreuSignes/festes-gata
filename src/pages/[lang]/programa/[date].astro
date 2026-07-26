@@ -1,0 +1,72 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import EventItem from '../../../components/EventItem.astro';
+
+export async function getStaticPaths() {
+  const caDays = await getCollection('days-ca');
+  const esDays = await getCollection('days-es');
+
+  const caPaths = caDays.map((day) => ({
+    params: { lang: 'ca', date: day.id },
+    props: { day, lang: 'ca' as const },
+  }));
+
+  const esPaths = esDays.map((day) => ({
+    params: { lang: 'es', date: day.id },
+    props: { day, lang: 'es' as const },
+  }));
+
+  return [...caPaths, ...esPaths];
+}
+
+interface Props {
+  day: CollectionEntry<'days-ca' | 'days-es'>;
+  lang: 'ca' | 'es';
+}
+
+const { day, lang } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const homeHref = `${base}/${lang}/`;
+
+const labels = {
+  ca: { back: 'Tornar al programa', themeSuffix: `: ${day.data.theme}` },
+  es: { back: 'Volver al inicio', themeSuffix: `: ${day.data.theme}` },
+};
+
+const themeSuffix = day.data.theme ? labels[lang].themeSuffix : '';
+---
+
+<BaseLayout
+  title={`${day.data.weekday} ${day.data.date}`}
+  description={`Programa del ${day.data.date} (${day.data.weekday})${themeSuffix} — Festes de Gata 2026.`}
+  lang={lang}
+>
+  <article class="day-detail">
+    <p>
+      <a href={homeHref} class="back-link">{labels[lang].back}</a>
+    </p>
+    <header class="day-detail-header">
+      <time datetime={day.data.date} class="day-detail-date">
+        {day.data.date}
+      </time>
+      <h1>
+        {day.data.weekday}
+        {
+          day.data.theme && (
+            <span class="day-detail-theme"> · {day.data.theme}</span>
+          )
+        }
+      </h1>
+    </header>
+    <ol class="day-detail-events">
+      {
+        day.data.events.map((event) => (
+          <li>
+            <EventItem event={event} />
+          </li>
+        ))
+      }
+    </ol>
+  </article>
+</BaseLayout>

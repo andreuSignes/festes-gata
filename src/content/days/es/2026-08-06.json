@@ -1,39 +1,27 @@
 {
   "date": "2026-08-06",
-  "weekday": "Jueves",
-  "theme": "Día del Santísimo Cristo",
+  "weekday": "Thursday",
+  "theme": "Dia del Santísimo Cristo",
   "events": [
     {
       "time": "08:00",
-      "title": "Despertà a cargo de la comisión 2026",
-      "description": "Despertà a cargo de la comisión 2026.",
-      "type": "pasacalles"
-    },
-    {
-      "time": "10:00",
-      "title": "Misa",
-      "description": "Misa.",
-      "type": "liturgia"
+      "title": "Despertà a cargo la Comisión 2026.",
+      "type": "festes"
     },
     {
       "time": "11:00",
-      "title": "Pasacalle para recoger a festeros y festeras mayores e infantiles",
-      "description": "Pasacalle para recoger a festeros y festeras mayores e infantiles.",
+      "title": "Pasacalle para recoger a festeros y festeras mayores e infantiles.",
       "type": "pasacalles"
     },
     {
       "time": "12:00",
-      "title": "Solemne Misa Mayor en honor al Santísimo Cristo del Calvario, cantada por el",
-      "description": "Solemne Misa Mayor en honor al Santísimo Cristo del Calvario, cantada por el Grup Serrillàs patrocinado por la comisión 2026. Al acabar la Misa se disparará un bombardeo a cargo de la pirotecnia BORREDÀ. Después, vino de honor en el Centro Social a cargo de la comisión de fiestas 2026, donde se hará entrega de los diferentes premios: carrozas, truc, calles, disfraces…",
-      "type": "liturgia",
-      "location": "Centro Social"
+      "title": "Solemne Misa Mayor en honor al Santísimo Cristo Calvario, cantada por el Grup Serrillàs patrocinado por la Comisión 2026. Al finalizar la misa se disparará un bombardeo a cargo la Pirotécnica BORREDÀ. Después, vino honor en el Centro Social a cargo la Comisión Fiestas 2026, donde se hará entrega los diferentes premios (carrozas, truc, calles, disfraces…).",
+      "type": "liturgia"
     },
     {
       "time": "19:30",
-      "title": "Misa y solemne procesión para acompañar al Santísimo Cristo hasta la ermita del",
-      "description": "Misa y solemne procesión para acompañar al Santísimo Cristo hasta la ermita del Calvario acompañados por la Colla Montgó Benimussa, Banda de Coda y Banda Unión Musical de Gata. A continuación CASTILLO de fuegos artificiales a cargo de la pirotecnia BORREDÀ.",
-      "type": "liturgia",
-      "location": "ermita del Calvario"
+      "title": "Misa y solemne procesión para acompañar al Santísimo Cristo hasta la Ermita Calvario, acompañados por la Colla Montgó-Benimussa, Banda Coda y la Banda Unió Musical Gata. A continuación, CASTILLO fuegos artificiales a cargo la Pirotécnica BORREDÀ.",
+      "type": "liturgia"
     }
   ]
 }

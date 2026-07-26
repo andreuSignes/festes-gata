@@ -1,0 +1,47 @@
+{
+  "date": "2026-08-05",
+  "weekday": "Wednesday",
+  "theme": "Dia dels majors",
+  "events": [
+    {
+      "time": "08:00",
+      "title": "Huitena despertà a càrrec la Quintà 2026 L'ANRAMÀ.",
+      "type": "festes"
+    },
+    {
+      "time": "12:00",
+      "title": "Solemne missa en acció gràcies per als nostres majors poble.",
+      "type": "festes"
+    },
+    {
+      "time": "13:00",
+      "title": "Actuació Grup Danses LA LLATA al Centre Social. La Comissió 2026 répartirá VERMUT i fruits secs.",
+      "type": "musica"
+    },
+    {
+      "time": "13:30",
+      "title": "Bous a banda al baret dels bous amb el grup FERRETERÍA ROSARIO, patrocinat per la Comissió 2026.",
+      "type": "liturgia"
+    },
+    {
+      "time": "14:00",
+      "title": "La Comissió oferirà un vi honor per als nostres majors al centre social. Després ballarem al ritme TONI CATALÀ.",
+      "type": "musica"
+    },
+    {
+      "time": "17:30",
+      "title": "Espectaculars partides Pilota al Trinquet Xiquet Gata.",
+      "type": "infantil"
+    },
+    {
+      "time": "20:00",
+      "title": "Concentració quintos i quintas infantils i majors, penyes i poble en general a la plaça Nova, per participar a l'ofrena al Santíssim Crist Calvari, acompanyats per la Colla Montgó-Benimussa i la Banda Coda.",
+      "type": "liturgia"
+    },
+    {
+      "time": "00:00",
+      "title": "Concert la revetla. La BANDA UNIÓ MUSICAL DE GATA oferirà un any més un espectacular concert a la plaça l'església. En acabar es dispararà la CORDÀ al parc Enric Valor a càrrec la pirotècnia BORREDÀ. AL RECINTE NOMÉS PODRAN ACCEDIR PERSONES AMB CARNET CRE.",
+      "type": "musica"
+    }
+  ]
+}

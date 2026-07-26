@@ -1,0 +1,47 @@
+{
+  "date": "2026-07-29",
+  "weekday": "Wednesday",
+  "theme": "juliol – Dia de les inauguracions",
+  "events": [
+    {
+      "time": "07:00",
+      "title": "Primera despertà a càrrec la Quintà 2026 L'ANRAMÀ.",
+      "type": "festes"
+    },
+    {
+      "time": "08:00",
+      "title": "Entrà bous i vaques a càrrec la ramaderia local Cristian Soler. A continuació, solta vaques la mateixa ramaderia.",
+      "type": "bous"
+    },
+    {
+      "time": "09:30",
+      "title": "La Comissió 2026 repartirà coques i cervesa a tots els assistents.",
+      "type": "paelles"
+    },
+    {
+      "time": "13:00",
+      "title": "Bous a banda al baret dels bous amb el grup MALECÓN, patrocinat per la Comissió 2026.",
+      "type": "bous"
+    },
+    {
+      "time": "18:00",
+      "title": "Inauguració oficial corro amenitzada per la batukada GATUKADA i XARANGATA acompanyats per les quintas i quintos majors i menuts, penyes i poble en general.",
+      "type": "festes"
+    },
+    {
+      "time": "19:30",
+      "title": "Solta vaques i bou la ramaderia LA HERMANDAD Xàbia.",
+      "type": "bous"
+    },
+    {
+      "time": "22:00",
+      "title": "Per a continuar la festa inaugurarem les barraques amb les disfresses la vesprada i la Comissió repartirà REBUJITO per a tots.",
+      "type": "festes"
+    },
+    {
+      "time": "00:00",
+      "title": "Espectacular actuació l'orquestra MÓNACO PARTY fins les 5 la matinada.",
+      "type": "musica"
+    }
+  ]
+}
