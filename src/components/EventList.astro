@@ -1,14 +1,14 @@
 ---
-import EventItem from './EventItem.astro';
+import EventItemComponent from './EventItem.astro';
 import type { Locale } from '../lib/event-type-labels';
 
 // Inferred event type from the days-* collections.
-type EventItem = NonNullable<
+type DayEvent = NonNullable<
   import('astro:content').CollectionEntry<'days-ca'>['data']['events']
 >[number];
 
 interface Props {
-  events: EventItem[];
+  events: DayEvent[];
   lang: Locale;
 }
 
@@ -19,7 +19,7 @@ const { events, lang } = Astro.props;
   {
     events.map((event) => (
       <li data-event-type={event.type}>
-        <EventItem event={event} lang={lang} />
+        <EventItemComponent event={event} lang={lang} />
       </li>
     ))
   }
