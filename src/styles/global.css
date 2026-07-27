@@ -151,6 +151,25 @@ p {
 main {
   flex: 1 0 auto;
   padding-block: var(--spacing-6);
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-inline-mobile);
+}
+@media (min-width: 640px) {
+  main {
+    padding-inline: var(--container-padding-inline-desktop);
+  }
+}
+
+.container {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-inline-mobile);
+}
+@media (min-width: 640px) {
+  .container {
+    padding-inline: var(--container-padding-inline-desktop);
+  }
 }
 
 /* === A11y helper === */
