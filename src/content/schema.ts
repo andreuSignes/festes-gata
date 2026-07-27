@@ -1,4 +1,5 @@
 import { z } from 'astro:content';
+import type { output } from 'zod';
 
 export const eventSchema = z.object({
   time: z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/),
@@ -27,6 +28,6 @@ export const daySchema = z.object({
   events: z.array(eventSchema),
 });
 
-export type Event = typeof eventSchema._output;
-export type Day = typeof daySchema._output;
-export type DayProgram = typeof daySchema._output;
+export type Event = output<typeof eventSchema>;
+export type Day = output<typeof daySchema>;
+export type DayProgram = output<typeof daySchema>;
