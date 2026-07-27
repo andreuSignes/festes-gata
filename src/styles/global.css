@@ -5,15 +5,19 @@
  * with named regions of the illustration (see design.md §2). Do not
  * introduce new colours without registering a deviation in the
  * festes-gata-ui-2026 proposal risks.
+ *
+ * Softening pass (style/soften-palette): same hues/regions, lower
+ * saturation on primary/secondary/event tones, and ~90% alpha on
+ * event-tone badge backgrounds. No new hues introduced.
  */
 @import 'tailwindcss';
 
 /* === Design tokens === */
 @theme {
   /* === Surfaces, text, ring === */
-  --color-primary: #e5318a; /* "Festes" eyebrow wordmark */
+  --color-primary: #d5438c; /* "Festes" eyebrow wordmark — softened (same lightness, lower saturation) */
   --color-accent: #f4b860; /* sun disk */
-  --color-secondary: #3c8fae; /* upper sky band */
+  --color-secondary: #468ba4; /* upper sky band — softened (same lightness, lower saturation) */
   --color-surface: #faedd0; /* warm-cream building walls */
   --color-surface-elevated: #ffffff; /* neutral white (CSS spec) */
   --color-surface-muted: #f2d6a8; /* sun-bleached wall highlight */
@@ -22,24 +26,26 @@
   --color-border: #e5d5b5; /* mortar / sandstone */
   --color-ring: #1a1612; /* warm near-black — focus contrast vs warm surfaces and --color-primary header */
 
-  /* === Event-type tones (background + text-on-tone) === */
-  --color-pasacalles: #e8943a;
+  /* === Event-type tones (background + text-on-tone) ===
+   * Backgrounds carry ~90% alpha (E6) so badges blend softly with the
+   * card surface below; -fg tokens stay solid for text contrast. */
+  --color-pasacalles: #da9448e6;
   --color-pasacalles-fg: #3d1a05;
-  --color-bous: #c95e3a;
+  --color-bous: #bd684ce6;
   --color-bous-fg: #3a0f05;
-  --color-verbena: #e59bab;
+  --color-verbena: #e2a2b0e6;
   --color-verbena-fg: #5a1e2a;
-  --color-musica: #5bb0c9;
+  --color-musica: #67acc1e6;
   --color-musica-fg: #0e2e3d;
-  --color-liturgia: #9b7bbf;
+  --color-liturgia: #9f84bde6;
   --color-liturgia-fg: #2a1a4a;
-  --color-infantil: #f5d06a;
+  --color-infantil: #eacc7be6;
   --color-infantil-fg: #3d2e05;
-  --color-paelles: #c9912e;
+  --color-paelles: #c2923de6;
   --color-paelles-fg: #2a1a05;
-  --color-festes: #d87090;
+  --color-festes: #d07c96e6;
   --color-festes-fg: #3d0e22;
-  --color-otro: #7b9b6e;
+  --color-otro: #859f7ae6;
   --color-otro-fg: #1a2a14;
 
   /* === Spacing (rem, base 16px) === */
