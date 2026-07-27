@@ -5,17 +5,14 @@ import DaySection from '../../components/DaySection.astro';
 import FilterBar from '../../components/FilterBar.astro';
 
 export function getStaticPaths() {
-  return [
-    { params: { lang: 'ca' } },
-    { params: { lang: 'es' } },
-  ];
+  return [{ params: { lang: 'ca' } }, { params: { lang: 'es' } }];
 }
 
 const { lang } = Astro.params as { lang: 'ca' | 'es' };
 
 const collectionName = lang === 'ca' ? 'days-ca' : 'days-es';
-const days = (await getCollection(collectionName)).sort(
-  (a, b) => a.data.date.localeCompare(b.data.date),
+const days = (await getCollection(collectionName)).sort((a, b) =>
+  a.data.date.localeCompare(b.data.date)
 );
 
 const titles: Record<'ca' | 'es', { page: string; description: string }> = {
@@ -97,7 +94,7 @@ const { page: title, description } = titles[lang];
     }
 
     .hero {
-      padding-block: var(--spacing-8);
+      padding-block: var(--spacing-12);
     }
 
     .hero p {
