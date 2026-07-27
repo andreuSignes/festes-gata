@@ -22,6 +22,14 @@ const fullTitle = title === siteName ? title : `${title} · ${siteName}`;
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 const ogImgUrl = new URL(ogImage, Astro.site).toString();
 
+// Mount the bounded interactivity script only on the locale landing
+// routes (`/${lang}/`). Per-day detail pages and the universal 404
+// stay script-free. Astro bundles the script once and emits a single
+// <script src="...">` tag on each landing HTML.
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const landingPath = `${baseUrl}/${lang}/`;
+const isLanding = Astro.url.pathname === landingPath;
+
 const localeMap = {
   ca: 'ca_ES',
   es: 'es_ES',
@@ -63,14 +71,13 @@ const localeMap = {
       <slot />
     </main>
     <Footer />
-    <!-- <script src={…} /> mounted in PR #3 on landing only -->
-    <!--
-      PR #3 (`festes-gata-ui-2026`) replaces this comment with a
-      conditional Astro <script> reference that loads
-      `src/scripts/festival-interactivity.ts` only when the active
-      route is one of the locale landings (`${BASE_URL}/${lang}/`).
-      Detail pages and the universal 404 stay script-free.
-    -->
+    {
+      isLanding && (
+        <script>
+          import '../scripts/festival-interactivity.ts';
+        </script>
+      )
+    }
   </body>
 </html>
 
