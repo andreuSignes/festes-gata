@@ -13,10 +13,10 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
   webServer: {
-    command: 'pnpm preview --host',
-    url: 'http://localhost:4321',
+    command: 'pnpm build && cd dist && python3 -m http.server 4321',
+    url: 'http://localhost:4321/festes-gata',
     reuseExistingServer: !process.env.CI,
-    timeout: 300_000,
+    timeout: 120_000,
   },
   projects: [
     {
