@@ -19,7 +19,7 @@ interface Props {
 const { day, lang: langProp, headingLevel = 2 } = Astro.props;
 
 // Explicit prop wins for reuse; otherwise read from the parent route.
-const lang: Locale = langProp ?? ((Astro.params.lang as Locale | undefined) ?? 'ca');
+const lang: Locale = langProp ?? (Astro.params.lang as Locale | undefined) ?? 'ca';
 
 const id = `day-${day.id}`;
 const titleId = `${id}-title`;
@@ -51,3 +51,12 @@ const emptyDayCopy: Record<Locale, string> = {
     {emptyDayCopy[lang]}
   </p>
 </section>
+
+<style>
+  section {
+    margin-bottom: var(--spacing-6);
+  }
+  header {
+    margin-bottom: var(--spacing-5);
+  }
+</style>
