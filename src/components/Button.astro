@@ -17,13 +17,7 @@ interface Props {
   class?: string;
 }
 
-const {
-  variant,
-  as = 'button',
-  href,
-  type = 'button',
-  class: className,
-} = Astro.props;
+const { variant, as = 'button', href, type = 'button', class: className } = Astro.props;
 const Tag = as;
 const classes = ['btn', `btn--${variant}`, className];
 ---
