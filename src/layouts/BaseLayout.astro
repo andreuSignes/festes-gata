@@ -73,3 +73,23 @@ const localeMap = {
     -->
   </body>
 </html>
+
+<style>
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: var(--spacing-2);
+    background: var(--color-primary);
+    color: #fff;
+    padding: var(--spacing-3) var(--spacing-4);
+    border-radius: var(--radius-md);
+    z-index: 100;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  .skip-link:focus {
+    top: var(--spacing-2);
+  }
+</style>
