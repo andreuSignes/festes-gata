@@ -17,8 +17,12 @@ const labels = {
 
 const navLinks = [{ href: homeHref, label: labels[lang].nav }];
 
-// Get the path without the locale prefix for the language switcher
-const pathWithoutLocale = pathname.replace(/^\/(ca|es)/, '') || '/';
+// Get the path without the locale prefix (or BASE_URL + locale prefix) for the
+// language switcher. `Astro.url.pathname` includes the `base` (e.g.
+// `/festes-gata/ca/`) at build time, so the regex must match both the bare
+// `/ca/` form and the `${base}/ca/` form.
+const pathWithoutLocale =
+  pathname.replace(new RegExp(`^${base.replace(/\/$/, '')}?/(ca|es)`), '') || '/';
 ---
 
 <header class="site-header">
