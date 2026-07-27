@@ -1,15 +1,3 @@
-/* === Cascade order (READABILITY-001 closure) ===
- *    Declares `legacy` BEFORE `theme` so the implicit `@layer theme`
- *    injected by `@theme { ... }` ranks ABOVE `@layer legacy` in the
- *    cascade, regardless of byte position in the emitted CSS.
- *    Placed BEFORE `@import 'tailwindcss';` per CSS spec: `@layer`
- *    statements must precede all other rules except `@charset` —
- *    placing this first guarantees `legacy` ranks BELOW `theme`
- *    even though Tailwind's compiled bundle appends the legacy
- *    block later in source order (which would otherwise outrank
- *    the theme layer). */
-@layer legacy, theme;
-
 /* palette source: docs/FESTES_GATA_2026_PORTADA-727x1024.jpg
  *
  * All semantic tokens below are derived from the cover image used by
