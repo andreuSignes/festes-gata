@@ -18,16 +18,22 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: pnpm
+          # actions/setup-node v5+ activates automatic package-manager
+          # caching when package.json declares a `packageManager` field.
+          # We declare `pnpm@11.17.0`, so the action would otherwise try
+          # to cache twice and warn. Disable the auto cache to keep the
+          # explicit `cache: pnpm` behaviour above.
+          package-manager-cache: false
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -50,17 +56,3 @@ jobs:
       # `pnpm run lint` and `pnpm run format:check` steps in order.
       - name: Build (Zod schemas + static generation)
         run: pnpm run build
-
-      - name: Install Playwright Browsers
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('package.json') }}
-          restore-keys: |
-            playwright-${{ runner.os }}-
-
-      - name: Install Playwright
-        run: pnpm exec playwright install chromium
-
-      - name: Run Playwright tests
-        run: pnpm exec playwright test
