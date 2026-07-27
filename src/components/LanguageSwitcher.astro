@@ -24,7 +24,9 @@ const locales = [
             hreflang={locale.code}
             lang={locale.code}
           >
-            <span class="lang-flag" aria-hidden="true">{locale.flag}</span>
+            <span class="lang-flag" aria-hidden="true">
+              {locale.flag}
+            </span>
             <span class="lang-label">{locale.label}</span>
           </a>
         </li>
@@ -57,7 +59,7 @@ const locales = [
     color: inherit;
     font-weight: 600;
     font-size: 0.875rem;
-    min-height: 36px;
+    min-height: 44px;
     transition: background-color 0.2s ease;
   }
 
