@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import DaySection from '../../components/DaySection.astro';
+import FilterBar from '../../components/FilterBar.astro';
 
 export function getStaticPaths() {
   return [
@@ -39,7 +40,7 @@ const { page: title, description } = titles[lang];
     <p>{description}</p>
   </section>
   <section>
-    <!-- FilterBar mounted in PR #3 -->
+    <FilterBar lang={lang} />
     <h2 class="visually-hidden">
       {lang === 'ca' ? 'Programa per dies' : 'Programa por días'}
     </h2>

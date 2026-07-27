@@ -1,0 +1,120 @@
+---
+/**
+ * FilterBar — locale-aware event-type filter.
+ *
+ * Renders 9 type buttons (one per `EventType`) plus a single reset
+ * control that refills the active set. The active locale drives every
+ * visible label (button text, group label, reset label) via the shared
+ * `getEventTypeLabel(type, lang)` helper and a small constants map.
+ *
+ * The bar is non-functional on its own — the bounded script in
+ * `src/scripts/festival-interactivity.ts` walks the data hooks and
+ * toggles `aria-pressed`, `hidden`, and `tabindex` on the matching
+ * event `<li>` nodes. The no-script document remains complete and
+ * usable: every button is `aria-pressed="true"` initially so all events
+ * are visible without JS.
+ *
+ * The reset button has a single locale-aware label that combines the
+ * "all" and "reset" copy into one string (e.g. `Tots / Reiniciar`) so
+ * the verification gate can find both control strings in the active
+ * locale (`Tots` + `Reiniciar` in CA, `Todos` + `Reiniciar` in ES).
+ */
+import {
+  eventTypeLabels,
+  getEventTypeLabel,
+  type EventType,
+  type Locale,
+} from '../lib/event-type-labels';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+
+// The 9 EventType keys, in the canonical order pinned by the
+// `eventTypeLabels` Record. Astro components cannot iterate a Record
+// in a stable order across runtimes, so we use `Object.keys` which V8
+// preserves in insertion order for non-integer string keys.
+const types = Object.keys(eventTypeLabels) as EventType[];
+
+// Localised control copy. The reset button combines the "all" and
+// "reset" copy so both required strings appear in the active locale.
+const controlCopy: Record<Locale, { all: string; reset: string }> = {
+  ca: { all: 'Tots', reset: 'Reiniciar' },
+  es: { all: 'Todos', reset: 'Reiniciar' },
+};
+
+const groupLabel = lang === 'ca' ? 'Filtrar per tipus' : 'Filtrar por tipo';
+const resetLabel = `${controlCopy[lang].all} / ${controlCopy[lang].reset}`;
+---
+
+<div role="group" aria-label={groupLabel} data-filter-bar>
+  {
+    types.map((type) => (
+      <button
+        type="button"
+        class="filter-btn"
+        data-filter-type={type}
+        aria-pressed="true"
+        lang={lang}
+      >
+        {getEventTypeLabel(type, lang)}
+      </button>
+    ))
+  }
+  <button
+    type="button"
+    class="filter-btn filter-btn--reset"
+    data-filter-reset
+    aria-pressed="false"
+    lang={lang}
+  >
+    {resetLabel}
+  </button>
+</div>
+
+<style>
+  .filter-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding-inline: var(--spacing-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-elevated);
+    color: var(--color-text);
+    font: inherit;
+    font-weight: 600;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .filter-btn:hover {
+    background: var(--color-surface);
+  }
+
+  .filter-btn[aria-pressed='true'] {
+    background: var(--color-primary);
+    color: #fff;
+    border-color: var(--color-primary);
+  }
+
+  .filter-btn[aria-pressed='false'] {
+    background: var(--color-surface-elevated);
+    color: var(--color-text);
+  }
+
+  .filter-btn--reset {
+    margin-inline-start: var(--spacing-2);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .filter-btn--reset[aria-pressed='false'] {
+    background: var(--color-surface-elevated);
+    color: var(--color-primary);
+  }
+</style>
