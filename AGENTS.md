@@ -4,15 +4,16 @@ Bilingual (Valencià + Castellano) static site for the **Gata de Gorgos
 2026** festival program (Sun 26 Jul → Thu 6 Aug 2026), built on Astro 7
 and deployed to GitHub Pages.
 
-**Current state: Phase 2 done (content model + data).** Phase 3
-(components + pages) is in progress. Phase 4 (CI + deploy) doesn't
-exist yet. See `README.md` for the phased PR plan and
-`openspec/changes/festes-gata-2026/tasks.md` for the work-unit list.
+**Current state: All phases shipped.** PRs #1–#25 have landed; `main`
+carries a fully bilingual site with locale-aware filtering, today
+navigation, Playwright e2e tests, Vitest unit tests, and automated
+GitHub Pages deployment via GitHub Actions.
 
 ## Stack & prerequisites
 
 - Node **≥ 22.13.0** (enforced in `package.json` `engines`; required by pnpm 11.17).
 - Astro 7, `@astrojs/sitemap`, `zod` runtime deps.
+- Tailwind CSS 4 (via `@tailwindcss/vite`).
 - ESLint 10 + Prettier 3 + `eslint-plugin-astro` for dev tooling.
 - Output: pure static HTML/CSS into `dist/`. Zero client JS on the
   landing page.
@@ -31,6 +32,8 @@ pnpm preview           # serve dist/ locally
 pnpm check             # astro check (TS + Astro diagnostics)
 pnpm check:content     # scripts/check-content.mjs — filename/date parity,
                        #   shape, event enum, event-field sanity
+pnpm test              # vitest run (unit tests)
+pnpm test:watch        # vitest (watch mode)
 pnpm lint              # eslint . (Astro plugin + Prettier compat)
 pnpm lint:fix          # eslint . --fix
 pnpm format            # prettier --write .
@@ -40,49 +43,33 @@ pnpm format:check      # prettier --check .
 **Recommended local verification order before pushing:**
 
 1. `pnpm check:content` — fastest signal, catches data drift.
-2. `pnpm build` — Zod schema validation + static generation.
-3. `pnpm lint` and `pnpm format:check` — style hygiene.
+2. `pnpm test` — unit tests (content schema, check-content logic).
+3. `pnpm build` — Zod schema validation + static generation.
+4. `pnpm lint` and `pnpm format:check` — style hygiene.
 
-There is no test runner. CI is not yet wired (PR #4).
+### E2E tests (Playwright)
 
-- Commits are validated automatically by `commitlint` (message) and
-  `lint-staged` (staged files). See **Git hooks** below for details.
-  No separate npm script is needed.
+E2E tests live in `tests/e2e/` and run against a production build via
+`playwright.config.ts`. Run them locally after building:
 
-## `v1 ships Spanish only` — the bilingual gotcha
+```bash
+pnpm build             # required first — tests hit the static dist/
+npx playwright test    # run Playwright against the built site
+```
 
-The README, `openspec/`, and historical commit messages describe a
-two-locale (Valencià + Castellano) site. **The executable code is
-single-locale (Spanish).** The bilingual split was deferred to v2 (see
-the 2026-07-25 scope note at the top of `openspec/changes/festes-gata-2026/*.md`).
-
-What this means in practice:
-
-- `src/content.config.ts` defines a single `days` collection, loading
-  `src/content/days/es/*.json` only. There is no `days-ca` collection.
-- `src/content/days/es/` holds 12 day files (26 Jul → 06 Aug 2026).
-  `src/content/days/ca/` does **not** exist.
-- `astro.config.mjs` does **not** set `i18n` or `prefixDefaultLocale`.
-- `src/pages/index.astro` is a meta-refresh fallback pointing at
-  `/festes-gata/ca/`. The real 302 redirect ships with PR #3, and the
-  `/ca/` + `/es/` routes are also PR #3 work.
-
-When you read `openspec/changes/festes-gata-2026/specs/` or
-`design.md`, expect references to `days-ca` / `days-es` /
-`src/content/days/ca/`, `i18n` routing, `LanguageSwitcher`, etc. —
-all of that is **planned, not implemented**. The current `main`
-reflects v1 reality. If you change anything, trust the code in
-`src/` over the spec docs.
+Playwright is installed as a dev dependency (`@playwright/test`).
+CI runs unit tests only; e2e tests are run manually or in the
+Playwright-headed workflow step (see `.github/workflows/ci.yml`).
 
 ## Content model
 
 - One JSON file per festival day at
-  `src/content/days/es/YYYY-MM-DD.json` (12 files, 26 Jul → 06 Aug 2026).
+  `src/content/days/ca/*.json` and `src/content/days/es/*.json`
+  (12 files per locale, 26 Jul → 06 Aug 2026).
 - Filename must equal `date` inside the file. `scripts/check-content.mjs`
   enforces this and exits non-zero on mismatch.
 - Zod schema lives in `src/content.config.ts` (root of `src/`, **not**
-  `src/content/config.ts` — Astro 7 moved to this location; the
-  design.md still says the old path).
+  `src/content/config.ts` — Astro 7 moved to this location).
 - `pnpm build` re-validates every JSON file against the Zod schema
   and fails with the file + field name on any mismatch.
 
@@ -101,12 +88,8 @@ reflects v1 reality. If you change anything, trust the code in
 }
 ```
 
-The 9-value `type` enum **includes `paelles` and `festes`**, which
-`openspec/.../specs/festival-program/spec.md` and `design.md` omit
-(those docs still list the original 7). Use the Zod schema and
-`src/content/days/README.md` as the source of truth — the spec docs
-are stale on this. See `src/content/days/README.md` for the type
-glossary (Spanish source → closest enum value).
+The 9-value `type` enum includes `paelles` and `festes`. Use the Zod
+schema and `src/content/days/README.md` as the source of truth.
 
 ### Day shape
 
@@ -120,15 +103,16 @@ glossary (Spanish source → closest enum value).
 ```
 
 `src/content/days/PROGRAM_SOURCE.txt` is the **absolute source of
-truth** for programme data. Don't edit data from this PR; the
-authoring flow is documented in `src/content/days/README.md`.
+truth** for programme data. The authoring flow is documented in
+`src/content/days/README.md`.
 
 ## Files & directories worth knowing
 
 - `astro.config.mjs` — `site`, `base: '/festes-gata'`, `output: 'static'`,
-  `@astrojs/sitemap` integration. Internal links should be site-relative
-  paths; Astro prepends `base`. OG/twitter meta in `BaseLayout` (PR #3
-  work) will use absolute URLs derived from `site`.
+  `@astrojs/sitemap` integration, plus `i18n` routing with
+  `prefixDefaultLocale: false` and locale fallbacks.
+- `src/content.config.ts` — Zod schema for `days-ca` and `days-es`
+  collections.
 - `tsconfig.json` — extends `astro/tsconfigs/strict` + adds
   `noUncheckedIndexedAccess` and `exactOptionalPropertyTypes`. Be
   defensive with array/object index access.
@@ -137,14 +121,14 @@ authoring flow is documented in `src/content/days/README.md`.
   `.mjs`/`.cjs`.
 - `.prettierrc` — 2-space, single quotes, semicolons, printWidth 100,
   LF endings.
-- `src/pages/index.astro` — temporary build-time placeholder
-  (meta-refresh to `/ca/`). Will be replaced by a real 302 redirect
-  in PR #3. Don't add real content here.
+- `src/pages/[lang]/index.astro` — locale landing page with FilterBar,
+  today scroll, and empty-day announcements.
+- `src/pages/[lang]/programa/[date].astro` — per-day detail route.
+- `src/pages/ca/404.astro`, `src/pages/es/404.astro` — locale-specific
+  404 pages.
 - `dist/` — build output. Ignored by git. Do not edit.
 - `.astro/` — generated by Astro (types, schemas, dev cache). Ignored
-  by git. Do not edit. After a brand-new install, `.astro/collections/`
-  may carry stale `days-ca.schema.json` / `days-es.schema.json` from
-  before the v1 revert — they're inert.
+  by git. Do not edit.
 - `openspec/` — gitignored planning workspace. Specs, design, tasks,
   and proposals for the change. Not the deployable artefact. See
   `openspec/README.md`.
@@ -160,14 +144,9 @@ authoring flow is documented in `src/content/days/README.md`.
 - **PRs are chained and budget-bounded.** The change plan targets a
   400-line review budget per PR, with stacked-to-main merging (single
   author). When proposing changes, keep them small and self-contained.
-  PRD roadmap is in `openspec/changes/festes-gata-2026/tasks.md`.
-- **No tests yet, CI on pnpm.** Phase 4 adds `.github/workflows/deploy.yml`
-  using Node 22, `actions/setup-node@v4` (with `cache: pnpm`),
-  Corepack for the pnpm version pin, and
-  `actions/upload-pages-artifact` + `actions/deploy-pages@v4` for
-  publication. Don't add a test runner before PR #4 unless the user
-  asks — the rules in `openspec/config.yaml` set
-  `testing.strict_tdd: false` and `testing.runner: none`.
+- **CI/CD is live.** `.github/workflows/ci.yml` runs on every PR
+  (validate content, unit tests, Astro check, build). `.github/workflows/deploy.yml`
+  deploys to GitHub Pages on every push to `main`.
 - **Content changes are JSON edits + push.** Authoring flow is
   documented in `src/content/days/README.md`. Spec workflow lives
   under `openspec/`.
@@ -207,10 +186,6 @@ authoring flow is documented in `src/content/days/README.md`.
 
 ## Don't
 
-- Don't add `src/content/days/ca/` data files — v1 is Spanish-only.
-- Don't add `i18n` to `astro.config.mjs` until the v2 plan lands.
 - Don't hand-edit `dist/` or `.astro/` — both are generated.
-- Don't add a `LanguageSwitcher`, `/ca/`, `/es/`, or `404.astro` —
-  these are PR #3 work.
 - Don't add dependencies beyond what's needed for one PR's scope; the
   400-line review budget is the cap.

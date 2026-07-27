@@ -34,5 +34,8 @@ openspec/specs/
 .atl/
 .codegraph/
 
+# test output (Playwright, Vitest)
+test-results/
+
 # local git worktrees live here so they don't pollute the repo root
 .worktrees/
