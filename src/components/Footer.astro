@@ -27,9 +27,14 @@ const year = new Date().getFullYear();
 
   .site-footer-inner {
     width: 100%;
-    max-width: 1200px;
+    max-width: var(--container-max);
     margin-inline: auto;
-    padding: 0 var(--spacing-4);
+    padding-inline: var(--container-padding-inline-mobile);
+  }
+  @media (min-width: 640px) {
+    .site-footer-inner {
+      padding-inline: var(--container-padding-inline-desktop);
+    }
   }
 
   .site-footer p {
