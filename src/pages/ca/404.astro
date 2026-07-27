@@ -1,0 +1,26 @@
+---
+/**
+ * CA locale-specific not-found page.
+ *
+ * Emits `dist/ca/404.html` so the per-locale gate assertion is met
+ * (`dist/ca/404.html` and `dist/es/404.html` each contain the
+ * locale-specific 404 message). The universal `src/pages/404.astro`
+ * remains the safety-net fallback for any non-localized URL.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+const homeHref = `${base}/ca/`;
+---
+
+<BaseLayout
+  title="Pàgina no trobada"
+  description="La pàgina que busques no existeix."
+  lang="ca"
+>
+  <section>
+    <h1>404 — Pàgina no trobada</h1>
+    <p>No hem trobat la pàgina que busques.</p>
+    <p><a href={homeHref}>← Tornar a l’inici</a></p>
+  </section>
+</BaseLayout>

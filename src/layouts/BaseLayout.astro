@@ -63,5 +63,13 @@ const localeMap = {
       <slot />
     </main>
     <Footer />
+    <!-- <script src={…} /> mounted in PR #3 on landing only -->
+    <!--
+      PR #3 (`festes-gata-ui-2026`) replaces this comment with a
+      conditional Astro <script> reference that loads
+      `src/scripts/festival-interactivity.ts` only when the active
+      route is one of the locale landings (`${BASE_URL}/${lang}/`).
+      Detail pages and the universal 404 stay script-free.
+    -->
   </body>
 </html>

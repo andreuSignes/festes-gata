@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import DayCard from '../../components/DayCard.astro';
+import DaySection from '../../components/DaySection.astro';
 
 export function getStaticPaths() {
   return [
@@ -20,11 +20,13 @@ const days = (await getCollection(collectionName)).sort(
 const titles: Record<'ca' | 'es', { page: string; description: string }> = {
   ca: {
     page: 'Festes de Gata 2026',
-    description: 'Programa oficial de les festes en honor al Santíssim Crist del Calvari de Gata de Gorgos. Del 26 de juliol al 6 de agost de 2026.',
+    description:
+      'Programa oficial de les festes en honor al Santíssim Crist del Calvari de Gata de Gorgos. Del 26 de juliol al 6 de agost de 2026.',
   },
   es: {
     page: 'Festes de Gata 2026',
-    description: 'Programa oficial de las fiestas en honor al Santísimo Cristo del Calvario de Gata de Gorgos. Del 26 de julio al 6 de agosto de 2026.',
+    description:
+      'Programa oficial de las fiestas en honor al Santísimo Cristo del Calvario de Gata de Gorgos. Del 26 de julio al 6 de agosto de 2026.',
   },
 };
 
@@ -37,12 +39,15 @@ const { page: title, description } = titles[lang];
     <p>{description}</p>
   </section>
   <section>
-    <h2 class="visually-hidden">Programa per dies</h2>
+    <!-- FilterBar mounted in PR #3 -->
+    <h2 class="visually-hidden">
+      {lang === 'ca' ? 'Programa per dies' : 'Programa por días'}
+    </h2>
     <ul class="days-grid">
       {
         days.map((day) => (
           <li>
-            <DayCard day={day} lang={lang} />
+            <DaySection day={day} lang={lang} />
           </li>
         ))
       }

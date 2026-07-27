@@ -1,0 +1,53 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import EventList from './EventList.astro';
+import type { Locale } from '../lib/event-type-labels';
+
+interface Props {
+  day: CollectionEntry<'days-ca' | 'days-es'>;
+  lang?: Locale;
+  /**
+   * Heading level for the day title inside this section.
+   *
+   * Landing: defaults to `<h2>` (under the page-level `<h1>`).
+   * Detail: pass `1` so this section becomes the page's single `<h1>`
+   * (the date detail page has no other heading).
+   */
+  headingLevel?: 1 | 2;
+}
+
+const { day, lang: langProp, headingLevel = 2 } = Astro.props;
+
+// Explicit prop wins for reuse; otherwise read from the parent route.
+const lang: Locale = langProp ?? ((Astro.params.lang as Locale | undefined) ?? 'ca');
+
+const id = `day-${day.id}`;
+const titleId = `${id}-title`;
+const HeadingTag = headingLevel === 1 ? 'h1' : 'h2';
+
+// Locale-specific empty-day copy (script in PR #3 toggles `hidden`).
+const emptyDayCopy: Record<Locale, string> = {
+  ca: 'No hi ha actes',
+  es: 'No hay actos',
+};
+---
+
+<section id={id} data-day-id={day.id} aria-labelledby={titleId}>
+  <header>
+    <time datetime={day.data.date}>{day.data.date}</time>
+    <HeadingTag id={titleId}>
+      {day.data.weekday}
+      {day.data.theme ? `: ${day.data.theme}` : ''}
+    </HeadingTag>
+  </header>
+  <EventList events={day.data.events} lang={lang} />
+  <!--
+    Empty-day live region. PR #3's bounded script (`initFilters`) flips
+    the `hidden` attribute based on the active filter state for the
+    day. Copy is the locale-specific message; default `hidden` until
+    the script determines the day has no matching events.
+  -->
+  <p class="visually-hidden" role="status" aria-live="polite" data-empty-day hidden>
+    {emptyDayCopy[lang]}
+  </p>
+</section>
