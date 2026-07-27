@@ -11,7 +11,12 @@
  *    flips `aria-pressed`, sets `el.hidden` + `tabindex='-1'` +
  *    `aria-hidden='true'` on out-of-set event `<li>` nodes, and reveals
  *    the empty-day live region inside any day whose visible events
- *    dropped to zero. The reset button refills the set.
+ *    dropped to zero. Two bulk controls mirror each other: the reset
+ *    button (`data-filter-reset`) refills the set, and the clear-all
+ *    button (`data-filter-clear`) empties it so a single chip tap can
+ *    isolate one type. With an empty set every day legitimately shows
+ *    its empty state — that is the intended "cleared" view, not an
+ *    error path.
  *
  *  - `initTodayScroll()` — locale-neutral. Computes today's date in
  *    `Europe/Madrid` via `Intl.DateTimeFormat`, resolves `#day-…`, and
@@ -111,6 +116,16 @@ function initFilters(lang: 'ca' | 'es'): void {
       buttons.forEach((b) => b.setAttribute('aria-pressed', 'true'));
       applyFilter();
       reset.focus();
+    });
+  }
+
+  const clear = bar.querySelector<HTMLButtonElement>('[data-filter-clear]');
+  if (clear) {
+    clear.addEventListener('click', () => {
+      active.clear();
+      buttons.forEach((b) => b.setAttribute('aria-pressed', 'false'));
+      applyFilter();
+      clear.focus();
     });
   }
 
