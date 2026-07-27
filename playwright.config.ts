@@ -14,9 +14,9 @@ export default defineConfig({
   },
   webServer: {
     command: 'pnpm build && cd dist && python3 -m http.server 4321',
-    url: 'http://localhost:4321/festes-gata',
+    url: 'http://localhost:4321/festes-gata/',
     reuseExistingServer: !process.env.CI,
-    timeout: 120_000,
+    timeout: 30_000,
   },
   projects: [
     {
