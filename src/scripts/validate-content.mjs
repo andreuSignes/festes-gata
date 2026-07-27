@@ -29,7 +29,11 @@ const VALID_TYPES = new Set([
  */
 export function validateProgram(filename, data) {
   if (typeof data !== 'object' || data === null || !Array.isArray(data.events)) {
-    return { valid: false, name: 'ERR_INVALID_STRUCTURE', message: 'data must be an object with an events array' };
+    return {
+      valid: false,
+      name: 'ERR_INVALID_STRUCTURE',
+      message: 'data must be an object with an events array',
+    };
   }
 
   // Rule 1: filename date must match data.date
