@@ -37,11 +37,7 @@ const locationLabels: Record<Locale, string> = {
       </p>
     )
   }
-  {
-    event.description && (
-      <p class="event-description">{event.description}</p>
-    )
-  }
+  {event.description && <p class="event-description">{event.description}</p>}
   {
     event.sponsor && (
       <p class="event-sponsor">

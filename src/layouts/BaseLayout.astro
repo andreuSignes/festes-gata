@@ -71,13 +71,7 @@ const localeMap = {
       <slot />
     </main>
     <Footer />
-    {
-      isLanding && (
-        <script>
-          import '../scripts/festival-interactivity.ts';
-        </script>
-      )
-    }
+    {isLanding && <script>import '../scripts/festival-interactivity.ts';</script>}
   </body>
 </html>
 

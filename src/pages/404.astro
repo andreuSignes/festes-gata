@@ -21,7 +21,10 @@ const detected = pathname.match(/^\/(ca|es)(\/|$)/)?.[1];
 const lang: Locale = detected === 'es' ? 'es' : 'ca';
 const homeHref = `${base}/${lang}/`;
 
-const copy: Record<Locale, { title: string; description: string; heading: string; body: string; back: string }> = {
+const copy: Record<
+  Locale,
+  { title: string; description: string; heading: string; body: string; back: string }
+> = {
   ca: {
     title: 'Pàgina no trobada',
     description: 'La pàgina que busques no existeix.',

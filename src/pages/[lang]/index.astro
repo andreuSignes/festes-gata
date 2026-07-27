@@ -5,17 +5,14 @@ import DaySection from '../../components/DaySection.astro';
 import FilterBar from '../../components/FilterBar.astro';
 
 export function getStaticPaths() {
-  return [
-    { params: { lang: 'ca' } },
-    { params: { lang: 'es' } },
-  ];
+  return [{ params: { lang: 'ca' } }, { params: { lang: 'es' } }];
 }
 
 const { lang } = Astro.params as { lang: 'ca' | 'es' };
 
 const collectionName = lang === 'ca' ? 'days-ca' : 'days-es';
-const days = (await getCollection(collectionName)).sort(
-  (a, b) => a.data.date.localeCompare(b.data.date),
+const days = (await getCollection(collectionName)).sort((a, b) =>
+  a.data.date.localeCompare(b.data.date)
 );
 
 const titles: Record<'ca' | 'es', { page: string; description: string }> = {
@@ -78,7 +75,8 @@ const { page: title, description } = titles[lang];
 
   .days-grid {
     display: grid;
-    gap: var(--spacing-4);
+    row-gap: var(--spacing-6);
+    column-gap: var(--spacing-4);
     grid-template-columns: 1fr;
     list-style: none;
     padding: 0;
@@ -87,6 +85,7 @@ const { page: title, description } = titles[lang];
   @media (min-width: 640px) {
     .days-grid {
       grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-5);
     }
   }
 
@@ -97,7 +96,7 @@ const { page: title, description } = titles[lang];
     }
 
     .hero {
-      padding-block: var(--spacing-8);
+      padding-block: var(--spacing-12);
     }
 
     .hero p {
