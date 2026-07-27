@@ -1,8 +1,8 @@
 import { defineConfig } from 'vitest/config';
 import { getViteConfig } from 'astro/config';
 
-export default defineConfig(async () => {
-  const astroConfig = await getViteConfig({});
+export default defineConfig(() => {
+  const astroConfig = getViteConfig({});
   return {
     ...astroConfig,
     resolve: {

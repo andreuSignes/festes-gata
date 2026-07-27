@@ -43,7 +43,8 @@
     "prettier": "^3.0.0",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.7.2",
-    "vitest": "^3.1.4"
+    "vitest": "^3.1.4",
+    "@playwright/test": "^1.49.0"
   },
   "engines": {
     "node": ">=22.13.0"
