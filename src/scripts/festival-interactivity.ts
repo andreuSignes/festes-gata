@@ -15,8 +15,10 @@
  *
  *  - `initTodayScroll()` — locale-neutral. Computes today's date in
  *    `Europe/Madrid` via `Intl.DateTimeFormat`, resolves `#day-…`, and
- *    scrolls to the exact or closest available day. Bails on a
- *    non-empty hash or `history.scrollRestoration === 'manual'`;
+ *    scrolls to the exact or closest available day. Takes over
+ *    `history.scrollRestoration` so the browser does not snap to its
+ *    previous scroll position (often the bottom of the document) after
+ *    the smooth scroll lands on today's day. Bails on a non-empty hash;
  *    honors `prefers-reduced-motion: reduce` by switching to
  *    `behavior: 'auto'`.
  *
@@ -121,18 +123,32 @@ function initFilters(lang: 'ca' | 'es'): void {
 
 function initTodayScroll(): void {
   if (window.location.hash !== '') return;
-  if (history.scrollRestoration === 'manual') return;
+  // Take over scroll restoration so the browser does not snap to its
+  // previous scroll position (often the bottom of the page, where the
+  // user last was) after the smooth scroll lands on today's day. On
+  // mobile this is critical: the address bar collapse can change the
+  // viewport mid-scroll, and the browser's auto-restoration can win
+  // the race against `scrollIntoView`, teleporting the user to the
+  // bottom of the document.
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
 
   const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Madrid' }).format(new Date());
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const behavior: ScrollBehavior = reduced ? 'auto' : 'smooth';
+
   const target = document.getElementById(`day-${today}`);
   if (target) {
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    target.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+    target.scrollIntoView({ behavior, block: 'start' });
     return;
   }
 
   // Closest fallback: outside the festival window, jump to the first
-  // or last available day.
+  // or last available day. If today is inside the window but the
+  // exact day file is missing (data parity gap), snap to the closest
+  // day so the user does not get teleported to the bottom of the
+  // document.
   const days = Array.from(document.querySelectorAll<HTMLElement>('[data-day-id]'));
   if (days.length === 0) return;
   const dates = days
@@ -141,12 +157,31 @@ function initTodayScroll(): void {
     .sort();
   const first = dates[0];
   const last = dates[dates.length - 1];
-  const fallback = today < (first ?? '') ? first : last;
-  if (!fallback) return;
+  if (!first || !last) return;
+
+  let fallback: string;
+  if (today < first) {
+    fallback = first;
+  } else if (today > last) {
+    fallback = last;
+  } else {
+    // Inside the festival window but the exact day is missing.
+    // Pick the day with the smallest ISO-date distance to `today`.
+    let closest = first;
+    let closestDelta = Math.abs(today.localeCompare(first));
+    for (const d of dates) {
+      const delta = Math.abs(today.localeCompare(d));
+      if (delta < closestDelta) {
+        closest = d;
+        closestDelta = delta;
+      }
+    }
+    fallback = closest;
+  }
+
   const fallbackEl = document.getElementById(`day-${fallback}`);
   if (!fallbackEl) return;
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  fallbackEl.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+  fallbackEl.scrollIntoView({ behavior, block: 'start' });
 }
 
 function run(): void {
