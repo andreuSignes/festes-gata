@@ -11,11 +11,11 @@ const homeHref = `${base}/${lang}/`;
 const pathname = Astro.url.pathname;
 
 const labels = {
-  ca: { nav: 'Programa', brand: 'Festes de Gata' },
-  es: { nav: 'Programa', brand: 'Festes de Gata' },
+  ca: { nav: 'Hui', brand: 'Festes de Gata', navAria: 'Anar al dia d’hui' },
+  es: { nav: 'Hoy', brand: 'Festes de Gata', navAria: 'Ir al día de hoy' },
 };
 
-const navLinks = [{ href: homeHref, label: labels[lang].nav }];
+const navLinks = [{ href: homeHref, label: labels[lang].nav, ariaLabel: labels[lang].navAria }];
 
 // Get the path without the locale prefix (or BASE_URL + locale prefix) for the
 // language switcher. `Astro.url.pathname` includes the `base` (e.g.
@@ -40,6 +40,7 @@ const pathWithoutLocale =
                 href={link.href}
                 class:list={['nav-link', { 'is-active': pathname.startsWith(link.href) }]}
                 aria-current={pathname.startsWith(link.href) ? 'page' : undefined}
+                aria-label={link.ariaLabel}
               >
                 {link.label}
               </a>
