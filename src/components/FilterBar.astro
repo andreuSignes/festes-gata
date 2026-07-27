@@ -1,23 +1,42 @@
 ---
 /**
- * FilterBar — locale-aware event-type filter.
+ * FilterBar — locale-aware event-type filter ("tag cloud").
  *
- * Renders 9 type buttons (one per `EventType`) plus a single reset
- * control that refills the active set. The active locale drives every
- * visible label (button text, group label, reset label) via the shared
- * `getEventTypeLabel(type, lang)` helper and a small constants map.
+ * Renders 9 type chips (one per `EventType`) plus two bulk controls:
+ *
+ *  - Reset (`data-filter-reset`) refills the active set so every type
+ *    is selected again. Its single locale-aware label combines the
+ *    "all" and "reset" copy into one string (e.g. `Tots / Reiniciar`)
+ *    so the verification gate can find both control strings in the
+ *    active locale (`Tots` + `Reiniciar` in CA, `Todos` + `Reiniciar`
+ *    in ES).
+ *  - Clear-all (`data-filter-clear`) empties the active set: every
+ *    chip flips to `aria-pressed="false"` and all events hide. This
+ *    lets a visitor isolate a single type with one extra tap, or
+ *    exclude one type via reset + deselect.
+ *
+ * The active locale drives every visible label (chip text, group
+ * label, control labels) via the shared `getEventTypeLabel(type,
+ * lang)` helper and a small constants map.
+ *
+ * Visual design: a sticky pill cloud. Each chip is a fully rounded
+ * pill with a colored dot and a per-type accent drawn from the global
+ * `--color-{type}` / `--color-{type}-fg` tokens (exposed here as the
+ * component-scoped `--chip-accent` / `--chip-on-accent` properties).
+ * Pressed chips get a soft tint of their accent (via `color-mix`,
+ * with the solid accent as fallback), unpressed chips are muted
+ * ghost/outline pills. The bar itself is `position: sticky` under the
+ * page top with a translucent blurred backdrop so it stays usable
+ * across the long 12-day landing. The two bulk controls sit in an
+ * end-aligned subgroup with smaller secondary styling, visually
+ * separate from the type chips.
  *
  * The bar is non-functional on its own — the bounded script in
  * `src/scripts/festival-interactivity.ts` walks the data hooks and
  * toggles `aria-pressed`, `hidden`, and `tabindex` on the matching
  * event `<li>` nodes. The no-script document remains complete and
- * usable: every button is `aria-pressed="true"` initially so all events
+ * usable: every chip is `aria-pressed="true"` initially so all events
  * are visible without JS.
- *
- * The reset button has a single locale-aware label that combines the
- * "all" and "reset" copy into one string (e.g. `Tots / Reiniciar`) so
- * the verification gate can find both control strings in the active
- * locale (`Tots` + `Reiniciar` in CA, `Todos` + `Reiniciar` in ES).
  */
 import {
   eventTypeLabels,
@@ -40,13 +59,14 @@ const types = Object.keys(eventTypeLabels) as EventType[];
 
 // Localised control copy. The reset button combines the "all" and
 // "reset" copy so both required strings appear in the active locale.
-const controlCopy: Record<Locale, { all: string; reset: string }> = {
-  ca: { all: 'Tots', reset: 'Reiniciar' },
-  es: { all: 'Todos', reset: 'Reiniciar' },
+const controlCopy: Record<Locale, { all: string; reset: string; none: string }> = {
+  ca: { all: 'Tots', reset: 'Reiniciar', none: 'Cap' },
+  es: { all: 'Todos', reset: 'Reiniciar', none: 'Ninguno' },
 };
 
 const groupLabel = lang === 'ca' ? 'Filtrar per tipus' : 'Filtrar por tipo';
 const resetLabel = `${controlCopy[lang].all} / ${controlCopy[lang].reset}`;
+const clearLabel = controlCopy[lang].none;
 ---
 
 <div role="group" aria-label={groupLabel} data-filter-bar>
@@ -59,64 +79,178 @@ const resetLabel = `${controlCopy[lang].all} / ${controlCopy[lang].reset}`;
         aria-pressed="true"
         lang={lang}
       >
+        <span class="filter-dot" aria-hidden="true" />
         {getEventTypeLabel(type, lang)}
       </button>
     ))
   }
-  <button
-    type="button"
-    class="filter-btn filter-btn--reset"
-    data-filter-reset
-    aria-pressed="false"
-    lang={lang}
-  >
-    {resetLabel}
-  </button>
+  <div class="filter-controls">
+    <button
+      type="button"
+      class="filter-btn filter-btn--control"
+      data-filter-reset
+      aria-pressed="false"
+      lang={lang}
+    >
+      {resetLabel}
+    </button>
+    <button
+      type="button"
+      class="filter-btn filter-btn--control"
+      data-filter-clear
+      aria-pressed="false"
+      lang={lang}
+    >
+      {clearLabel}
+    </button>
+  </div>
 </div>
 
 <style>
+  /* === Bar layout: sticky pill cloud === */
+  [data-filter-bar] {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-2);
+    padding-block: var(--spacing-3);
+    margin-bottom: var(--spacing-4);
+    background: var(--color-surface);
+  }
+
+  @supports (backdrop-filter: blur(1px)) {
+    [data-filter-bar] {
+      background: color-mix(in srgb, var(--color-surface) 85%, transparent);
+      backdrop-filter: blur(10px);
+    }
+  }
+
+  /* === Per-type accent tokens (aliases of the global palette) === */
+  .filter-btn[data-filter-type='pasacalles'] {
+    --chip-accent: var(--color-pasacalles);
+    --chip-on-accent: var(--color-pasacalles-fg);
+  }
+  .filter-btn[data-filter-type='bous'] {
+    --chip-accent: var(--color-bous);
+    --chip-on-accent: var(--color-bous-fg);
+  }
+  .filter-btn[data-filter-type='verbena'] {
+    --chip-accent: var(--color-verbena);
+    --chip-on-accent: var(--color-verbena-fg);
+  }
+  .filter-btn[data-filter-type='musica'] {
+    --chip-accent: var(--color-musica);
+    --chip-on-accent: var(--color-musica-fg);
+  }
+  .filter-btn[data-filter-type='liturgia'] {
+    --chip-accent: var(--color-liturgia);
+    --chip-on-accent: var(--color-liturgia-fg);
+  }
+  .filter-btn[data-filter-type='infantil'] {
+    --chip-accent: var(--color-infantil);
+    --chip-on-accent: var(--color-infantil-fg);
+  }
+  .filter-btn[data-filter-type='paelles'] {
+    --chip-accent: var(--color-paelles);
+    --chip-on-accent: var(--color-paelles-fg);
+  }
+  .filter-btn[data-filter-type='festes'] {
+    --chip-accent: var(--color-festes);
+    --chip-on-accent: var(--color-festes-fg);
+  }
+  .filter-btn[data-filter-type='otro'] {
+    --chip-accent: var(--color-otro);
+    --chip-on-accent: var(--color-otro-fg);
+  }
+
+  /* === Chip base: pill with dot, comfortable touch target === */
   .filter-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: var(--spacing-2);
     min-height: 44px;
-    padding-inline: var(--spacing-3);
+    padding-inline: var(--spacing-4);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-full);
     background: var(--color-surface-elevated);
     color: var(--color-text);
     font: inherit;
     font-weight: 600;
     line-height: 1.2;
     cursor: pointer;
-    transition:
-      background-color 0.15s ease,
-      border-color 0.15s ease;
   }
 
-  .filter-btn:hover {
-    background: var(--color-surface);
+  .filter-dot {
+    inline-size: 0.625rem;
+    block-size: 0.625rem;
+    flex: none;
+    border-radius: var(--radius-full);
+    background: var(--chip-accent, var(--color-text-muted));
   }
 
-  .filter-btn[aria-pressed='true'] {
-    background: var(--color-primary);
-    color: #fff;
-    border-color: var(--color-primary);
-  }
-
+  /* Unpressed: muted ghost/outline, still obviously clickable. */
   .filter-btn[aria-pressed='false'] {
     background: var(--color-surface-elevated);
+    border-color: var(--color-border);
+    color: var(--color-text-muted);
+  }
+
+  .filter-btn[aria-pressed='false']:hover {
+    border-color: var(--color-text-muted);
     color: var(--color-text);
   }
 
-  .filter-btn--reset {
-    margin-inline-start: var(--spacing-2);
-    border-color: var(--color-primary);
-    color: var(--color-primary);
+  /* Pressed: soft tint of the type accent + colored border + dark
+     on-tint text. The solid accent is the no-`color-mix` fallback —
+     it pairs with `--chip-on-accent` exactly like Badge does. */
+  .filter-btn[aria-pressed='true'] {
+    border-color: var(--chip-accent);
+    background: var(--chip-accent);
+    background: color-mix(in srgb, var(--chip-accent) 24%, var(--color-surface-elevated));
+    color: var(--chip-on-accent);
   }
 
-  .filter-btn--reset[aria-pressed='false'] {
-    background: var(--color-surface-elevated);
-    color: var(--color-primary);
+  /* === Bulk controls: end-aligned subgroup, secondary styling === */
+  .filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-2);
+    margin-inline-start: auto;
+  }
+
+  .filter-btn--control {
+    min-height: 40px;
+    padding-inline: var(--spacing-3);
+    font-size: 0.875rem;
+    background: transparent;
+    border-color: var(--color-border);
+    color: var(--color-text-muted);
+  }
+
+  .filter-btn--control:hover {
+    border-color: var(--color-text-muted);
+    color: var(--color-text);
+  }
+
+  /* === Motion: subtle raise on hover, 160ms transitions, gated on
+     no-preference so reduced-motion users get instant state changes. === */
+  @media (prefers-reduced-motion: no-preference) {
+    .filter-btn {
+      transition:
+        background-color 160ms ease,
+        border-color 160ms ease,
+        color 160ms ease,
+        box-shadow 160ms ease,
+        transform 160ms ease;
+    }
+
+    .filter-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+    }
   }
 </style>
