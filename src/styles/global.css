@@ -49,7 +49,9 @@
   --spacing-4: 1rem;
   --spacing-5: 1.5rem;
   --spacing-6: 2rem;
+  --spacing-7: 2.5rem;
   --spacing-8: 3rem;
+  --spacing-12: 4rem;
 
   /* === Radius === */
   --radius-md: 8px;
@@ -67,7 +69,6 @@
  *    static so consumers (or future utilities) still see them in
  *    the cascade instead of being tree-shaken away. === */
 @theme static {
-  --spacing-12: 4rem;
   --radius-sm: 4px;
   --radius-lg: 12px;
   --shadow-sm: 0 1px 2px rgba(26, 22, 18, 0.06);
