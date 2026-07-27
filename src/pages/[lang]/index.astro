@@ -75,7 +75,8 @@ const { page: title, description } = titles[lang];
 
   .days-grid {
     display: grid;
-    gap: var(--spacing-4);
+    row-gap: var(--spacing-6);
+    column-gap: var(--spacing-4);
     grid-template-columns: 1fr;
     list-style: none;
     padding: 0;
@@ -84,6 +85,7 @@ const { page: title, description } = titles[lang];
   @media (min-width: 640px) {
     .days-grid {
       grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-5);
     }
   }
 
