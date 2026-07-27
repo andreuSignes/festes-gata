@@ -34,16 +34,16 @@
     "@tailwindcss/vite": "^4.3.3",
     "@typescript-eslint/parser": "^8.65.0",
     "astro-eslint-parser": "^3.0.0",
-    "eslint": "^10.0.0",
+    "eslint": "^10.8.0",
     "eslint-config-prettier": "^10.0.0",
     "eslint-plugin-astro": "^3.0.0",
-    "globals": "^17.7.0",
+    "globals": "^17.8.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.2.0",
     "prettier": "^3.0.0",
     "tailwindcss": "^4.3.3",
-    "typescript": "^5.7.2",
-    "vitest": "^3.1.4"
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
   },
   "engines": {
     "node": ">=22.13.0"
