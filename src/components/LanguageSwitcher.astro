@@ -8,37 +8,83 @@ const { currentLocale, currentPath } = Astro.props;
 const base = import.meta.env.BASE_URL;
 
 const locales = [
-  { code: 'ca', label: 'Català', flag: '🇻🇦' },
-  { code: 'es', label: 'Castellano', flag: '🇪🇸' },
+  { code: 'ca', label: 'VAL' },
+  { code: 'es', label: 'ESP' },
 ];
+
+const selectLabel = currentLocale === 'ca' ? 'Llengua' : 'Idioma';
 ---
 
 <div class="lang-switcher">
-  <ul class="lang-list">
+  <select class="lang-select" aria-label={selectLabel} data-lang-select>
     {
       locales.map((locale) => (
-        <li>
-          <a
-            href={`${base}/${locale.code}${currentPath}`}
-            class:list={['lang-link', { 'is-active': currentLocale === locale.code }]}
-            hreflang={locale.code}
-            lang={locale.code}
-          >
-            <span class="lang-flag" aria-hidden="true">
-              {locale.flag}
-            </span>
-            <span class="lang-label">{locale.label}</span>
-          </a>
-        </li>
+        <option
+          value={`${base}/${locale.code}${currentPath}`}
+          selected={currentLocale === locale.code}
+          lang={locale.code}
+        >
+          {locale.label}
+        </option>
       ))
     }
-  </ul>
+  </select>
+  <!-- The select needs JS to navigate; keep plain links as a no-JS fallback. -->
+  <noscript>
+    <ul class="lang-list">
+      {
+        locales.map((locale) => (
+          <li>
+            <a
+              href={`${base}/${locale.code}${currentPath}`}
+              class:list={['lang-link', { 'is-active': currentLocale === locale.code }]}
+              hreflang={locale.code}
+              lang={locale.code}
+            >
+              {locale.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </noscript>
 </div>
+
+<script is:inline>
+  document.querySelectorAll('[data-lang-select]').forEach((select) => {
+    select.addEventListener('change', (event) => {
+      const target = event.target;
+      if (target instanceof HTMLSelectElement && target.value) {
+        window.location.href = target.value;
+      }
+    });
+  });
+</script>
 
 <style>
   .lang-switcher {
     display: flex;
     align-items: center;
+  }
+
+  .lang-select {
+    padding: var(--spacing-2) var(--spacing-3);
+    border: none;
+    border-radius: var(--radius-md);
+    background: var(--color-secondary);
+    color: inherit;
+    font: inherit;
+    font-weight: 600;
+    font-size: 0.875rem;
+    min-height: 44px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .lang-select:hover,
+  .lang-select:focus-visible {
+    background: var(--color-accent);
+    color: var(--color-primary);
   }
 
   .lang-list {
@@ -52,7 +98,6 @@ const locales = [
   .lang-link {
     display: inline-flex;
     align-items: center;
-    gap: var(--spacing-1);
     padding: var(--spacing-2) var(--spacing-3);
     border-radius: var(--radius-md);
     text-decoration: none;
@@ -71,20 +116,5 @@ const locales = [
   .lang-link.is-active {
     background: var(--color-accent);
     color: var(--color-primary);
-  }
-
-  .lang-flag {
-    font-size: 1.1em;
-    line-height: 1;
-  }
-
-  .lang-label {
-    display: none;
-  }
-
-  @media (min-width: 640px) {
-    .lang-label {
-      display: inline;
-    }
   }
 </style>
