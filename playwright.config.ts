@@ -13,10 +13,10 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
   webServer: {
-    command: 'pnpm preview',
+    command: 'pnpm preview --host',
     url: 'http://localhost:4321',
     reuseExistingServer: !process.env.CI,
-    timeout: 120_000,
+    timeout: 300_000,
   },
   projects: [
     {
