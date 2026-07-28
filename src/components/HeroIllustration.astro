@@ -1,0 +1,66 @@
+---
+/**
+ * HeroIllustration — decorative inline SVG for the locale landing hero.
+ *
+ * Renders a small festival-themed SVG using the palette tokens as inline
+ * style attributes (no new CSS custom properties needed). The SVG is purely
+ * decorative — `aria-hidden="true"` keeps it out of the accessibility tree.
+ *
+ * Design: a stylized sun disk (gold #f4b860) with radiating petals (primary
+ * pink #d5438c) and a subtle ground band (secondary teal #468ba4), evoking the
+ * festival's cover illustration without introducing new hues. The composition
+ * sits above the hero text and fades in with the page on load.
+ *
+ * Scale is intentionally compact — it decorates, not dominates.
+ */
+---
+
+<svg
+  aria-hidden="true"
+  class="hero-illustration"
+  viewBox="0 0 200 48"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+>
+  <!-- Sun disk (gold) -->
+  <circle cx="100" cy="20" r="10" fill="#f4b860" opacity="0.9"></circle>
+  <!-- Radiating petals (primary pink) -->
+  <ellipse cx="100" cy="6" rx="3" ry="6" fill="#d5438c" opacity="0.8"></ellipse>
+  <ellipse cx="100" cy="34" rx="3" ry="6" fill="#d5438c" opacity="0.8"></ellipse>
+  <ellipse cx="84" cy="20" rx="6" ry="3" fill="#d5438c" opacity="0.8"></ellipse>
+  <ellipse cx="116" cy="20" rx="6" ry="3" fill="#d5438c" opacity="0.8"></ellipse>
+  <!-- Corner dots (teal + gold) -->
+  <circle cx="12" cy="12" r="4" fill="#468ba4" opacity="0.7"></circle>
+  <circle cx="188" cy="12" r="4" fill="#468ba4" opacity="0.7"></circle>
+  <circle cx="12" cy="36" r="3" fill="#d5438c" opacity="0.5"></circle>
+  <circle cx="188" cy="36" r="3" fill="#d5438c" opacity="0.5"></circle>
+  <!-- Ground band (teal) -->
+  <rect x="0" y="42" width="200" height="6" rx="3" fill="#468ba4" opacity="0.3"></rect>
+</svg>
+
+<style>
+  .hero-illustration {
+    display: block;
+    margin-inline: auto;
+    margin-bottom: var(--spacing-4);
+    max-width: 12rem;
+    height: auto;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-illustration {
+      animation: hero-fade-in 0.6s ease-out both;
+    }
+
+    @keyframes hero-fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+</style>
