@@ -35,7 +35,7 @@ const emptyDayCopy: Record<Locale, string> = {
 <section id={id} data-day-id={day.id} aria-labelledby={titleId}>
   <header>
     <time datetime={day.data.date}>{day.data.date}</time>
-    <HeadingTag id={titleId}>
+    <HeadingTag id={titleId} transition:name={`day-title-${day.id}`}>
       {day.data.weekday}
       {day.data.theme ? `: ${day.data.theme}` : ''}
     </HeadingTag>
