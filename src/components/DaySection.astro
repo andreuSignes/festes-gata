@@ -51,7 +51,7 @@ const emptyDayCopy: Record<Locale, string> = {
       {day.data.theme ? `: ${day.data.theme}` : ''}
     </HeadingTag>
   </header>
-  <EventList events={day.data.events} lang={lang} />
+  <EventList events={day.data.events} lang={lang} isToday={isToday} />
   <!--
     Empty-day live region. PR #3's bounded script (`initFilters`) flips
     the `hidden` attribute based on the active filter state for the
