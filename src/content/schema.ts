@@ -17,7 +17,6 @@ export const eventSchema = z.object({
     'comida',
     'festes',
     'pirotecnia',
-    'otro',
   ]),
   tags: z.array(z.string()).optional(),
 });

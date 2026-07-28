@@ -15,7 +15,6 @@ const VALID_EVENT_TYPES = [
   'comida',
   'festes',
   'pirotecnia',
-  'otro',
 ] as const;
 
 describe('content-schema', () => {

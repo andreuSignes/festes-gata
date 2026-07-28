@@ -19,7 +19,6 @@ const VALID_TYPES = new Set([
   'comida',
   'festes',
   'pirotecnia',
-  'otro',
 ]);
 
 /**

@@ -18,8 +18,7 @@ export type EventType =
   | 'infantil'
   | 'comida'
   | 'festes'
-  | 'pirotecnia'
-  | 'otro';
+  | 'pirotecnia';
 
 export type Locale = 'ca' | 'es';
 
@@ -33,7 +32,6 @@ export const eventTypeLabels: Record<EventType, Record<Locale, string>> = {
   comida: { ca: 'Comida', es: 'Comida' },
   festes: { ca: 'Festes', es: 'Festes' },
   pirotecnia: { ca: 'Pirotècnia', es: 'Pirotecnia' },
-  otro: { ca: 'Altres', es: 'Otro' },
 };
 
 export function getEventTypeLabel(type: EventType, lang: Locale): string {
@@ -50,5 +48,4 @@ export const eventTypeEmoji: Record<EventType, string> = {
   comida: '🍽️',
   festes: '🎊',
   pirotecnia: '🎆',
-  otro: '★',
 };

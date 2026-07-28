@@ -39,8 +39,7 @@ type EventType =
   | 'infantil'
   | 'comida'
   | 'festes'
-  | 'pirotecnia'
-  | 'otro';
+  | 'pirotecnia';
 
 function initFilters(lang: 'ca' | 'es'): void {
   const bar = document.querySelector<HTMLElement>('[data-filter-bar]');
@@ -56,7 +55,6 @@ function initFilters(lang: 'ca' | 'es'): void {
     'comida',
     'festes',
     'pirotecnia',
-    'otro',
   ];
 
   const active = new Set<EventType>(allTypes);
