@@ -1,6 +1,6 @@
 ---
 /**
- * Badge — event-type tone chip with locale-aware label.
+ * Badge — event-type tone chip with emoji indicator.
  *
  * Each tone maps to a background + text-on-tone pair declared in the
  * @theme event-type tokens (see design.md §2.2). The class
@@ -10,31 +10,40 @@
  * legacy global selectors retire in PR #2b.
  *
  * The badge is informational only — no interactive semantics — so it
- * is rendered as a non-focusable <span>. Visible labels come from
- * `getEventTypeLabel` so the CA/ES strings stay in lockstep with the
- * rest of the bilingual UI (FilterBar in PR #3, future copy).
+ * is rendered as a non-focusable <span>. Emoji replaces the prior
+ * text label; `getEventTypeLabel` remains in the lib for FilterBar.
  */
-import { getEventTypeLabel, type EventType, type Locale } from '../lib/event-type-labels';
+import type { EventType } from '../lib/event-type-labels';
+
+const EMOJI: Record<EventType, string> = {
+  pasacalles: '🎺',
+  bous: '🐂',
+  verbena: '🎡',
+  musica: '🎵',
+  liturgia: '⛪',
+  infantil: '👶',
+  comida: '🍽️',
+  festes: '🎊',
+  pirotecnia: '🎆',
+  otro: '★',
+};
 
 interface Props {
   tone: EventType;
-  lang?: Locale;
   class?: string;
 }
 
-const { tone, lang = 'es', class: className } = Astro.props;
-const label = getEventTypeLabel(tone, lang);
+const { tone, class: className } = Astro.props;
 ---
 
-<span class:list={['badge', `badge--${tone}`, className]} lang={lang}>{label}</span>
+<span class:list={['badge', `badge--${tone}`, className]}>{EMOJI[tone]}</span>
 
 <style>
   .badge {
     display: inline-block;
     padding: var(--spacing-1) var(--spacing-2);
     border-radius: var(--radius-full);
-    font-size: 0.875rem;
-    font-weight: 600;
+    font-size: 1rem;
     line-height: 1.2;
   }
 

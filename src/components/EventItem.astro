@@ -26,7 +26,7 @@ const locationLabels: Record<Locale, string> = {
 <article class="event-item">
   <div class="event-meta">
     <time datetime={event.time} class="event-time">{event.time}</time>
-    <Badge tone={event.type} lang={lang} />
+    <Badge tone={event.type} />
   </div>
   <h3 class="event-title">{event.title}</h3>
   {
