@@ -40,6 +40,7 @@
  */
 import {
   eventTypeLabels,
+  eventTypeEmoji,
   getEventTypeLabel,
   type EventType,
   type Locale,
@@ -80,6 +81,7 @@ const clearLabel = controlCopy[lang].none;
         lang={lang}
       >
         <span class="filter-dot" aria-hidden="true" />
+        <span class="filter-emoji">{eventTypeEmoji[type]}</span>
         {getEventTypeLabel(type, lang)}
       </button>
     ))
@@ -194,6 +196,12 @@ const clearLabel = controlCopy[lang].none;
     flex: none;
     border-radius: var(--radius-full);
     background: var(--chip-accent, var(--color-text-muted));
+  }
+
+  /* Ensure emoji renders with native font (not affected by text color) */
+  .filter-emoji {
+    font-family: emoji;
+    line-height: 1;
   }
 
   /* Unpressed: muted ghost/outline, still obviously clickable. */
