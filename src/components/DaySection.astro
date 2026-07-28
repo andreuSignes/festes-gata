@@ -14,9 +14,15 @@ interface Props {
    * (the date detail page has no other heading).
    */
   headingLevel?: 1 | 2;
+  /**
+   * Whether this day is today's date (Europe/Madrid).
+   * Landing page computes this at build time and passes it.
+   * When true, the section gets a today-highlight border + glow.
+   */
+  isToday?: boolean;
 }
 
-const { day, lang: langProp, headingLevel = 2 } = Astro.props;
+const { day, lang: langProp, headingLevel = 2, isToday = false } = Astro.props;
 
 // Explicit prop wins for reuse; otherwise read from the parent route.
 const lang: Locale = langProp ?? (Astro.params.lang as Locale | undefined) ?? 'ca';
@@ -32,7 +38,12 @@ const emptyDayCopy: Record<Locale, string> = {
 };
 ---
 
-<section id={id} data-day-id={day.id} aria-labelledby={titleId}>
+<section
+  id={id}
+  data-day-id={day.id}
+  data-day-is-today={isToday ? 'true' : undefined}
+  aria-labelledby={titleId}
+>
   <header>
     <time datetime={day.data.date}>{day.data.date}</time>
     <HeadingTag id={titleId} transition:name={`day-title-${day.id}`}>
@@ -56,7 +67,75 @@ const emptyDayCopy: Record<Locale, string> = {
   section {
     margin-bottom: var(--spacing-6);
   }
+
   header {
     margin-bottom: var(--spacing-5);
+  }
+
+  /* === Today highlight: top-border accent + subtle glow === */
+  @media (prefers-reduced-motion: no-preference) {
+    section[data-day-is-today='true'] {
+      border-top: 3px solid var(--color-accent);
+      padding-top: var(--spacing-3);
+      animation: today-glow 2s ease-out both;
+    }
+
+    @keyframes today-glow {
+      0% {
+        box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 60%, transparent);
+      }
+      50% {
+        box-shadow: 0 0 12px 2px color-mix(in srgb, var(--color-accent) 40%, transparent);
+      }
+      100% {
+        box-shadow: 0 0 4px 0 color-mix(in srgb, var(--color-accent) 20%, transparent);
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    section[data-day-is-today='true'] {
+      border-top: 3px solid var(--color-accent);
+      padding-top: var(--spacing-3);
+    }
+  }
+
+  /* === Scroll-driven reveal: fade + slide up when entering viewport === */
+  @media (prefers-reduced-motion: no-preference) {
+    /* CSS Scroll-driven Animations (Chrome/Edge/Firefox).
+       The @keyframes animation runs via animation-timeline: view(). */
+    section {
+      animation: day-reveal 0.5s ease-out both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
+
+    @keyframes day-reveal {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* IntersectionObserver fallback (Safari + browsers without view()):
+       data-day-revealed is set by initScrollReveal() in festival-interactivity.ts */
+    section[data-day-revealed='true'] {
+      animation: day-reveal 0.5s ease-out both;
+    }
+
+    @keyframes day-reveal {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   }
 </style>

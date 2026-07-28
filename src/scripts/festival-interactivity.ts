@@ -204,6 +204,24 @@ function initTodayScroll(): void {
 // The flag is module-scoped so it survives across page swaps.
 let initialized = false;
 
+function initScrollReveal(): void {
+  // Scroll-driven reveal fallback for Safari (no animation-timeline: view() support).
+  // Uses IntersectionObserver to add data-day-revealed when section enters viewport.
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          (entry.target as HTMLElement).dataset.dayRevealed = 'true';
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { rootMargin: '0px 0px -40px 0px', threshold: 0 }
+  );
+
+  document.querySelectorAll('[data-day-id]').forEach((el) => observer.observe(el));
+}
+
 function run(): void {
   if (initialized) return;
   initialized = true;
@@ -212,6 +230,7 @@ function run(): void {
   const lang: 'ca' | 'es' = html.lang === 'es' ? 'es' : 'ca';
   initFilters(lang);
   initTodayScroll();
+  initScrollReveal();
 }
 
 // astro:page-load fires after ClientRouter swaps the page.
