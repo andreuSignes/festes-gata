@@ -34,6 +34,7 @@
     "@playwright/test": "^1.49.0",
     "@tailwindcss/vite": "^4.3.3",
     "@typescript-eslint/parser": "^8.65.0",
+    "@vitest/coverage-v8": "^4.1.10",
     "astro-eslint-parser": "^3.0.0",
     "eslint": "^10.8.0",
     "eslint-config-prettier": "^10.0.0",
