@@ -5,8 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://andreuSignes.github.io',
-  base: '/festes-gata',
+  site: 'https://festes.asignes.cc',
   output: 'static',
   i18n: {
     defaultLocale: 'ca',
