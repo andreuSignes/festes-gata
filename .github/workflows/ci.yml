@@ -41,8 +41,8 @@ jobs:
       - name: Validate content (filename + date parity + enum)
         run: pnpm run check:content
 
-      - name: Run tests
-        run: pnpm test -- --coverage
+      - name: Run tests with coverage
+        run: npx vitest run --coverage
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
