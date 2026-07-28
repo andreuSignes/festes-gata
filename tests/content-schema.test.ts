@@ -12,7 +12,7 @@ const VALID_EVENT_TYPES = [
   'musica',
   'liturgia',
   'infantil',
-  'paelles',
+  'comida',
   'festes',
   'otro',
 ] as const;

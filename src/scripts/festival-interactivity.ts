@@ -37,7 +37,7 @@ type EventType =
   | 'musica'
   | 'liturgia'
   | 'infantil'
-  | 'paelles'
+  | 'comida'
   | 'festes'
   | 'otro';
 
@@ -52,7 +52,7 @@ function initFilters(lang: 'ca' | 'es'): void {
     'musica',
     'liturgia',
     'infantil',
-    'paelles',
+    'comida',
     'festes',
     'otro',
   ];

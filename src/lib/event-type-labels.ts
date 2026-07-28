@@ -16,7 +16,7 @@ export type EventType =
   | 'musica'
   | 'liturgia'
   | 'infantil'
-  | 'paelles'
+  | 'comida'
   | 'festes'
   | 'otro';
 
@@ -29,7 +29,7 @@ export const eventTypeLabels: Record<EventType, Record<Locale, string>> = {
   musica: { ca: 'Música', es: 'Música' },
   liturgia: { ca: 'Litúrgia', es: 'Liturgia' },
   infantil: { ca: 'Infantil', es: 'Infantil' },
-  paelles: { ca: 'Paelles', es: 'Paelles' },
+  comida: { ca: 'Comida', es: 'Comida' },
   festes: { ca: 'Festes', es: 'Festes' },
   otro: { ca: 'Altres', es: 'Otro' },
 };

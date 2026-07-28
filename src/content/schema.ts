@@ -14,7 +14,7 @@ export const eventSchema = z.object({
     'musica',
     'liturgia',
     'infantil',
-    'paelles',
+    'comida',
     'festes',
     'otro',
   ]),
