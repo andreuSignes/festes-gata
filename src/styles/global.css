@@ -71,6 +71,10 @@
   /* === Component aliases (design.md §3) === */
   --radius-card: var(--radius-md);
   --shadow-card: var(--shadow-md);
+
+  /* === Fonts === */
+  --font-display: 'Fredoka', system-ui, sans-serif;
+  --font-body: 'Nunito', system-ui, sans-serif;
 }
 
 /* === Tokens that are not yet consumed by any utility — emitted as
@@ -99,7 +103,7 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 body {
-  font-family: var(--font-system);
+  font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.5;
   color: var(--color-text);
@@ -153,6 +157,12 @@ h3 {
 }
 p {
   line-height: 1.55;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
 }
 
 /* === Layout primitives === */
