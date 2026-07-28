@@ -39,3 +39,16 @@ export const eventTypeLabels: Record<EventType, Record<Locale, string>> = {
 export function getEventTypeLabel(type: EventType, lang: Locale): string {
   return eventTypeLabels[type][lang];
 }
+
+export const eventTypeEmoji: Record<EventType, string> = {
+  pasacalles: '🎺',
+  bous: '🐂',
+  verbena: '🎡',
+  musica: '🎵',
+  liturgia: '⛪',
+  infantil: '👶',
+  comida: '🍽️',
+  festes: '🎊',
+  pirotecnia: '🎆',
+  otro: '★',
+};
