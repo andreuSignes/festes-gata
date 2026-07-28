@@ -41,6 +41,46 @@ type EventType =
   | 'festes'
   | 'pirotecnia';
 
+function initBottomSheet(): void {
+  const trigger = document.querySelector<HTMLButtonElement>('[data-filter-trigger]');
+  const sheet = document.querySelector<HTMLElement>('[data-filter-sheet]');
+  const backdrop = document.querySelector<HTMLElement>('[data-filter-backdrop]');
+  const closeBtn = document.querySelector<HTMLButtonElement>('[data-filter-sheet-close]');
+
+  if (!trigger || !sheet || !backdrop || !closeBtn) return;
+
+  const $trigger = trigger;
+  const $sheet = sheet;
+  const $backdrop = backdrop;
+  const $closeBtn = closeBtn;
+
+  function open(): void {
+    $sheet.dataset['open'] = '';
+    $backdrop.dataset['open'] = '';
+    $trigger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    $closeBtn.focus();
+  }
+
+  function close(): void {
+    delete $sheet.dataset['open'];
+    delete $backdrop.dataset['open'];
+    $trigger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    $trigger.focus();
+  }
+
+  $trigger.addEventListener('click', open);
+  $closeBtn.addEventListener('click', close);
+  $backdrop.addEventListener('click', close);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && $sheet.dataset['open'] !== undefined) {
+      close();
+    }
+  });
+}
+
 function initFilters(lang: 'ca' | 'es'): void {
   const bar = document.querySelector<HTMLElement>('[data-filter-bar]');
   if (!bar) return;
@@ -231,6 +271,7 @@ function run(): void {
   initFilters(lang);
   initTodayScroll();
   initScrollReveal();
+  initBottomSheet();
 }
 
 // astro:page-load fires after ClientRouter swaps the page.
