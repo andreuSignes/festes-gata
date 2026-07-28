@@ -51,9 +51,18 @@ test.describe('filter interactions', () => {
     await page.locator('[data-filter-type="musica"]').click();
     await page.locator('[data-filter-type="liturgia"]').click();
 
-    await expect(page.locator('[data-filter-type="bous"]')).toHaveAttribute('aria-pressed', 'false');
-    await expect(page.locator('[data-filter-type="musica"]')).toHaveAttribute('aria-pressed', 'false');
-    await expect(page.locator('[data-filter-type="liturgia"]')).toHaveAttribute('aria-pressed', 'false');
+    await expect(page.locator('[data-filter-type="bous"]')).toHaveAttribute(
+      'aria-pressed',
+      'false'
+    );
+    await expect(page.locator('[data-filter-type="musica"]')).toHaveAttribute(
+      'aria-pressed',
+      'false'
+    );
+    await expect(page.locator('[data-filter-type="liturgia"]')).toHaveAttribute(
+      'aria-pressed',
+      'false'
+    );
 
     await page.locator('[data-filter-reset]').click();
 

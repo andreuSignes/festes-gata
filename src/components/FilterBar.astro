@@ -76,6 +76,7 @@ const filterLabel = lang === 'ca' ? 'Filtrar' : 'Filtrar';
 const resetLabel = `${controlCopy[lang].all} / ${controlCopy[lang].reset}`;
 const clearLabel = controlCopy[lang].none;
 const closeLabel = lang === 'ca' ? 'Tancar' : 'Cerrar';
+const filterCountInitial = lang === 'ca' ? '9/9 actius' : '9/9 activos';
 ---
 
 <!-- Mobile trigger: only visible on ≤639px -->
@@ -114,6 +115,8 @@ const closeLabel = lang === 'ca' ? 'Tancar' : 'Cerrar';
 >
   <div class="filter-sheet__header">
     <span class="filter-sheet__title">{groupLabel}</span>
+    <span class="filter-count-badge" aria-live="polite" data-filter-count>{filterCountInitial}</span
+    >
     <button
       type="button"
       class="filter-sheet__close"
@@ -195,6 +198,43 @@ const closeLabel = lang === 'ca' ? 'Tancar' : 'Cerrar';
     [data-filter-bar] {
       background: color-mix(in srgb, var(--color-surface) 85%, transparent);
       backdrop-filter: blur(10px);
+    }
+  }
+
+  .filter-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+  }
+
+  .filter-count-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--spacing-1) var(--spacing-3);
+    border-radius: var(--radius-full);
+    background: var(--color-primary);
+    color: var(--color-surface-elevated);
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .filter-count-badge.bounce {
+      animation: count-bounce 300ms ease-out;
+    }
+  }
+
+  @keyframes count-bounce {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
     }
   }
 

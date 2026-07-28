@@ -13,9 +13,10 @@ interface Props {
     tags?: string[] | undefined;
   };
   lang?: Locale;
+  isTodayEvent?: boolean;
 }
 
-const { event, lang = 'es' } = Astro.props;
+const { event, lang = 'es', isTodayEvent = false } = Astro.props;
 
 const locationLabels: Record<Locale, string> = {
   ca: 'Lloc:',
@@ -25,7 +26,10 @@ const locationLabels: Record<Locale, string> = {
 
 <article class="event-item">
   <div class="event-meta">
-    <time datetime={event.time} class="event-time">{event.time}</time>
+    <time datetime={event.time} class="event-time">
+      {event.time}
+      {isTodayEvent && <span class="live-dot" aria-hidden="true" />}
+    </time>
     <Badge tone={event.type} />
   </div>
   <h3 class="event-title">{event.title}</h3>
@@ -68,6 +72,36 @@ const locationLabels: Record<Locale, string> = {
     font-size: 1.125rem;
     color: var(--color-primary);
     font-variant-numeric: tabular-nums;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-2);
+  }
+
+  .live-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .live-dot {
+      animation: live-pulse 1.4s ease-in-out infinite;
+    }
+  }
+
+  @keyframes live-pulse {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(0.85);
+    }
   }
 
   .event-title {

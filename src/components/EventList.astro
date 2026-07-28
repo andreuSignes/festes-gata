@@ -10,16 +10,17 @@ type DayEvent = NonNullable<
 interface Props {
   events: DayEvent[];
   lang: Locale;
+  isToday?: boolean;
 }
 
-const { events, lang } = Astro.props;
+const { events, lang, isToday = false } = Astro.props;
 ---
 
 <ol data-event-list>
   {
     events.map((event) => (
       <li data-event-type={event.type}>
-        <EventItemComponent event={event} lang={lang} />
+        <EventItemComponent event={event} lang={lang} isTodayEvent={isToday} />
       </li>
     ))
   }

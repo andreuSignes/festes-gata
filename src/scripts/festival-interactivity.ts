@@ -106,6 +106,23 @@ function initFilters(lang: 'ca' | 'es'): void {
     es: 'No hay actos',
   };
 
+  function updateFilterCount(): void {
+    const badge = bar!.querySelector<HTMLElement>('[data-filter-count]');
+    if (!badge) return;
+    const count = active.size;
+    const total = allTypes.length;
+    const label = lang === 'ca' ? 'actius' : 'activos';
+    const newText = `${count}/${total} ${label}`;
+    if (badge.textContent !== newText) {
+      badge.textContent = newText;
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        badge.classList.remove('bounce');
+        void badge.offsetWidth;
+        badge.classList.add('bounce');
+      }
+    }
+  }
+
   function applyFilter(): void {
     const items = document.querySelectorAll<HTMLLIElement>('[data-event-list] li[data-event-type]');
     items.forEach((li) => {
@@ -146,6 +163,7 @@ function initFilters(lang: 'ca' | 'es'): void {
         btn.setAttribute('aria-pressed', 'true');
       }
       applyFilter();
+      updateFilterCount();
     });
   });
 
@@ -155,6 +173,7 @@ function initFilters(lang: 'ca' | 'es'): void {
       allTypes.forEach((t) => active.add(t));
       buttons.forEach((b) => b.setAttribute('aria-pressed', 'true'));
       applyFilter();
+      updateFilterCount();
       reset.focus();
     });
   }
@@ -165,6 +184,7 @@ function initFilters(lang: 'ca' | 'es'): void {
       active.clear();
       buttons.forEach((b) => b.setAttribute('aria-pressed', 'false'));
       applyFilter();
+      updateFilterCount();
       clear.focus();
     });
   }
@@ -174,6 +194,7 @@ function initFilters(lang: 'ca' | 'es'): void {
   // with all types pressed, but this keeps the script idempotent if
   // the markup were ever changed).
   applyFilter();
+  updateFilterCount();
 }
 
 function initTodayScroll(): void {
