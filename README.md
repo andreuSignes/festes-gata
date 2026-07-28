@@ -1,5 +1,13 @@
 # Festes de Gata — 2026
 
+[![CI](https://github.com/andreuSignes/festes-gata/actions/workflows/ci.yml/badge.svg)](https://github.com/andreuSignes/festes-gata/actions/workflows/ci.yml)
+[![Coverage](https://codecov.io/gh/andreuSignes/festes-gata/branch/main/graph/badge.svg)](https://codecov.io/gh/andreuSignes/festes-gata)
+[![Node](https://img.shields.io/badge/Node.js-22.13-339933?style=flat&logo=nodedotjs&logoColor=339933)](https://nodejs.org)
+[![Astro](https://img.shields.io/badge/Astro-7.1.3-BC52EE?style=flat&logo=astro&logoColor=BC52EE)](https://astro.build)
+[![TypeScript](https://img.shields.io/badge/TypeScript-6.0.3-3178C6?style=flat&logo=typescript&logoColor=3178C6)](https://typescriptlang.org)
+[![Vitest](https://img.shields.io/badge/Vitest-4.1.10-6E9F18?style=flat&logo=vitest&logoColor=6E9F18)](https://vitest.dev)
+[![Playwright](https://img.shields.io/badge/Playwright-1.49.0-45ba4b?style=flat&logo=playwright&logoColor=45ba4b)](https://playwright.dev)
+
 Programa web de las fiestas de **Gata de Gorgos**, del 26 de julio al 6 de agosto de 2026.
 
 ## Stack

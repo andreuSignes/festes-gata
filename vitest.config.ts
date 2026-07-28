@@ -17,5 +17,12 @@ export default defineConfig(() => {
       environment: 'node',
       include: ['tests/**/*.test.ts'],
     },
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'html'],
+      include: ['src/**/*.ts', 'src/**/*.mjs'],
+      exclude: ['src/**/*.d.ts', 'dist/**', '.astro/**'],
+      showAll: true,
+    },
   };
 });
