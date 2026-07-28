@@ -9,6 +9,7 @@ interface Props {
   description: string;
   lang: 'ca' | 'es';
   ogImage?: string;
+  jsonLd?: object[];
 }
 
 const {
@@ -16,6 +17,7 @@ const {
   description,
   lang,
   ogImage = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/og/default.png`,
+  jsonLd = [],
 } = Astro.props;
 
 const siteName = 'Festes de Gata 2026';
@@ -76,6 +78,7 @@ const hreflangTags = buildHreflangTags(
       defer
       src="https://static.cloudflareinsights.com/beacon.min.js"
       data-cf-beacon='{"token": "1c2253a7e67b4aaca8ae6f91728e65a2"}'></script>
+    {jsonLd.map((item) => <script type="application/ld+json" set:html={JSON.stringify(item)} />)}
   </head>
   <body>
     <a href="#main" class="skip-link">Saltar al contenido</a>
