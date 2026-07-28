@@ -50,7 +50,7 @@ const ogImageAlt: Record<'ca' | 'es', string> = {
 const hreflangTags = buildHreflangTags(
   Astro.url.pathname,
   lang,
-  Astro.site,
+  Astro.site ?? Astro.url.origin,
   import.meta.env.BASE_URL
 );
 ---
