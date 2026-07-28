@@ -11,7 +11,8 @@
     {
       "time": "08:00",
       "title": "Entrada toros y vacas a cargo la ganadería local Cristian Soler. A continuación, suelta vacas la misma ganadería.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "09:30",
@@ -21,7 +22,8 @@
     {
       "time": "13:00",
       "title": "Toros en la banda en el baret los toros con el grupo MALECÓN, patrocinado por la Comisión 2026.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "18:00",
@@ -31,7 +33,8 @@
     {
       "time": "19:30",
       "title": "Suelta vacas y toro la ganadería LA HERMANDAD Xàbia.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "22:00",

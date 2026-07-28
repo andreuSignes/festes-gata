@@ -11,7 +11,8 @@
     {
       "time": "13:00",
       "title": "Toros en la banda en el baret los toros a cargo grupo PLANET 8, patrocinado por la Comisión 2026.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "18:00",
@@ -21,12 +22,14 @@
     {
       "time": "19:00",
       "title": "Entrada 10 TOROS la ganadería LA PALOMA Xaló.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "19:15",
       "title": "Suelta vacas y toro a cargo la ganadería GREGORIO DE JESÚS Sueca.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "22:00",

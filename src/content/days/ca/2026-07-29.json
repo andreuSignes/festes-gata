@@ -11,7 +11,8 @@
     {
       "time": "08:00",
       "title": "Entrà bous i vaques a càrrec la ramaderia local Cristian Soler. A continuació, solta vaques la mateixa ramaderia.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "09:30",
@@ -21,7 +22,8 @@
     {
       "time": "13:00",
       "title": "Bous a banda al baret dels bous amb el grup MALECÓN, patrocinat per la Comissió 2026.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "18:00",
@@ -31,7 +33,8 @@
     {
       "time": "19:30",
       "title": "Solta vaques i bou la ramaderia LA HERMANDAD Xàbia.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "22:00",

@@ -21,7 +21,8 @@
     {
       "time": "13:00",
       "title": "Bous a banda al baret dels bous a càrrec grup MONROE BAND ROCK, patrocinat per la Comissió 2026.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "18:00",
@@ -36,7 +37,8 @@
     {
       "time": "19:15",
       "title": "Solta vaques i bou a càrrec la ramaderia LA PALOMA Xaló.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "22:00",

@@ -11,12 +11,14 @@
     {
       "time": "09:00",
       "title": "Entrà bous i vaques a càrrec la ramaderia CRISTIAN SOLER Gata Gorgos i, a continuació solta vaques la mateixa ramaderia.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "13:00",
       "title": "Bous a banda al baret dels bous a càrrec grup LOS CIGÜEÑOS, patrocinat per la Comissió 2026.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "17:00",
@@ -31,7 +33,8 @@
     {
       "time": "19:00",
       "title": "Entrà mansos i cavalls, eixida carrer Doctor Moratal fins al corro, a càrrec la ramaderia BENAVENT i cavallistas Gata i pobles veïns. A continuació, solta vaques i bou la ramaderia BENAVENT.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "22:00",
@@ -51,7 +54,8 @@
     {
       "time": "01:00",
       "title": "Entrà 6 bous i 6 vaques la ramaderia FDO. MACHANCOSES.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     }
   ]
 }
