@@ -1,42 +1,47 @@
 ---
-// Root index — client-side redirect to the appropriate locale
-// Default to Catalan (ca) if no match
+// Root index — client-side redirect to the appropriate locale.
+// Priority: stored preference → navigator.languages → 'ca'
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <!doctype html>
-<html lang="ca">
+<html lang="ca" data-base={base}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Redirecting...</title>
     <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content={`0;url=${base}/ca/`} />
     <script is:inline>
-      // Supported locales in priority order
-      var supportedLocales = ['ca', 'es'];
-      var defaultLocale = 'ca';
-
-      // Parse Accept-Language header simulated via navigator.languages
-      var browserLangs = navigator.languages || [navigator.language || defaultLocale];
-
-      var targetLocale = defaultLocale;
-      for (var i = 0; i < browserLangs.length; i++) {
-        var lang = browserLangs[i].split('-')[0].toLowerCase();
-        if (supportedLocales.indexOf(lang) !== -1) {
-          targetLocale = lang;
-          break;
+      (function () {
+        var base = document.documentElement.dataset.base || '';
+        var prefix = base ? base + '/' : '/';
+        var target = null;
+        try {
+          var stored = localStorage.getItem('festes-gata:locale');
+          if (stored === 'ca' || stored === 'es') target = stored;
+        } catch (e) {
+          void e;
         }
-      }
-
-      // Redirect to the target locale
-      var base = '/festes-gata';
-      var targetUrl = base + '/' + targetLocale + '/';
-      window.location.href = targetUrl;
+        if (!target) {
+          var langs = navigator.languages || [navigator.language];
+          for (var i = 0; i < langs.length; i++) {
+            var c = String(langs[i]).split('-')[0].toLowerCase();
+            if (c === 'ca' || c === 'es') {
+              target = c;
+              break;
+            }
+          }
+        }
+        if (!target) target = 'ca';
+        location.replace(prefix + target + '/');
+      })();
     </script>
     <noscript>
-      <meta http-equiv="refresh" content="0;url=/festes-gata/ca/" />
+      <meta http-equiv="refresh" content={`0;url=${base}/ca/`} />
     </noscript>
   </head>
   <body>
-    <p>Redirigint... <a href="/festes-gata/ca/">Fes clic ací si no es redirigeix.</a></p>
+    <p>Redirigint... <a href={`${base}/ca/`}>Fes clic ací si no es redirigeix.</a></p>
   </body>
 </html>

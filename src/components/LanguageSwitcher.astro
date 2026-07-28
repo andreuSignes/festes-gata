@@ -23,6 +23,7 @@ const selectLabel = currentLocale === 'ca' ? 'Llengua' : 'Idioma';
           value={`${base}/${locale.code}${currentPath}`}
           selected={currentLocale === locale.code}
           lang={locale.code}
+          data-locale={locale.code}
         >
           {locale.label}
         </option>
@@ -55,6 +56,14 @@ const selectLabel = currentLocale === 'ca' ? 'Llengua' : 'Idioma';
     select.addEventListener('change', (event) => {
       const target = event.target;
       if (target instanceof HTMLSelectElement && target.value) {
+        const opt = target.options[target.selectedIndex];
+        if (opt && opt.dataset.locale) {
+          try {
+            localStorage.setItem('festes-gata:locale', opt.dataset.locale);
+          } catch (e) {
+            void e;
+          }
+        }
         window.location.href = target.value;
       }
     });

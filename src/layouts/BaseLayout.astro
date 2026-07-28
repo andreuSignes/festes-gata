@@ -44,11 +44,38 @@ const localeMap = {
   properties. The authoritative token is --color-primary in
   src/styles/global.css.
 -->
-<html lang={lang}>
+<html lang={lang} data-base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#e5318a" />
+    <script is:inline>
+      (function () {
+        var b = document.documentElement.dataset.base || '';
+        var re = new RegExp('^' + (b ? b + '/' : '/') + '(ca|es)(/|$)');
+        var m = location.pathname.match(re);
+        if (!m) return;
+        var cur = m[1];
+        var tail = location.pathname.slice(m.index + m[0].length - (m[2] === '/' ? 1 : 0));
+        var stored = null;
+        try {
+          stored = localStorage.getItem('festes-gata:locale');
+        } catch (e) {
+          void e;
+        }
+        if (stored !== 'ca' && stored !== 'es') {
+          var ls = navigator.languages || [navigator.language];
+          for (var i = 0; i < ls.length && stored === null; i++) {
+            var c = String(ls[i]).split('-')[0].toLowerCase();
+            if (c === 'ca' || c === 'es') stored = c;
+          }
+        }
+        if (!stored || stored === cur) return;
+        var prefix = b ? b + '/' : '/';
+        var t = prefix + stored + tail + location.search + location.hash;
+        if (t !== location.pathname + location.search + location.hash) location.replace(t);
+      })();
+    </script>
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
