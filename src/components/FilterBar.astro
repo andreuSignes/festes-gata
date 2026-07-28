@@ -71,21 +71,23 @@ const clearLabel = controlCopy[lang].none;
 ---
 
 <div role="group" aria-label={groupLabel} data-filter-bar>
-  {
-    types.map((type) => (
-      <button
-        type="button"
-        class="filter-btn"
-        data-filter-type={type}
-        aria-pressed="true"
-        lang={lang}
-      >
-        <span class="filter-dot" aria-hidden="true" />
-        <span class="filter-emoji">{eventTypeEmoji[type]}</span>
-        {getEventTypeLabel(type, lang)}
-      </button>
-    ))
-  }
+  <div data-filter-chips>
+    {
+      types.map((type) => (
+        <button
+          type="button"
+          class="filter-btn"
+          data-filter-type={type}
+          aria-pressed="true"
+          lang={lang}
+        >
+          <span class="filter-dot" aria-hidden="true" />
+          <span class="filter-emoji">{eventTypeEmoji[type]}</span>
+          {getEventTypeLabel(type, lang)}
+        </button>
+      ))
+    }
+  </div>
   <div class="filter-controls">
     <button
       type="button"
@@ -259,6 +261,60 @@ const clearLabel = controlCopy[lang].none;
     .filter-btn:hover {
       transform: translateY(-1px);
       box-shadow: var(--shadow-sm);
+    }
+  }
+
+  /* === Chips wrapper — scroll container on mobile === */
+  [data-filter-chips] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-2);
+  }
+
+  /* === Mobile scroll container (≤639px) === */
+  @media (max-width: 639px) {
+    [data-filter-bar] {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-block: var(--spacing-2);
+    }
+
+    [data-filter-chips] {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    [data-filter-chips]::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-btn {
+      scroll-snap-align: start;
+      flex-shrink: 0;
+    }
+
+    .filter-controls {
+      flex-shrink: 0;
+      flex-wrap: nowrap;
+    }
+  }
+
+  /* === Emoji-only compact mode (<360px) === */
+  @media (max-width: 359px) {
+    .filter-btn:not(.filter-dot):not(.filter-emoji) {
+      text-indent: -9999px;
+      white-space: nowrap;
+    }
+
+    .filter-btn {
+      padding-inline: var(--spacing-2);
+      min-width: 44px;
     }
   }
 </style>
