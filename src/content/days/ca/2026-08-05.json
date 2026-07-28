@@ -21,7 +21,7 @@
     {
       "time": "13:30",
       "title": "Bous a banda al baret dels bous amb el grup FERRETERÍA ROSARIO, patrocinat per la Comissió 2026.",
-      "type": "liturgia"
+      "type": "musica"
     },
     {
       "time": "14:00",
@@ -42,6 +42,12 @@
       "time": "00:00",
       "title": "Concert la revetla. La BANDA UNIÓ MUSICAL DE GATA oferirà un any més un espectacular concert a la plaça l'església. En acabar es dispararà la CORDÀ al parc Enric Valor a càrrec la pirotècnia BORREDÀ. AL RECINTE NOMÉS PODRAN ACCEDIR PERSONES AMB CARNET CRE.",
       "type": "musica"
+    },
+    {
+      "time": "00:00",
+      "title": "CORDÀ en el parc Enric Valor a càrrec de la pirotecnia BORREDÀ. AL RECINTE NOMÉS PODRAN ACCEDIR PERSONES AMB CARNÈ CRE.",
+      "type": "pirotecnia",
+      "location": "Parc Enric Valor"
     }
   ]
 }

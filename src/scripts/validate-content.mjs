@@ -16,8 +16,9 @@ const VALID_TYPES = new Set([
   'musica',
   'liturgia',
   'infantil',
-  'paelles',
+  'comida',
   'festes',
+  'pirotecnia',
   'otro',
 ]);
 

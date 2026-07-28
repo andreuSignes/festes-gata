@@ -24,7 +24,7 @@ declared in `src/content.config.ts` (Astro 7's `glob` loader).
 2. Keep the structure flat. Each event has `time`, `title`, optional
    `location` / `description` / `sponsor` / `tags`, and a `type` (one of
    `pasacalles`, `bous`, `verbena`, `musica`, `liturgia`, `infantil`,
-   `paelles`, `festes`, `otro`).
+   `comida`, `festes`, `otro`).
 3. The `description` field should be the full event text (everything after the
    `HH:MM horas:` prefix in the original program).
 4. Run `pnpm build`. Astro 7's content collection will reject any file that
@@ -44,7 +44,7 @@ const event = {
   description?: string,
   sponsor?:    string,
   type:        'pasacalles' | 'bous' | 'verbena' | 'musica' | 'liturgia'
-               | 'infantil' | 'paelles' | 'festes' | 'otro',
+               | 'infantil' | 'comida' | 'festes' | 'otro',
   tags?:       string[],
 };
 
@@ -66,7 +66,7 @@ The `type` field is the badge shown next to each event. Use the closest match:
 | `musica`     | `actuación`, `concierto`, `orquesta`, `DJ`, `banda musical`, `festa de la espuma`        |
 | `liturgia`   | `misa`, `novena`, `procesión`, `ofrenda`                                                 |
 | `infantil`   | `parque acuático`, `hinchables`, `magia`, `carretones`, `quintà infantil`, kids-only     |
-| `paelles`    | paella contests / `concurs de paelles`                                                   |
+| `comida`     | paella contests / `concurs de paelles`                                                   |
 | `festes`     | generic festival events: `inauguración`, `barracas`, `carrozas`, `disfraces`, `correfoc` |
 | `otro`       | everything else (e.g. `Campeonato de TRUC`, `ajedrez`)                                   |
 

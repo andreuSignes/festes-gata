@@ -11,7 +11,8 @@
     {
       "time": "13:00",
       "title": "Bous a banda al baret dels bous a càrrec grup PLANET 8, patrocinat per la Comissió 2026.",
-      "type": "bous"
+      "type": "musica",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "18:00",
@@ -21,17 +22,19 @@
     {
       "time": "19:00",
       "title": "Entrà 10 BOUS la ramaderia LA PALOMA Xaló.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "19:15",
       "title": "Solta vaques i bou a càrrec la ramaderia GREGORIO DE JESÚS Sueca.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "22:00",
       "title": "Concurs paelles al Grup Escolar. La Comissió 2026 donará un premi a la millor paella feta al recinte.",
-      "type": "paelles"
+      "type": "comida"
     },
     {
       "time": "00:00",

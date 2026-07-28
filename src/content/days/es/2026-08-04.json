@@ -11,12 +11,14 @@
     {
       "time": "09:00",
       "title": "Entrada toros y vacas a cargo la ganadería CRISTIAN SOLER Gata Gorgos y, a continuación suelta vacas la misma ganadería.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "13:00",
       "title": "Toros en la banda en el baret los toros a cargo grupo LOS CIGÜEÑOS, patrocinado por la Comisión 2026.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "17:00",
@@ -26,7 +28,8 @@
     {
       "time": "18:00",
       "title": "Entrada trashumante cabestros, salida la calle Doctor Moratal hasta el corro.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "19:00",
@@ -36,7 +39,7 @@
     {
       "time": "22:00",
       "title": "cena en las barracas.",
-      "type": "paelles"
+      "type": "comida"
     },
     {
       "time": "22:00",
@@ -51,7 +54,8 @@
     {
       "time": "01:00",
       "title": "Entrada 6 toros y 6 vacas la ganadería FDO. MACHANCOSES.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     }
   ]
 }

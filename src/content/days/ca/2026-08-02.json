@@ -16,7 +16,8 @@
     {
       "time": "13:00",
       "title": "Bous a banda al baret dels bous amb el grup REMAKE, patrocinat per la Comissió 2026.",
-      "type": "bous"
+      "type": "musica",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "19:00",
@@ -31,12 +32,14 @@
     {
       "time": "01:30",
       "title": "Gran CORREFOC amb l'espectacle «THE PURGE», a càrrec la colla DIMONIS DE MISLATA. Començarà al carrer la Pau i acabarà al passeig d'Alacant amb un final ple foc.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "02:30",
       "title": "Solta vaques i bou a carrec la ramaderia ELS COVES Pedreguer.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     }
   ]
 }

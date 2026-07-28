@@ -16,7 +16,8 @@
     {
       "time": "13:00",
       "title": "Toros en la banda en el baret los toros con el grupo REMAKE, patrocinado por la Comisión 2026.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "19:00",
@@ -31,12 +32,14 @@
     {
       "time": "01:30",
       "title": "Gran CORREFOC con el espectáculo «THE PURGE», a cargo la colla DIMONIS DE MISLATA. Comenzará en la calle la Pau y acabará en el paseo Alicante con un final lleno fuego.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "02:30",
       "title": "Suelta vacas y toro a cargo la ganadería ELS COVES Pedreguer.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     }
   ]
 }

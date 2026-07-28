@@ -83,12 +83,12 @@ Playwright-headed workflow step (see `.github/workflows/ci.yml`).
   description?: string,
   sponsor?: string,
   type: 'pasacalles' | 'bous' | 'verbena' | 'musica' | 'liturgia'
-      | 'infantil' | 'paelles' | 'festes' | 'otro',
+      | 'infantil' | 'comida' | 'festes' | 'otro',
   tags?: string[],
 }
 ```
 
-The 9-value `type` enum includes `paelles` and `festes`. Use the Zod
+The 9-value `type` enum includes `comida` and `festes`. Use the Zod
 schema and `src/content/days/README.md` as the source of truth.
 
 ### Day shape

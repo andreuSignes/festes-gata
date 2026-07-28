@@ -21,27 +21,31 @@
     {
       "time": "13:00",
       "title": "Toros en la banda en el baret los toros a cargo grupo MONROE BAND ROCK, patrocinado por la Comisión 2026.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "18:00",
       "title": "Entrada y suelta carretones para todos los niños y niñas. A continuación se repartirá agua limón para los más pequeños patrocinada por CA EL TRAMUSSER.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "19:00",
       "title": "Entrada 10 animales colorados y pintos a cargo la ganadería ELS COVES patrocinada por KIROS GATA.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "19:15",
       "title": "Suelta vacas y toro a cargo la ganadería LA PALOMA Xaló.",
-      "type": "bous"
+      "type": "bous",
+      "location": "Parc Enric Valor"
     },
     {
       "time": "22:00",
       "title": "cena en las barracas.",
-      "type": "paelles"
+      "type": "comida"
     },
     {
       "time": "23:30",

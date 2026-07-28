@@ -1,6 +1,6 @@
 /**
- * Shared, locale-aware labels for the nine event types defined in
- * `src/content.config.ts`. Used by `Badge`, `EventItem`, the upcoming
+ * Shared, locale-aware labels for the ten event types defined in
+ * `src/content/config.ts`. Used by `Badge`, `EventItem`, the upcoming
  * `FilterBar` (PR #3), and any future copy that needs a human-readable
  * event-type name. CA/ES strings are pinned in
  * `openspec/changes/festes-gata-ui-2026/specs/design-system/spec.md`.
@@ -16,8 +16,9 @@ export type EventType =
   | 'musica'
   | 'liturgia'
   | 'infantil'
-  | 'paelles'
+  | 'comida'
   | 'festes'
+  | 'pirotecnia'
   | 'otro';
 
 export type Locale = 'ca' | 'es';
@@ -29,8 +30,9 @@ export const eventTypeLabels: Record<EventType, Record<Locale, string>> = {
   musica: { ca: 'Música', es: 'Música' },
   liturgia: { ca: 'Litúrgia', es: 'Liturgia' },
   infantil: { ca: 'Infantil', es: 'Infantil' },
-  paelles: { ca: 'Paelles', es: 'Paelles' },
+  comida: { ca: 'Comida', es: 'Comida' },
   festes: { ca: 'Festes', es: 'Festes' },
+  pirotecnia: { ca: 'Pirotècnia', es: 'Pirotecnia' },
   otro: { ca: 'Altres', es: 'Otro' },
 };
 

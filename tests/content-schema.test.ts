@@ -12,8 +12,9 @@ const VALID_EVENT_TYPES = [
   'musica',
   'liturgia',
   'infantil',
-  'paelles',
+  'comida',
   'festes',
+  'pirotecnia',
   'otro',
 ] as const;
 
@@ -45,7 +46,7 @@ describe('content-schema', () => {
       }
     }
 
-    expect(totalEvents).toBe(80);
+    expect(totalEvents).toBe(81);
     expect(validatedDays).toHaveLength(13);
   });
 
