@@ -2,7 +2,7 @@
 /**
  * FilterBar — locale-aware event-type filter ("tag cloud").
  *
- * Renders 10 type chips (one per `EventType`) plus two bulk controls:
+ * Renders 9 type chips (one per `EventType`) plus two bulk controls:
  *
  *  - Reset (`data-filter-reset`) refills the active set so every type
  *    is selected again. Its single locale-aware label combines the
@@ -15,12 +15,18 @@
  *    lets a visitor isolate a single type with one extra tap, or
  *    exclude one type via reset + deselect.
  *
+ * Mobile UX (≤639px): the bar shows a single "Filtrar" trigger button
+ * that opens a bottom sheet containing the full chip set. This
+ * eliminates the ~200px vertical consumption of the wrapped pill cloud
+ * on small screens while keeping all filter functionality accessible.
+ *
  * The active locale drives every visible label (chip text, group
  * label, control labels) via the shared `getEventTypeLabel(type,
  * lang)` helper and a small constants map.
  *
- * Visual design: a sticky pill cloud. Each chip is a fully rounded
- * pill with a colored dot and a per-type accent drawn from the global
+ * Visual design: a sticky pill cloud on desktop; a bottom-sheet
+ * pattern on mobile. Each chip is a fully rounded pill with a
+ * colored dot and a per-type accent drawn from the global
  * `--color-{type}` / `--color-{type}-fg` tokens (exposed here as the
  * component-scoped `--chip-accent` / `--chip-on-accent` properties).
  * Pressed chips get a soft tint of their accent (via `color-mix`,
@@ -66,12 +72,69 @@ const controlCopy: Record<Locale, { all: string; reset: string; none: string }> 
 };
 
 const groupLabel = lang === 'ca' ? 'Filtrar per tipus' : 'Filtrar por tipo';
+const filterLabel = lang === 'ca' ? 'Filtrar' : 'Filtrar';
 const resetLabel = `${controlCopy[lang].all} / ${controlCopy[lang].reset}`;
 const clearLabel = controlCopy[lang].none;
+const closeLabel = lang === 'ca' ? 'Tancar' : 'Cerrar';
 ---
 
-<div role="group" aria-label={groupLabel} data-filter-bar>
-  <div data-filter-chips>
+<!-- Mobile trigger: only visible on ≤639px -->
+<button
+  type="button"
+  class="filter-trigger"
+  data-filter-trigger
+  aria-label={filterLabel}
+  aria-expanded="false"
+  aria-controls="filter-sheet"
+>
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    aria-hidden="true"
+  >
+    <line x1="4" y1="6" x2="20" y2="6"></line>
+    <line x1="8" y1="12" x2="16" y2="12"></line>
+    <line x1="11" y1="18" x2="13" y2="18"></line>
+  </svg>
+  {filterLabel}
+</button>
+
+<!-- Bottom sheet: chips + controls -->
+<div
+  id="filter-sheet"
+  class="filter-sheet"
+  data-filter-sheet
+  role="dialog"
+  aria-modal="true"
+  aria-label={groupLabel}
+>
+  <div class="filter-sheet__header">
+    <span class="filter-sheet__title">{groupLabel}</span>
+    <button
+      type="button"
+      class="filter-sheet__close"
+      data-filter-sheet-close
+      aria-label={closeLabel}
+    >
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+  <div class="filter-sheet__chips">
     {
       types.map((type) => (
         <button
@@ -88,7 +151,7 @@ const clearLabel = controlCopy[lang].none;
       ))
     }
   </div>
-  <div class="filter-controls">
+  <div class="filter-sheet__controls">
     <button
       type="button"
       class="filter-btn filter-btn--control"
@@ -110,8 +173,11 @@ const clearLabel = controlCopy[lang].none;
   </div>
 </div>
 
+<!-- Backdrop -->
+<div class="filter-backdrop" data-filter-backdrop aria-hidden="true"></div>
+
 <style>
-  /* === Bar layout: sticky pill cloud === */
+  /* === Bar layout: sticky pill cloud (desktop) === */
   [data-filter-bar] {
     position: sticky;
     top: 0;
@@ -264,57 +330,124 @@ const clearLabel = controlCopy[lang].none;
     }
   }
 
-  /* === Chips wrapper — scroll container on mobile === */
-  [data-filter-chips] {
+  /* === Mobile: hide desktop chips, show trigger === */
+  @media (min-width: 640px) {
+    [data-filter-trigger] {
+      display: none;
+    }
+  }
+
+  /* === Mobile trigger button === */
+  [data-filter-trigger] {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    min-height: 44px;
+    padding-inline: var(--spacing-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    background: var(--color-surface-elevated);
+    color: var(--color-text);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  /* === Bottom sheet === */
+  .filter-sheet {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    background: var(--color-surface-elevated);
+    border-top-left-radius: var(--radius-lg);
+    border-top-right-radius: var(--radius-lg);
+    padding: var(--spacing-4);
+    padding-bottom: calc(var(--spacing-4) + env(safe-area-inset-bottom, 0px));
+    box-shadow: 0 -4px 24px rgba(26, 22, 18, 0.12);
+  }
+
+  .filter-sheet[data-open] {
+    display: block;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .filter-sheet {
+      transform: translateY(100%);
+      transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .filter-sheet[data-open] {
+      transform: translateY(0);
+    }
+
+    .filter-backdrop {
+      transition: opacity 300ms ease;
+    }
+  }
+
+  @media (min-width: 640px) {
+    .filter-sheet,
+    .filter-backdrop {
+      display: none !important;
+    }
+  }
+
+  .filter-sheet__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-4);
+  }
+
+  .filter-sheet__title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--color-text);
+  }
+
+  .filter-sheet__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: var(--radius-full);
+    background: var(--color-surface-muted);
+    color: var(--color-text);
+    cursor: pointer;
+  }
+
+  .filter-sheet__chips {
     display: flex;
     flex-wrap: wrap;
     gap: var(--spacing-2);
+    margin-bottom: var(--spacing-4);
   }
 
-  /* === Mobile scroll container (≤639px) === */
-  @media (max-width: 639px) {
-    [data-filter-bar] {
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      padding-block: var(--spacing-2);
-    }
-
-    [data-filter-chips] {
-      display: flex;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    [data-filter-chips]::-webkit-scrollbar {
-      display: none;
-    }
-
-    .filter-btn {
-      scroll-snap-align: start;
-      flex-shrink: 0;
-    }
-
-    .filter-controls {
-      flex-shrink: 0;
-      flex-wrap: nowrap;
-    }
+  .filter-sheet__controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-2);
+    padding-top: var(--spacing-3);
+    border-top: 1px solid var(--color-border);
   }
 
-  /* === Emoji-only compact mode (<360px) === */
-  @media (max-width: 359px) {
-    .filter-btn:not(.filter-dot):not(.filter-emoji) {
-      text-indent: -9999px;
-      white-space: nowrap;
-    }
+  /* === Backdrop === */
+  .filter-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 199;
+    background: rgba(26, 22, 18, 0.4);
+    opacity: 0;
+    pointer-events: none;
+  }
 
-    .filter-btn {
-      padding-inline: var(--spacing-2);
-      min-width: 44px;
-    }
+  .filter-backdrop[data-open] {
+    opacity: 1;
+    pointer-events: auto;
   }
 </style>
