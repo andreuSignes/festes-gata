@@ -38,6 +38,12 @@ export default defineConfig({
         const pathname = new URL(page).pathname;
         return pathname !== '/' && pathname !== '/festes-gata/';
       },
+      // lastmod: Date — sets a static <lastmod> for every sitemap entry.
+      // @astrojs/sitemap 3.x does not auto-derive per-URL lastmod from
+      // source file mtime; a serialize hook could do it but would need
+      // fs access at build time. A fixed date is acceptable for a static
+      // content site where pages change only on new deployments.
+      lastmod: new Date('2026-07-20'),
     }),
   ],
   vite: {
