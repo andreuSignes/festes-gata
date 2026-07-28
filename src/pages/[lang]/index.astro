@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import DaySection from '../../components/DaySection.astro';
 import FilterBar from '../../components/FilterBar.astro';
+import { buildOrganization, buildFestival } from '../../lib/json-ld';
 
 export function getStaticPaths() {
   return [{ params: { lang: 'ca' } }, { params: { lang: 'es' } }];
@@ -29,9 +30,10 @@ const titles: Record<'ca' | 'es', { page: string; description: string }> = {
 };
 
 const { page: title, description } = titles[lang];
+const jsonLd = [buildOrganization(lang), buildFestival(lang)];
 ---
 
-<BaseLayout title={title} description={description} lang={lang}>
+<BaseLayout title={title} description={description} lang={lang} jsonLd={jsonLd}>
   <section class="hero">
     <h1>{title}</h1>
     <p>{description}</p>

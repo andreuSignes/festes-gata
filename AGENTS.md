@@ -110,7 +110,7 @@ truth** for programme data. The authoring flow is documented in
 
 - `astro.config.mjs` — `site`, `base: '/festes-gata'`, `output: 'static'`,
   `@astrojs/sitemap` integration, plus `i18n` routing with
-  `prefixDefaultLocale: false` and locale fallbacks.
+  `prefixDefaultLocale: true` and locale fallbacks.
 - `src/content.config.ts` — Zod schema for `days-ca` and `days-es`
   collections.
 - `tsconfig.json` — extends `astro/tsconfigs/strict` + adds

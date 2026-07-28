@@ -2,6 +2,7 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import DaySection from '../../../components/DaySection.astro';
+import { buildDayEvent, buildBreadcrumbList } from '../../../lib/json-ld';
 
 type DayCollectionEntry = CollectionEntry<'days-ca' | 'days-es'>;
 
@@ -35,12 +36,15 @@ const labels: Record<'ca' | 'es', { back: string }> = {
   ca: { back: 'Tornar al programa' },
   es: { back: 'Volver al programa' },
 };
+
+const jsonLd = [buildDayEvent(day.data, lang), buildBreadcrumbList(day.data.date, lang)];
 ---
 
 <BaseLayout
   title={`${day.data.weekday} ${day.data.date}`}
   description={`Programa del ${day.data.date} (${day.data.weekday})${day.data.theme ? ` — ${day.data.theme}` : ''} — Festes de Gata 2026.`}
   lang={lang}
+  jsonLd={jsonLd}
 >
   <article>
     <p>
