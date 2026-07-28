@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { buildHreflangTags } from '../lib/seo-hreflang';
@@ -121,6 +122,7 @@ const hreflangTags = buildHreflangTags(
       data-cf-beacon='{"token": "1c2253a7e67b4aaca8ae6f91728e65a2"}'></script>
     <meta name="twitter:image:alt" content={ogImageAlt[lang]} />
     {jsonLd.map((item) => <script type="application/ld+json" set:html={JSON.stringify(item)} />)}
+    <ClientRouter />
   </head>
   <body>
     <a href="#main" class="skip-link">Saltar al contenido</a>

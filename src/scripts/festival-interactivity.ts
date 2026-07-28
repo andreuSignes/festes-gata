@@ -199,15 +199,24 @@ function initTodayScroll(): void {
   fallbackEl.scrollIntoView({ behavior, block: 'start' });
 }
 
+// Guard against double-run: astro:page-load (ClientRouter swaps) and
+// DOMContentLoaded (initial load) both fire; we only need one execution.
+// The flag is module-scoped so it survives across page swaps.
+let initialized = false;
+
 function run(): void {
+  if (initialized) return;
+  initialized = true;
+
   const html = document.documentElement;
   const lang: 'ca' | 'es' = html.lang === 'es' ? 'es' : 'ca';
   initFilters(lang);
   initTodayScroll();
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', run);
-} else {
-  run();
-}
+// astro:page-load fires after ClientRouter swaps the page.
+// DOMContentLoaded fires on initial page load (before Astro's page-load
+// in some test environments). Listening to both ensures the script runs
+// regardless of how the page was loaded.
+document.addEventListener('astro:page-load', run);
+document.addEventListener('DOMContentLoaded', run);
