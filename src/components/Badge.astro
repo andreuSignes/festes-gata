@@ -1,40 +1,33 @@
 ---
 /**
- * Badge — event-type tone chip with locale-aware label.
+ * Badge — event-type tone chip showing emoji only.
  *
  * Each tone maps to a background + text-on-tone pair declared in the
- * @theme event-type tokens (see design.md §2.2). The class
- * `badge--{tone}` matches the legacy convention so existing
- * EventItem consumers continue to work during the dual-CSS window;
- * the new component-scoped rules own the visual tokens and the
- * legacy global selectors retire in PR #2b.
+ * @theme event-type tokens. The class `badge--{tone}` drives the
+ * background colour; the emoji comes from the shared `eventTypeEmoji`
+ * map in event-type-labels.ts.
  *
  * The badge is informational only — no interactive semantics — so it
- * is rendered as a non-focusable <span>. Visible labels come from
- * `getEventTypeLabel` so the CA/ES strings stay in lockstep with the
- * rest of the bilingual UI (FilterBar in PR #3, future copy).
+ * is rendered as a non-focusable <span>.
  */
-import { getEventTypeLabel, type EventType, type Locale } from '../lib/event-type-labels';
+import { eventTypeEmoji, type EventType } from '../lib/event-type-labels';
 
 interface Props {
   tone: EventType;
-  lang?: Locale;
   class?: string;
 }
 
-const { tone, lang = 'es', class: className } = Astro.props;
-const label = getEventTypeLabel(tone, lang);
+const { tone, class: className } = Astro.props;
 ---
 
-<span class:list={['badge', `badge--${tone}`, className]} lang={lang}>{label}</span>
+<span class:list={['badge', `badge--${tone}`, className]}>{eventTypeEmoji[tone]}</span>
 
 <style>
   .badge {
     display: inline-block;
     padding: var(--spacing-1) var(--spacing-2);
     border-radius: var(--radius-full);
-    font-size: 0.875rem;
-    font-weight: 600;
+    font-size: 1rem;
     line-height: 1.2;
     font-family: emoji;
   }
@@ -70,6 +63,10 @@ const label = getEventTypeLabel(tone, lang);
   .badge--festes {
     background: var(--color-festes);
     color: var(--color-festes-fg);
+  }
+  .badge--pirotecnia {
+    background: var(--color-pirotecnia);
+    color: var(--color-pirotecnia-fg);
   }
   .badge--otro {
     background: var(--color-otro);
