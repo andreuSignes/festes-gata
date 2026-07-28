@@ -51,6 +51,7 @@ const SITE_ORIGIN = 'https://andreuSignes.github.io';
 const BASE_PREFIX = '/festes-gata';
 
 const PLACE: JsonLdObject = {
+  '@context': 'https://schema.org',
   '@type': 'Place',
   name: 'Gata de Gorgos',
   address: {
