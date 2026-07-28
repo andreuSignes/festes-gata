@@ -98,8 +98,23 @@ function initFilters(lang: 'ca' | 'es'): void {
   ];
 
   const active = new Set<EventType>(allTypes);
-  const buttons = bar.querySelectorAll<HTMLButtonElement>('[data-filter-type]');
-  const reset = bar.querySelector<HTMLButtonElement>('[data-filter-reset]');
+
+  // Query chips from BOTH the bar (desktop) and the sheet (mobile)
+  const barButtons = bar.querySelectorAll<HTMLButtonElement>('[data-filter-type]');
+  const sheet = document.querySelector<HTMLElement>('[data-filter-sheet]');
+  const sheetButtons = sheet ? sheet.querySelectorAll<HTMLButtonElement>('[data-filter-type]') : [];
+  const buttons = [...barButtons, ...sheetButtons];
+
+  const resetEls = bar.querySelectorAll<HTMLButtonElement>('[data-filter-reset]');
+  const clearEls = bar.querySelectorAll<HTMLButtonElement>('[data-filter-clear]');
+  const sheetResetEls = sheet
+    ? sheet.querySelectorAll<HTMLButtonElement>('[data-filter-reset]')
+    : [];
+  const sheetClearEls = sheet
+    ? sheet.querySelectorAll<HTMLButtonElement>('[data-filter-clear]')
+    : [];
+  const allReset = [...resetEls, ...sheetResetEls];
+  const allClear = [...clearEls, ...sheetClearEls];
 
   const emptyCopy: Record<'ca' | 'es', string> = {
     ca: 'No hi ha actes',
@@ -149,6 +164,13 @@ function initFilters(lang: 'ca' | 'es'): void {
         empty.textContent = emptyCopy[lang];
       }
     });
+
+    // Sync aria-pressed state across both desktop chips and mobile sheet chips
+    buttons.forEach((btn) => {
+      const type = btn.getAttribute('data-filter-type') as EventType | null;
+      if (!type) return;
+      btn.setAttribute('aria-pressed', active.has(type) ? 'true' : 'false');
+    });
   }
 
   buttons.forEach((btn) => {
@@ -157,29 +179,25 @@ function initFilters(lang: 'ca' | 'es'): void {
       if (!type) return;
       if (active.has(type)) {
         active.delete(type);
-        btn.setAttribute('aria-pressed', 'false');
       } else {
         active.add(type);
-        btn.setAttribute('aria-pressed', 'true');
       }
       applyFilter();
       updateFilterCount();
     });
   });
 
-  if (reset) {
+  allReset.forEach((reset) => {
     reset.addEventListener('click', () => {
       active.clear();
       allTypes.forEach((t) => active.add(t));
-      buttons.forEach((b) => b.setAttribute('aria-pressed', 'true'));
       applyFilter();
       updateFilterCount();
       reset.focus();
     });
-  }
+  });
 
-  const clear = bar.querySelector<HTMLButtonElement>('[data-filter-clear]');
-  if (clear) {
+  allClear.forEach((clear) => {
     clear.addEventListener('click', () => {
       active.clear();
       buttons.forEach((b) => b.setAttribute('aria-pressed', 'false'));
@@ -187,7 +205,7 @@ function initFilters(lang: 'ca' | 'es'): void {
       updateFilterCount();
       clear.focus();
     });
-  }
+  });
 
   // Run once so initial aria-pressed state mirrors the DOM even before
   // any user interaction (defensive: the static markup already starts

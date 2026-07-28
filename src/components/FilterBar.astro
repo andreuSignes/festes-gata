@@ -15,10 +15,12 @@
  *    lets a visitor isolate a single type with one extra tap, or
  *    exclude one type via reset + deselect.
  *
- * Mobile UX (≤639px): the bar shows a single "Filtrar" trigger button
- * that opens a bottom sheet containing the full chip set. This
- * eliminates the ~200px vertical consumption of the wrapped pill cloud
- * on small screens while keeping all filter functionality accessible.
+ * Mobile UX (≤639px): `[data-filter-bar]` shows only a "Filtrar" trigger
+ * button. Tapping it opens a bottom sheet containing all chips + controls.
+ * The sheet chips are ALSO queried by `initFilters` so filtering works.
+ *
+ * Desktop UX (≥640px): `[data-filter-bar]` shows the full pill cloud
+ * directly; the trigger button and bottom sheet are hidden.
  *
  * The active locale drives every visible label (chip text, group
  * label, control labels) via the shared `getEventTypeLabel(type,
@@ -59,13 +61,10 @@ interface Props {
 const { lang } = Astro.props;
 
 // The 9 EventType keys, in the canonical order pinned by the
-// `eventTypeLabels` Record. Astro components cannot iterate a Record
-// in a stable order across runtimes, so we use `Object.keys` which V8
-// preserves in insertion order for non-integer string keys.
+// `eventTypeLabels` Record.
 const types = Object.keys(eventTypeLabels) as EventType[];
 
-// Localised control copy. The reset button combines the "all" and
-// "reset" copy so both required strings appear in the active locale.
+// Localised control copy.
 const controlCopy: Record<Locale, { all: string; reset: string; none: string }> = {
   ca: { all: 'Tots', reset: 'Reiniciar', none: 'Cap' },
   es: { all: 'Todos', reset: 'Reiniciar', none: 'Ninguno' },
@@ -79,32 +78,76 @@ const closeLabel = lang === 'ca' ? 'Tancar' : 'Cerrar';
 const filterCountInitial = lang === 'ca' ? '9/9 actius' : '9/9 activos';
 ---
 
-<!-- Mobile trigger: only visible on ≤639px -->
-<button
-  type="button"
-  class="filter-trigger"
-  data-filter-trigger
-  aria-label={filterLabel}
-  aria-expanded="false"
-  aria-controls="filter-sheet"
->
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="2"
-    aria-hidden="true"
-  >
-    <line x1="4" y1="6" x2="20" y2="6"></line>
-    <line x1="8" y1="12" x2="16" y2="12"></line>
-    <line x1="11" y1="18" x2="13" y2="18"></line>
-  </svg>
-  {filterLabel}
-</button>
+<!-- Filter bar: desktop chips + mobile trigger -->
+<div role="group" aria-label={groupLabel} data-filter-bar>
+  <!-- Desktop chips: hidden on mobile -->
+  <div class="filter-bar__chips">
+    {
+      types.map((type) => (
+        <button
+          type="button"
+          class="filter-btn"
+          data-filter-type={type}
+          aria-pressed="true"
+          lang={lang}
+        >
+          <span class="filter-dot" aria-hidden="true" />
+          <span class="filter-emoji">{eventTypeEmoji[type]}</span>
+          {getEventTypeLabel(type, lang)}
+        </button>
+      ))
+    }
+  </div>
 
-<!-- Bottom sheet: chips + controls -->
+  <!-- Mobile trigger: visible only on ≤639px -->
+  <button
+    type="button"
+    class="filter-trigger"
+    data-filter-trigger
+    aria-label={filterLabel}
+    aria-expanded="false"
+    aria-controls="filter-sheet"
+  >
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      aria-hidden="true"
+    >
+      <line x1="4" y1="6" x2="20" y2="6"></line>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+      <line x1="11" y1="18" x2="13" y2="18"></line>
+    </svg>
+    {filterLabel}
+  </button>
+
+  <!-- Desktop controls: hidden on mobile -->
+  <div class="filter-bar__controls">
+    <button
+      type="button"
+      class="filter-btn filter-btn--control"
+      data-filter-reset
+      aria-pressed="false"
+      lang={lang}
+    >
+      {resetLabel}
+    </button>
+    <button
+      type="button"
+      class="filter-btn filter-btn--control"
+      data-filter-clear
+      aria-pressed="false"
+      lang={lang}
+    >
+      {clearLabel}
+    </button>
+  </div>
+</div>
+
+<!-- Bottom sheet: mobile chips + controls — lives OUTSIDE [data-filter-bar] -->
 <div
   id="filter-sheet"
   class="filter-sheet"
@@ -180,7 +223,7 @@ const filterCountInitial = lang === 'ca' ? '9/9 actius' : '9/9 activos';
 <div class="filter-backdrop" data-filter-backdrop aria-hidden="true"></div>
 
 <style>
-  /* === Bar layout: sticky pill cloud (desktop) === */
+  /* === Bar layout: sticky pill cloud (desktop default) === */
   [data-filter-bar] {
     position: sticky;
     top: 0;
@@ -236,6 +279,17 @@ const filterCountInitial = lang === 'ca' ? '9/9 actius' : '9/9 activos';
     100% {
       transform: scale(1);
     }
+  }
+
+  /* === Desktop chips and controls — visible on ≥640px === */
+  .filter-bar__chips,
+  .filter-bar__controls {
+    display: contents;
+  }
+
+  /* === Mobile trigger — hidden on ≥640px === */
+  .filter-trigger {
+    display: none;
   }
 
   /* === Per-type accent tokens (aliases of the global palette) === */
@@ -302,13 +356,13 @@ const filterCountInitial = lang === 'ca' ? '9/9 actius' : '9/9 activos';
     background: var(--chip-accent, var(--color-text-muted));
   }
 
-  /* Ensure emoji renders with native font (not affected by text color) */
+  /* Ensure emoji renders with native font */
   .filter-emoji {
     font-family: emoji;
     line-height: 1;
   }
 
-  /* Unpressed: muted ghost/outline, still obviously clickable. */
+  /* Unpressed: muted ghost/outline */
   .filter-btn[aria-pressed='false'] {
     background: var(--color-surface-elevated);
     border-color: var(--color-border);
@@ -320,9 +374,7 @@ const filterCountInitial = lang === 'ca' ? '9/9 actius' : '9/9 activos';
     color: var(--color-text);
   }
 
-  /* Pressed: soft tint of the type accent + colored border + dark
-     on-tint text. The solid accent is the no-`color-mix` fallback —
-     it pairs with `--chip-on-accent` exactly like Badge does. */
+  /* Pressed: soft tint of the type accent */
   .filter-btn[aria-pressed='true'] {
     border-color: var(--chip-accent);
     background: var(--chip-accent);
@@ -330,14 +382,7 @@ const filterCountInitial = lang === 'ca' ? '9/9 actius' : '9/9 activos';
     color: var(--chip-on-accent);
   }
 
-  /* === Bulk controls: end-aligned subgroup, secondary styling === */
-  .filter-controls {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-2);
-    margin-inline-start: auto;
-  }
-
+  /* === Bulk controls === */
   .filter-btn--control {
     min-height: 40px;
     padding-inline: var(--spacing-3);
@@ -352,8 +397,7 @@ const filterCountInitial = lang === 'ca' ? '9/9 actius' : '9/9 activos';
     color: var(--color-text);
   }
 
-  /* === Motion: subtle raise on hover, 160ms transitions, gated on
-     no-preference so reduced-motion users get instant state changes. === */
+  /* === Motion === */
   @media (prefers-reduced-motion: no-preference) {
     .filter-btn {
       transition:
@@ -370,30 +414,36 @@ const filterCountInitial = lang === 'ca' ? '9/9 actius' : '9/9 activos';
     }
   }
 
-  /* === Mobile: hide desktop chips, show trigger === */
-  @media (min-width: 640px) {
-    [data-filter-trigger] {
+  /* =============================================
+     MOBILE ≤639px
+     ============================================= */
+  @media (max-width: 639px) {
+    /* Show trigger, hide desktop chips + controls */
+    .filter-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      min-height: 44px;
+      padding-inline: var(--spacing-4);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      background: var(--color-surface-elevated);
+      color: var(--color-text);
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Hide desktop chips/controls inside the bar on mobile */
+    .filter-bar__chips,
+    .filter-bar__controls {
       display: none;
     }
   }
 
-  /* === Mobile trigger button === */
-  [data-filter-trigger] {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--spacing-2);
-    min-height: 44px;
-    padding-inline: var(--spacing-4);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-full);
-    background: var(--color-surface-elevated);
-    color: var(--color-text);
-    font: inherit;
-    font-weight: 600;
-    cursor: pointer;
-  }
-
-  /* === Bottom sheet === */
+  /* =============================================
+     BOTTOM SHEET
+     ============================================= */
   .filter-sheet {
     display: none;
     position: fixed;
@@ -409,6 +459,7 @@ const filterCountInitial = lang === 'ca' ? '9/9 actius' : '9/9 activos';
     box-shadow: 0 -4px 24px rgba(26, 22, 18, 0.12);
   }
 
+  /* JS sets data-open="": CSS attribute selector matches presence of attribute */
   .filter-sheet[data-open] {
     display: block;
   }
@@ -422,12 +473,9 @@ const filterCountInitial = lang === 'ca' ? '9/9 actius' : '9/9 activos';
     .filter-sheet[data-open] {
       transform: translateY(0);
     }
-
-    .filter-backdrop {
-      transition: opacity 300ms ease;
-    }
   }
 
+  /* Desktop: sheet and backdrop hidden */
   @media (min-width: 640px) {
     .filter-sheet,
     .filter-backdrop {
