@@ -37,6 +37,15 @@ const localeMap = {
   ca: 'ca_ES',
   es: 'es_ES',
 };
+const otherLocaleMap: Record<'ca' | 'es', 'ca_ES' | 'es_ES'> = {
+  ca: 'es_ES',
+  es: 'ca_ES',
+};
+
+const ogImageAlt: Record<'ca' | 'es', string> = {
+  ca: 'Programa de les Festes de Gata 2026',
+  es: 'Programa de las Fiestas de Gata 2026',
+};
 
 const hreflangTags = buildHreflangTags(
   Astro.url.pathname,
@@ -70,6 +79,11 @@ const hreflangTags = buildHreflangTags(
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImgUrl} />
     <meta property="og:locale" content={localeMap[lang]} />
+    <meta property="og:locale:alternate" content={otherLocaleMap[lang]} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content={ogImageAlt[lang]} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
@@ -78,6 +92,7 @@ const hreflangTags = buildHreflangTags(
       defer
       src="https://static.cloudflareinsights.com/beacon.min.js"
       data-cf-beacon='{"token": "1c2253a7e67b4aaca8ae6f91728e65a2"}'></script>
+    <meta name="twitter:image:alt" content={ogImageAlt[lang]} />
     {jsonLd.map((item) => <script type="application/ld+json" set:html={JSON.stringify(item)} />)}
   </head>
   <body>
