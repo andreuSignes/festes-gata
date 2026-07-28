@@ -39,6 +39,7 @@ type EventType =
   | 'infantil'
   | 'comida'
   | 'festes'
+  | 'pirotecnia'
   | 'otro';
 
 function initFilters(lang: 'ca' | 'es'): void {
@@ -54,6 +55,7 @@ function initFilters(lang: 'ca' | 'es'): void {
     'infantil',
     'comida',
     'festes',
+    'pirotecnia',
     'otro',
   ];
 

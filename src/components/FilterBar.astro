@@ -2,7 +2,7 @@
 /**
  * FilterBar — locale-aware event-type filter ("tag cloud").
  *
- * Renders 9 type chips (one per `EventType`) plus two bulk controls:
+ * Renders 10 type chips (one per `EventType`) plus two bulk controls:
  *
  *  - Reset (`data-filter-reset`) refills the active set so every type
  *    is selected again. Its single locale-aware label combines the
@@ -160,6 +160,10 @@ const clearLabel = controlCopy[lang].none;
   .filter-btn[data-filter-type='festes'] {
     --chip-accent: var(--color-festes);
     --chip-on-accent: var(--color-festes-fg);
+  }
+  .filter-btn[data-filter-type='pirotecnia'] {
+    --chip-accent: var(--color-pirotecnia);
+    --chip-on-accent: var(--color-pirotecnia-fg);
   }
   .filter-btn[data-filter-type='otro'] {
     --chip-accent: var(--color-otro);
