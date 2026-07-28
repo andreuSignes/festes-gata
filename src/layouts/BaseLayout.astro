@@ -11,6 +11,7 @@ interface Props {
   lang: 'ca' | 'es';
   ogImage?: string;
   jsonLd?: object[];
+  robots?: string;
 }
 
 const {
@@ -19,6 +20,7 @@ const {
   lang,
   ogImage = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/og/default.png`,
   jsonLd = [],
+  robots = 'index, follow, max-image-preview:large, max-snippet:-1',
 } = Astro.props;
 
 const siteName = 'Festes de Gata 2026';
@@ -98,7 +100,10 @@ const hreflangTags = buildHreflangTags(
     </script>
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+    {robots.startsWith('noindex') ? null : <link rel="canonical" href={canonical} />}
+    <link rel="icon" type="image/svg+xml" href={`${baseUrl}/favicon.svg`} />
+    <link rel="apple-touch-icon" sizes="180x180" href={`${baseUrl}/apple-touch-icon.png`} />
+    <meta name="robots" content={robots} />
     {hreflangTags.map((tag) => <link rel={tag.rel} hreflang={tag.hreflang} href={tag.href} />)}
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={siteName} />

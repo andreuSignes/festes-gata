@@ -41,7 +41,9 @@ const jsonLd = [buildDayEvent(day.data, lang), buildBreadcrumbList(day.data.date
 ---
 
 <BaseLayout
-  title={`${day.data.weekday} ${day.data.date}`}
+  title={day.data.theme
+    ? `${day.data.weekday} ${day.data.date} · ${day.data.theme}`
+    : `${day.data.weekday} ${day.data.date}`}
   description={`Programa del ${day.data.date} (${day.data.weekday})${day.data.theme ? ` — ${day.data.theme}` : ''} — Festes de Gata 2026.`}
   lang={lang}
   jsonLd={jsonLd}

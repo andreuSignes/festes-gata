@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /_astro/
 
 Sitemap: https://andreuSignes.github.io/festes-gata/sitemap-index.xml

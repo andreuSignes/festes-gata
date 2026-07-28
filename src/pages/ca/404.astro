@@ -13,7 +13,12 @@ const base = import.meta.env.BASE_URL;
 const homeHref = `${base}/ca/`;
 ---
 
-<BaseLayout title="Pàgina no trobada" description="La pàgina que busques no existeix." lang="ca">
+<BaseLayout
+  title="Pàgina no trobada"
+  description="La pàgina que busques no existeix."
+  lang="ca"
+  robots="noindex, follow"
+>
   <section>
     <h1>404 — Pàgina no trobada</h1>
     <p>No hem trobat la pàgina que busques.</p>

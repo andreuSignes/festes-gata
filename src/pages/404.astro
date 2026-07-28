@@ -44,7 +44,7 @@ const copy: Record<
 const t = copy[lang];
 ---
 
-<BaseLayout title={t.title} description={t.description} lang={lang}>
+<BaseLayout title={t.title} description={t.description} lang={lang} robots="noindex, follow">
   <section>
     <h1>{t.heading}</h1>
     <p>{t.body}</p>
