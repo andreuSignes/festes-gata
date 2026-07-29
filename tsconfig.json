@@ -4,10 +4,6 @@
   "exclude": ["dist"],
   "compilerOptions": {
     "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "exactOptionalPropertyTypes": true
   }
 }

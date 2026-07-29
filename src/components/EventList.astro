@@ -1,5 +1,5 @@
 ---
-import EventItemComponent from './EventItem.astro';
+import EventItem from './EventItem.astro';
 import type { Locale } from '../lib/event-type-labels';
 
 // Inferred event type from the days-* collections.
@@ -20,7 +20,7 @@ const { events, lang, isToday = false } = Astro.props;
   {
     events.map((event) => (
       <li data-event-type={event.type}>
-        <EventItemComponent event={event} lang={lang} isTodayEvent={isToday} />
+        <EventItem event={event} lang={lang} isTodayEvent={isToday} />
       </li>
     ))
   }
