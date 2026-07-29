@@ -8,6 +8,7 @@
 # onlyBuiltDependencies → allowBuilds (map: package-name: true|false)
 allowBuilds:
   esbuild: true
+  workerd: true
 
 # Peer-dep ergonomics compatible with Astro 7.
 autoInstallPeers: true

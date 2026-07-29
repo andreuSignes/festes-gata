@@ -22,7 +22,7 @@ const navLinks = [{ href: homeHref, label: labels[lang].nav, ariaLabel: labels[l
 // `/festes-gata/ca/`) at build time, so the regex must match both the bare
 // `/ca/` form and the `${base}/ca/` form.
 const pathWithoutLocale =
-  pathname.replace(new RegExp(`^${base.replace(/\/$/, '')}?/(ca|es)`), '') || '/';
+  pathname.replace(new RegExp(`^${base.replace(/\/$/, '')}/?(ca|es)`), '') || '/';
 ---
 
 <header class="site-header">
