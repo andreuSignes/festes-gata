@@ -49,6 +49,9 @@ const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Madrid' }).fo
     <h2 class="visually-hidden">
       {lang === 'ca' ? 'Programa per dies' : 'Programa por días'}
     </h2>
+    <div class="sticky-day-header" aria-hidden="true" hidden data-sticky-day-header>
+      <span class="sticky-day-header__title"></span>
+    </div>
     <ul class="days-grid">
       {
         days.map((day) => (

@@ -301,6 +301,65 @@ function initScrollReveal(): void {
   document.querySelectorAll('[data-day-id]').forEach((el) => observer.observe(el));
 }
 
+function initStickyDayHeader(): void {
+  const sticky = document.querySelector<HTMLElement>('[data-sticky-day-header]');
+  const titleEl = sticky?.querySelector<HTMLElement>('.sticky-day-header__title');
+  const headers = document.querySelectorAll<HTMLElement>('[data-day-header]');
+  if (!sticky || !titleEl || !headers.length) return;
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let activeId: string | null = null;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          const header = entry.target as HTMLElement;
+          const daySection = header.closest<HTMLElement>('[data-day-id]');
+          const newId = daySection?.dataset.dayId ?? null;
+          if (newId && newId !== activeId) {
+            activeId = newId;
+            const heading = header.querySelector('h1, h2');
+            const text = heading?.textContent?.trim() ?? '';
+            if (text) {
+              sticky.hidden = false;
+              if (reducedMotion) {
+                titleEl.textContent = text;
+              } else {
+                sticky.classList.add('slide-out');
+                setTimeout(() => {
+                  titleEl.textContent = text;
+                  sticky.classList.remove('slide-out');
+                  sticky.classList.add('slide-in');
+                  setTimeout(() => sticky.classList.remove('slide-in'), 300);
+                }, 200);
+              }
+            }
+          }
+        }
+      }
+    },
+    { threshold: 0, rootMargin: '-10% 0px -80% 0px' }
+  );
+
+  headers.forEach((h) => observer.observe(h));
+
+  // Show first visible day on load
+  const firstVisible = [...headers].find((h) => {
+    const rect = h.getBoundingClientRect();
+    return rect.top < window.innerHeight * 0.9;
+  });
+  if (firstVisible) {
+    const daySection = firstVisible.closest<HTMLElement>('[data-day-id]');
+    if (daySection?.dataset.dayId) {
+      activeId = daySection.dataset.dayId;
+      const heading = firstVisible.querySelector('h1, h2');
+      titleEl.textContent = heading?.textContent?.trim() ?? '';
+      sticky.hidden = false;
+    }
+  }
+}
+
 function run(): void {
   if (initialized) return;
   initialized = true;
@@ -310,6 +369,7 @@ function run(): void {
   initFilters(lang);
   initTodayScroll();
   initScrollReveal();
+  initStickyDayHeader();
   initBottomSheet();
 }
 
