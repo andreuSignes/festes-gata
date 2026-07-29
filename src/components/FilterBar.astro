@@ -71,7 +71,6 @@ const controlCopy: Record<Locale, { all: string; reset: string; none: string }> 
 };
 
 const groupLabel = lang === 'ca' ? 'Filtrar per tipus' : 'Filtrar por tipo';
-const filterLabel = lang === 'ca' ? 'Filtrar' : 'Filtrar';
 const resetLabel = `${controlCopy[lang].all} / ${controlCopy[lang].reset}`;
 const clearLabel = controlCopy[lang].none;
 const closeLabel = lang === 'ca' ? 'Tancar' : 'Cerrar';
@@ -98,31 +97,6 @@ const filterCountInitial = lang === 'ca' ? '9/9 actius' : '9/9 activos';
       ))
     }
   </div>
-
-  <!-- Mobile trigger: visible only on ≤639px -->
-  <button
-    type="button"
-    class="filter-trigger"
-    data-filter-trigger
-    aria-label={filterLabel}
-    aria-expanded="false"
-    aria-controls="filter-sheet"
-  >
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      aria-hidden="true"
-    >
-      <line x1="4" y1="6" x2="20" y2="6"></line>
-      <line x1="8" y1="12" x2="16" y2="12"></line>
-      <line x1="11" y1="18" x2="13" y2="18"></line>
-    </svg>
-    {filterLabel}
-  </button>
 
   <!-- Desktop controls: hidden on mobile -->
   <div class="filter-bar__controls">
@@ -287,11 +261,6 @@ const filterCountInitial = lang === 'ca' ? '9/9 actius' : '9/9 activos';
     display: contents;
   }
 
-  /* === Mobile trigger — hidden on ≥640px === */
-  .filter-trigger {
-    display: none;
-  }
-
   /* === Per-type accent tokens (aliases of the global palette) === */
   .filter-btn[data-filter-type='pasacalles'] {
     --chip-accent: var(--color-pasacalles);
@@ -418,23 +387,7 @@ const filterCountInitial = lang === 'ca' ? '9/9 actius' : '9/9 activos';
      MOBILE ≤639px
      ============================================= */
   @media (max-width: 639px) {
-    /* Show trigger, hide desktop chips + controls */
-    .filter-trigger {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--spacing-2);
-      min-height: 44px;
-      padding-inline: var(--spacing-4);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-full);
-      background: var(--color-surface-elevated);
-      color: var(--color-text);
-      font: inherit;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    /* Hide desktop chips/controls inside the bar on mobile */
+    /* Hide desktop chips + controls on mobile (FAB opens the sheet) */
     .filter-bar__chips,
     .filter-bar__controls {
       display: none;
