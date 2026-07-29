@@ -5,29 +5,59 @@
   "events": [
     {
       "time": "08:00",
-      "title": "Cuarta despertà a cargo la Quintà 2026 L'ANRAMÀ.",
-      "type": "festes"
+      "title": "Cuarta despertà",
+      "description": "Cuarta despertà a cargo de la Quintà 2026 L'ANRAMÀ.",
+      "type": "pasacalles"
+    },
+    {
+      "time": "10:00",
+      "title": "Misa de las quintadas",
+      "location": "Iglesia",
+      "description": "Solemne misa para todas las quintadas del pueblo.",
+      "type": "liturgia"
     },
     {
       "time": "13:00",
-      "title": "Toros en la banda a cargo grupo LOLIPOP patrocinado por la Comisión 2026.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Bous a Banda",
+      "location": "Bareto de los toros",
+      "description": "Bous a Banda a cargo del grupo LOLIPOP, patrocinado por la Comisión 2026.",
+      "type": "musica",
+      "sponsor": "Comissió 2026"
     },
     {
       "time": "18:00",
-      "title": "Actuación CAPITAL 90 y DJ hasta las 24:00 h en el paseo Alicante.",
+      "title": "Actuación de CAPITAL 90 y DJ",
+      "location": "Paseo de Alicante",
+      "description": "Actuación de CAPITAL 90 y DJ hasta las 24:00 en el paseo de Alicante.",
       "type": "musica"
     },
     {
+      "time": "19:30",
+      "title": "Santa Misa",
+      "location": "Iglesia",
+      "description": "Santa Misa.",
+      "type": "liturgia"
+    },
+    {
       "time": "22:00",
-      "title": "cena en las barracas.",
+      "title": "Cena en las barracas",
+      "location": "Grupo Escolar",
+      "description": "Cena en las barracas.",
       "type": "comida"
     },
     {
       "time": "23:30",
-      "title": "Actuación grupo SWEET SOULTZ en el Grupo Escolar.",
+      "title": "Orquesta SWEET SOULTZ",
+      "location": "Grupo Escolar",
+      "description": "Actuación de la orquesta SWEET SOULTZ en el Grupo Escolar.",
       "type": "musica"
+    },
+    {
+      "time": "01:30",
+      "title": "Gran Correfoc",
+      "location": "Calle la Pau → Paseo de Alicante",
+      "description": "Gran CORREFOC con el espectáculo «THE PURGE» a cargo de la Colla de DIMONIS DE MISLATA. Comenzará en la calle la Pau y acabará en el paseo de Alicante con un final lleno de fuego.",
+      "type": "pirotecnia"
     }
   ]
 }

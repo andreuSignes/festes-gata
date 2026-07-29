@@ -5,14 +5,10 @@
   "events": [
     {
       "time": "20:00",
-      "title": "Concentración en la ermita del Calvario de los quintos y quintas infantiles y mayores 2025 y del público en general, para la novena y la misa.",
-      "type": "liturgia",
-      "location": "ermita del Calvario"
-    },
-    {
-      "time": "22:00",
-      "title": "Disparo de fuegos artificiales e imagen pirotécnica con bombardeo de colores",
-      "type": "pirotecnia"
+      "title": "Bajada del Santísimo Cristo",
+      "location": "Ermita del Calvario → Plaza de la Iglesia",
+      "description": "Concentración en la ermita del Calvario de los quintos y quintas infantiles y mayores 2025 y del público en general, para la novena y la misa. Se impondrá la insignia del Santísimo Cristo a los quintos y quintas infantiles, a los mayores y a la Comisión de Fiestas 2026. A continuación, procesión de la Bajada del Santísimo Cristo del Calvario, acompañada por la Colla Montgó-Benimussa y la Banda Unió Musical de Gata. Después, en la plaza de la iglesia, volteo general de campanas indicando que el Santísimo Cristo ya se encuentra en la iglesia. Disparo de fuegos artificiales e imagen pirotécnica con bombardeo de colores.",
+      "type": "liturgia"
     }
   ]
 }

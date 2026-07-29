@@ -5,56 +5,74 @@
   "events": [
     {
       "time": "08:00",
-      "title": "Sexta despertà a cargo la Quintà 2026 L'ANRAMÀ.",
-      "type": "festes"
+      "title": "Sexta despertà",
+      "description": "Sexta despertà a cargo de la Quintà 2026 L'ANRAMÀ.",
+      "type": "pasacalles"
     },
     {
       "time": "10:30",
-      "title": "Concentración en la plaza Nova la Quintà Infantil ELS ALOCATS. Para hacer la despertà cada uno llevará su utensilio para hacer ruido.",
-      "type": "infantil"
+      "title": "Despertà infantil",
+      "location": "Plaza Nova",
+      "description": "Concentración en la plaza Nova de la Quintà Infantil ELS ALOCATS para hacer la despertà. Cada uno llevará su utensilio para hacer ruido.",
+      "type": "pasacalles"
     },
     {
       "time": "11:30",
-      "title": "Hinchables y espectáculo magia en el CSI para los más pequeños. A continuación, la Comisión ofrecerá comida a la Quintà Infantil ELS ALOCATS.",
+      "title": "Hinchables y magia",
+      "location": "CSI",
+      "description": "Hinchables y espectáculo de magia en el CSI para los más pequeños. A continuación, la Comisión ofrecerá comida a la Quintà Infantil ELS ALOCATS.",
       "type": "infantil"
     },
     {
       "time": "13:00",
-      "title": "Toros en la banda en el baret los toros a cargo grupo MONROE BAND ROCK, patrocinado por la Comisión 2026.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Bous a Banda",
+      "location": "Bareto de los toros",
+      "description": "Bous a Banda en el bareto de los toros a cargo del grupo MONROE BAND ROCK, patrocinado por la Comisión 2026.",
+      "type": "musica",
+      "sponsor": "Comissió 2026"
     },
     {
       "time": "18:00",
-      "title": "Entrada y suelta carretones para todos los niños y niñas. A continuación se repartirá agua limón para los más pequeños patrocinada por CA EL TRAMUSSER.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Carretones",
+      "location": "Recinto del corro",
+      "description": "Entrada y suelta de carretons para todos los niños y niñas. A continuación se repartirá agua limón para los más pequeños, patrocinada por CA EL TRAMUSSER.",
+      "type": "infantil",
+      "sponsor": "CA EL TRAMUSSER"
     },
     {
       "time": "19:00",
-      "title": "Entrada 10 animales colorados y pintos a cargo la ganadería ELS COVES patrocinada por KIROS GATA.",
+      "title": "Entrada de animales colorados",
+      "location": "Recinto del corro",
+      "description": "Entrada de 10 animales colorados y pintos a cargo de la ganadería ELS COVES, patrocinada por KIROS GATA.",
       "type": "bous",
-      "location": "Parc Enric Valor"
+      "sponsor": "KIROS GATA"
     },
     {
       "time": "19:15",
-      "title": "Suelta vacas y toro a cargo la ganadería LA PALOMA Xaló.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Suelta de vacas y toro",
+      "location": "Recinto del corro",
+      "description": "Suelta de vacas y toro a cargo de la ganadería LA PALOMA de Xaló.",
+      "type": "bous"
     },
     {
       "time": "22:00",
-      "title": "cena en las barracas.",
+      "title": "Cena en las barracas",
+      "location": "Grupo Escolar",
+      "description": "Cena en las barracas.",
       "type": "comida"
     },
     {
       "time": "23:30",
-      "title": "Concentración disfraces en la plaza Nova, donde comenzará un pasacalle hasta el Grupo Escolar, acompañados por la GATUKADA y Charanga L'EMBOLIC.",
+      "title": "Pasacalle de disfraces",
+      "location": "Plaza Nova → Grupo Escolar",
+      "description": "Concentración de disfraces en la plaza Nova, donde comenzará un pasacalle hasta el Grupo Escolar, acompañados por la GATUKADA y la Xaranga L'EMBOLIC.",
       "type": "pasacalles"
     },
     {
       "time": "00:00",
-      "title": "Actuación la orquesta LA VIVA y DJ hasta las 05.30 h la madrugada.",
+      "title": "Orquesta LA VIVA y DJ",
+      "location": "Grupo Escolar",
+      "description": "Actuación de la orquesta LA VIVA y DJ hasta las 05:30 de la madrugada.",
       "type": "musica"
     }
   ]

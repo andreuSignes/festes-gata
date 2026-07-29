@@ -1,54 +1,70 @@
 {
   "date": "2026-07-31",
   "weekday": "Divendres",
-  "theme": "FESTIGATA",
+  "theme": "Festigata",
   "events": [
     {
       "time": "08:00",
-      "title": "Tercera despertà a càrrec la Quintà 2026 L'ANRAMÀ.",
-      "type": "festes"
+      "title": "Tercera despertà",
+      "description": "Tercera despertà a càrrec de la Quintà 2026 L'ANRAMÀ.",
+      "type": "pasacalles"
     },
     {
       "time": "11:00",
-      "title": "Divertit i refrescant parc aquàtic al passeig d'Alacant a càrrec d'ESPECTACLES L'AFICIÓ i festa l'espuma.",
-      "type": "infantil"
+      "title": "Parc aquàtic i festa de l'espuma",
+      "location": "Passeig d'Alacant",
+      "description": "Divertit i refrescant parc aquàtic al passeig d'Alacant a càrrec d'Espectacles L'Afició, i festa de l'espuma.",
+      "type": "infantil",
+      "sponsor": "Espectacles L'Afició"
     },
     {
       "time": "13:00",
-      "title": "Bous a banda al baret dels bous a càrrec GRUPO Ñ patrocinat per la Comissió 2026.",
+      "title": "Bous a Banda",
+      "location": "Baret dels bous",
+      "description": "Bous a Banda al baret dels bous a càrrec del GRUPO Ñ, patrocinat per la Comissió 2026.",
       "type": "musica",
-      "location": "Parc Enric Valor"
+      "sponsor": "Comissió 2026"
     },
     {
       "time": "17:00",
-      "title": "Tercera i quarta eliminatòria Campionat Mundial TRUC al parc Enric Valor.",
+      "title": "Campionat de TRUC",
+      "location": "Parc Enric Valor",
+      "description": "Tercera i quarta eliminatòria del Campionat Mundial de TRUC al parc Enric Valor.",
       "type": "festes"
     },
     {
       "time": "19:00",
-      "title": "Entrà bous i vaques la Ramaderia CRISTIAN SOLER Gata Gorgos.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Entradà de bous i vaques",
+      "location": "Recinte del corro",
+      "description": "Entradà de bous i vaques de la ramaderia CRISTIAN SOLER de Gata de Gorgos.",
+      "type": "bous"
     },
     {
       "time": "19:15",
-      "title": "Solta vaques i bou a càrrec la ramaderia FDO. MACHANCOSES Xest.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Solta de vaques i bou",
+      "location": "Recinte del corro",
+      "description": "Solta de vaques i bou a càrrec de la ramaderia FDO. MACHANCOSES de Xest.",
+      "type": "bous"
     },
     {
       "time": "22:00",
-      "title": "Sopar a les barraques.",
+      "title": "Sopar a les barraques",
+      "location": "Grup Escolar",
+      "description": "Sopar a les barraques.",
       "type": "comida"
     },
     {
       "time": "23:00",
-      "title": "Cordà Infantil a càrrec la Pirotècnia Borredà al carrer Moreres per als xiquets i xiquetes entre 8 i 16 anys que tinguen el carnet CRE.",
-      "type": "infantil"
+      "title": "Cordà infantil",
+      "location": "Carrer Moreres",
+      "description": "Cordà infantil a càrrec de la Pirotècnia BORREDÀ al carrer Moreres, per als xiquets i xiquetes entre 8 i 16 anys que tinguen el carnet CRE.",
+      "type": "pirotecnia"
     },
     {
       "time": "23:30",
-      "title": "FESTIGATA amb les actuacions DJ CABRAFOTUDA, ROMÀNTIC DIMONI i SANDRA MONFORT.",
+      "title": "FESTIGATA",
+      "location": "Passeig d'Alacant",
+      "description": "FESTIGATA amb les actuacions de DJ CABRAFOTUDA, ROMÀNTIC DIMONI i SANDRA MONFORT.",
       "type": "musica"
     }
   ]

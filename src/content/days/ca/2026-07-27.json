@@ -5,14 +5,10 @@
   "events": [
     {
       "time": "20:00",
-      "title": "Concentració a l'ermita del Calvari dels quintos i quintes infantils i majors 2025 i del publik en general, per a la novena i la missa. S'imposarà la insígnia del Santíssim Crist als quintos i quintes infantils, als majors i a la Comissió de Festes 2026. A continuació, processó de la Baixada del Santíssim Crist del Calvari, acompanyada per la Colla Montgó-Benimussa i la Banda Unió Musical de Gata. Després, a la plaça de l'església, volteig general de campanes indicant que el Santíssim Crist ja es troba a l'església. Disparament de focs artificials i imatge pirotècnica amb bombardeig de colors.",
-      "type": "liturgia",
-      "location": "ermita del Calvari"
-    },
-    {
-      "time": "22:00",
-      "title": "Disparada de focs artificials i imatge pirotècnica amb bombard de colors",
-      "type": "pirotecnia"
+      "title": "Baixada del Santíssim Crist",
+      "location": "Ermita del Calvari → Plaça de l'Església",
+      "description": "Concentració a l'ermita del Calvari dels quintos i quintes infantils i majors 2025 i del públic en general, per a la novena i la missa. S'imposarà la insígnia del Santíssim Crist als quintos i quintes infantils, als majors i a la Comissió de Festes 2026. A continuació, processó de la Baixada del Santíssim Crist del Calvari, acompanyada per la Colla Montgó-Benimussa i la Banda Unió Musical de Gata. Després, a la plaça de l'església, volteig general de campanes indicant que el Santíssim Crist ja es troba a l'església. Disparament de focs artificials i imatge pirotècnica amb bombardeig de colors.",
+      "type": "liturgia"
     }
   ]
 }

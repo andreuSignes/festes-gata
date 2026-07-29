@@ -24,7 +24,7 @@ describe('content-schema', () => {
     expect(jsonFiles).toHaveLength(13);
   });
 
-  it('should validate all 13 days with exactly 80 events total', () => {
+  it('should validate all 13 days with exactly 88 events total', () => {
     let totalEvents = 0;
     const validatedDays: string[] = [];
 
@@ -45,8 +45,30 @@ describe('content-schema', () => {
       }
     }
 
-    expect(totalEvents).toBe(81);
+    expect(totalEvents).toBe(88);
     expect(validatedDays).toHaveLength(13);
+  });
+
+  it('should have parity between ca and es (same dates, same event counts)', () => {
+    const CA_DIR = join(__dirname, '../src/content/days/ca');
+    const caFiles = readdirSync(CA_DIR)
+      .filter((f) => f.endsWith('.json'))
+      .sort();
+
+    expect(caFiles).toEqual(jsonFiles);
+
+    for (const file of jsonFiles) {
+      const caData = JSON.parse(readFileSync(join(CA_DIR, file), 'utf-8'));
+      const esData = JSON.parse(readFileSync(join(DAYS_DIR, file), 'utf-8'));
+
+      expect(caData.events.length, `${file}: ca/es event count mismatch`).toBe(
+        esData.events.length
+      );
+      expect(
+        caData.events.map((e: { time: string }) => e.time),
+        `${file}: ca/es event times must match`
+      ).toEqual(esData.events.map((e: { time: string }) => e.time));
+    }
   });
 
   it('should have filename date equal to JSON date field for all 13 files', () => {

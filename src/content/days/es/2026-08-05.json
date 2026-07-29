@@ -5,43 +5,69 @@
   "events": [
     {
       "time": "08:00",
-      "title": "Octava despertà a cargo la Quintà 2026 L'ANRAMÀ.",
-      "type": "festes"
+      "title": "Octava despertà",
+      "description": "Octava despertà a cargo de la Quintà 2026 L'ANRAMÀ.",
+      "type": "pasacalles"
     },
     {
       "time": "12:00",
-      "title": "Solemne misa en acción gracias para nuestros mayores pueblo.",
+      "title": "Misa de los mayores",
+      "location": "Iglesia",
+      "description": "Solemne misa en acción de gracias para nuestros mayores del pueblo.",
       "type": "liturgia"
     },
     {
       "time": "13:00",
-      "title": "Actuación Grup Danses LA LLATA en el Centro Social. La Comisión 2026 repartirá VERMUT y frutos secos.",
-      "type": "musica"
+      "title": "Danzas La Llata",
+      "location": "Centro Social",
+      "description": "Actuación del Grup de Danses LA LLATA en el Centro Social. La Comisión 2026 repartirá vermut y frutos secos.",
+      "type": "musica",
+      "sponsor": "Comissió 2026"
     },
     {
       "time": "13:30",
-      "title": "Toros en la banda en el baret los toros con el grupo FERRETERÍA ROSARIO, patrocinado por la Comisión 2026.",
-      "type": "liturgia"
+      "title": "Bous a Banda",
+      "location": "Bareto de los toros",
+      "description": "Bous a Banda en el bareto de los toros con el grupo FERRETERIA ROSARIO, patrocinado por la Comisión 2026.",
+      "type": "musica",
+      "sponsor": "Comissió 2026"
     },
     {
       "time": "14:00",
-      "title": "La Comisión ofrecerá un vino honor para nuestros mayores en el centro social. Después bailaremos al ritmo TONI CATALÀ.",
-      "type": "festes"
+      "title": "Vino de honor",
+      "location": "Centro Social",
+      "description": "La Comisión ofrecerá un vino de honor para nuestros mayores en el Centro Social. Después bailaremos al ritmo de TONI CATALÀ.",
+      "type": "festes",
+      "sponsor": "Comissió 2026"
     },
     {
       "time": "17:30",
-      "title": "Espectaculares partidas Pilota en el Trinquet Xiquet Gata.",
-      "type": "infantil"
+      "title": "Partidas de Pelota",
+      "location": "Trinquet Xiquet de Gata",
+      "description": "Espectaculares partidas de Pelota en el Trinquet Xiquet de Gata. 1ª partida de raspall pro2 entre Ximo y Ferrando contra Favarero y Terrades II, patrocinada por Signes Grimalt, con premio de 100 euros. 2ª partida de escala i corda Pro1 entre Giner y Tomàs II contra Francés y Nacho, patrocinada por la Concejalía de Deportes del Ayuntamiento de Gata de Gorgos, con premio de 200 euros patrocinado por la Comisión 2026.",
+      "type": "festes",
+      "sponsor": "Comissió 2026"
+    },
+    {
+      "time": "19:30",
+      "title": "Misa y ofrenda de flores",
+      "location": "Iglesia",
+      "description": "Misa y, a continuación, ofrenda de flores.",
+      "type": "liturgia"
     },
     {
       "time": "20:00",
-      "title": "Concentración quintos y quintas infantiles y mayores, peñas y pueblo en general en la plaza Nova, para participar en la ofrenda al Santísimo Cristo Calvario, acompañados por la Colla Montgó-Benimussa y la Banda Coda.",
+      "title": "Ofrenda al Santísimo Cristo",
+      "location": "Plaza Nova → Iglesia",
+      "description": "Concentración de quintos y quintas infantiles y mayores, peñas y pueblo en general en la plaza Nova para participar en la ofrenda al Santísimo Cristo del Calvario, acompañados por la Colla Montgó-Benimussa y la Banda de Coda.",
       "type": "liturgia"
     },
     {
       "time": "00:00",
-      "title": "Concert la revetla. La BANDA UNIÓ MUSICAL DE GATA ofrecerá un año más un espectacular concierto en la plaza la iglesia. Al finalizar se disparará la CORDÀ en el parque Enric Valor a cargo la pirotecnia BORREDÀ. AL RECINTE SOLO PODRÁN ACCEDER PERSONAS CON CARNET CRE.",
-      "type": "musica"
+      "title": "Concierto de la Banda y Cordà",
+      "location": "Plaza de la Iglesia → Parque Enric Valor",
+      "description": "Concierto de la verbena. La BANDA UNIÓ MUSICAL DE GATA ofrecerá un año más un espectacular concierto en la plaza de la Iglesia. Al finalizar se disparará la CORDÀ en el parque Enric Valor a cargo de la Pirotècnia BORREDÀ. AL RECINTO SOLO PODRÁN ACCEDIR PERSONAS CON CARNET CRE.",
+      "type": "pirotecnia"
     }
   ]
 }

@@ -5,40 +5,53 @@
   "events": [
     {
       "time": "08:00",
-      "title": "Segunda despertà a cargo la Quintà 2026 L'ANRAMÀ.",
-      "type": "festes"
+      "title": "Segunda despertà",
+      "description": "Segunda despertà a cargo de la Quintà 2026 L'ANRAMÀ.",
+      "type": "pasacalles"
     },
     {
       "time": "13:00",
-      "title": "Toros en la banda en el baret los toros a cargo grupo PLANET 8, patrocinado por la Comisión 2026.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Bous a Banda",
+      "location": "Bareto de los toros",
+      "description": "Bous a Banda en el bareto de los toros a cargo del grupo PLANET 8, patrocinado por la Comisión 2026.",
+      "type": "musica",
+      "sponsor": "Comissió 2026"
     },
     {
       "time": "18:00",
-      "title": "En la carpa parque Enric Valor, espectáculo infantil patrocinado por la Diputación Provincial Alicante.",
-      "type": "infantil"
+      "title": "Espectáculo infantil",
+      "location": "Parque Enric Valor",
+      "description": "En la carpa del parque Enric Valor, espectáculo infantil patrocinado por la Diputación Provincial de Alicante.",
+      "type": "infantil",
+      "sponsor": "Diputación de Alicante"
     },
     {
       "time": "19:00",
-      "title": "Entrada 10 TOROS la ganadería LA PALOMA Xaló.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Entrada de 10 toros",
+      "location": "Recinto del corro",
+      "description": "Entrada de 10 toros de la ganadería La Paloma de Xaló.",
+      "type": "bous"
     },
     {
       "time": "19:15",
-      "title": "Suelta vacas y toro a cargo la ganadería GREGORIO DE JESÚS Sueca.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Suelta de vacas y toro",
+      "location": "Recinto del corro",
+      "description": "Suelta de vacas y toro a cargo de la ganadería GREGORIO DE JESÚS de Sueca.",
+      "type": "bous"
     },
     {
       "time": "22:00",
-      "title": "Concurso paellas en el Grupo Escolar. La Comisión 2026 dará un premio a la mejor paella hecha en el recinto.",
-      "type": "comida"
+      "title": "Concurso de paellas",
+      "location": "Grupo Escolar",
+      "description": "Concurso de paellas en el Grupo Escolar. La Comisión 2026 dará un premio a la mejor paella hecha en el recinto. Amenizado por la Xaranga Toca't un ou.",
+      "type": "comida",
+      "sponsor": "Comissió 2026"
     },
     {
       "time": "00:00",
-      "title": "Espectacular actuación la orquesta LA FLAMA hasta las 5 la madrugada.",
+      "title": "Orquesta LA FLAMA",
+      "location": "Grupo Escolar",
+      "description": "Espectacular actuación de la orquesta LA FLAMA hasta las 5 de la madrugada.",
       "type": "musica"
     }
   ]
