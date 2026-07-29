@@ -61,9 +61,12 @@ branches:
       required_status_checks:
         # Require branches to be up to date before merging.
         strict: true
-        # Contexts: the job name reported by .github/workflows/ci.yml.
+        # Contexts: the **job key** reported by .github/workflows/ci.yml.
+        # GitHub Actions uses the YAML key (kebab-case) as the status-check
+        # context, NOT the `name:` display attribute. The job key in
+        # ci.yml is `validate-pr`, so the context must be `validate-pr`.
         contexts:
-          - Validate PR
+          - validate-pr
       # Apply all of the above to administrators too.
       enforce_admins: true
       # Block merge commits from being pushed — matches the squash-only

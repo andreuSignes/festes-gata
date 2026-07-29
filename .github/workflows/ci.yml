@@ -14,8 +14,13 @@ permissions:
   contents: read
 
 jobs:
-  validate:
-    name: Validate
+  validate-pr:
+    # GitHub reports the status-check context as the **job key** (not the
+    # display name). The key MUST match the `contexts:` list in
+    # `.github/settings.yml` `required_status_checks.contexts` exactly,
+    # otherwise the branch-protection rule silently never matches and
+    # `main` can be merged without a passing CI run.
+    name: Validate PR
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
