@@ -190,6 +190,65 @@ main {
   }
 }
 
+/* === Sticky day header (mobile only) === */
+.sticky-day-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: var(--color-surface);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-bottom: 1px solid var(--color-border);
+  transform: translateY(-100%);
+  transition: transform 250ms ease-out;
+  pointer-events: none;
+}
+
+.sticky-day-header:not([hidden]) {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.sticky-day-header__title {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sticky-day-header.slide-out {
+    animation: sticky-slide-out 250ms ease-out forwards;
+  }
+  .sticky-day-header.slide-in {
+    animation: sticky-slide-in 250ms ease-out forwards;
+  }
+
+  @keyframes sticky-slide-out {
+    to {
+      transform: translateY(-100%);
+    }
+  }
+
+  @keyframes sticky-slide-in {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  .sticky-day-header {
+    display: none;
+  }
+}
+
 /* === A11y helper === */
 .visually-hidden {
   position: absolute;

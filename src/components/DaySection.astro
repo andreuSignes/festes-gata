@@ -44,7 +44,7 @@ const emptyDayCopy: Record<Locale, string> = {
   data-day-is-today={isToday ? 'true' : undefined}
   aria-labelledby={titleId}
 >
-  <header>
+  <header data-day-header>
     <time datetime={day.data.date}>{day.data.date}</time>
     <HeadingTag id={titleId} transition:name={`day-title-${day.id}`}>
       {day.data.weekday}
