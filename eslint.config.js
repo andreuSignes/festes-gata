@@ -4,10 +4,14 @@ import eslintPluginAstro from 'eslint-plugin-astro';
 import * as astroParser from 'astro-eslint-parser';
 import tsParser from '@typescript-eslint/parser';
 import eslintConfigPrettier from 'eslint-config-prettier';
+import eslintPluginSecurity from 'eslint-plugin-security';
 import globals from 'globals';
 
 export default defineConfig([
   js.configs.recommended,
+  // Surface insecure patterns (eval, child-process, regex DoS, etc.).
+  // Recommended ruleset is non-noisy: it never auto-fails on style.
+  eslintPluginSecurity.configs.recommended,
   eslintConfigPrettier,
   ...eslintPluginAstro.configs.recommended,
   {
@@ -40,17 +44,24 @@ export default defineConfig([
       },
     },
     rules: {
-      'no-unused-vars': 'warn',
-      'no-console': 'warn',
+      // CLI / tooling scripts are the only place we want explicit
+      // console.* and intentionally-unused sinks.
+      'no-unused-vars': 'error',
+      'no-console': 'error',
     },
   },
   {
     files: ['**/*.js'],
     rules: {
-      'no-unused-vars': 'warn',
+      'no-unused-vars': 'error',
     },
   },
   {
-    ignores: ['dist/**', 'node_modules/**', '.astro/**', '.worktrees/**', '*.min.js'],
+    // Note: `.worktrees/**` is intentionally NOT ignored. AGENTS.md
+    // mandates every change lives in a worktree before merging; lint
+    // must therefore see those files so a developer running
+    // `pnpm lint` from inside a worktree catches problems before
+    // pushing the PR.
+    ignores: ['dist/**', 'node_modules/**', '.astro/**', '*.min.js'],
   },
 ]);

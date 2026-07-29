@@ -6,9 +6,12 @@
 # https://pnpm.io/migration and https://pnpm.io/settings.
 #
 # onlyBuiltDependencies → allowBuilds (map: package-name: true|false)
+# `esbuild` is the native binary Vite/Astro load at runtime; it MUST
+# be allowed to run its postinstall script. `workerd` was previously
+# pulled in transitively by the (now removed) `wrangler` devDep and
+# is no longer needed.
 allowBuilds:
   esbuild: true
-  workerd: true
 
 # Peer-dep ergonomics compatible with Astro 7.
 autoInstallPeers: true
