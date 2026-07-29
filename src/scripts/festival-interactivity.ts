@@ -46,6 +46,7 @@ function initBottomSheet(): void {
   const sheet = document.querySelector<HTMLElement>('[data-filter-sheet]');
   const backdrop = document.querySelector<HTMLElement>('[data-filter-backdrop]');
   const closeBtn = document.querySelector<HTMLButtonElement>('[data-filter-sheet-close]');
+  const fab = document.querySelector<HTMLElement>('.filter-fab');
 
   if (!trigger || !sheet || !backdrop || !closeBtn) return;
 
@@ -53,12 +54,14 @@ function initBottomSheet(): void {
   const $sheet = sheet;
   const $backdrop = backdrop;
   const $closeBtn = closeBtn;
+  const $fab = fab;
 
   function open(): void {
     $sheet.dataset['open'] = '';
     $backdrop.dataset['open'] = '';
     $trigger.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
+    if ($fab) $fab.style.display = 'none';
     $closeBtn.focus();
   }
 
@@ -67,6 +70,7 @@ function initBottomSheet(): void {
     delete $backdrop.dataset['open'];
     $trigger.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+    if ($fab) $fab.style.display = '';
     $trigger.focus();
   }
 

@@ -249,6 +249,61 @@ main {
   }
 }
 
+/* === Filter FAB (mobile only) === */
+.filter-fab {
+  position: fixed;
+  bottom: var(--spacing-5);
+  right: var(--spacing-4);
+  z-index: 100;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-primary);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(213, 67, 140, 0.35);
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.filter-fab:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(213, 67, 140, 0.45);
+}
+
+.filter-fab:active {
+  transform: scale(0.95);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .filter-fab {
+    animation: fab-appear 300ms ease-out both;
+  }
+
+  @keyframes fab-appear {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+/* Hide on desktop */
+@media (min-width: 640px) {
+  .filter-fab {
+    display: none;
+  }
+}
+
 /* === A11y helper === */
 .visually-hidden {
   position: absolute;

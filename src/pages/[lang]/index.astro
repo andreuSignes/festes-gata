@@ -46,6 +46,31 @@ const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Madrid' }).fo
   </section>
   <section>
     <FilterBar lang={lang} />
+
+    <!-- FAB: filter trigger, mobile only (≥640px shows chips) -->
+    <button
+      type="button"
+      class="filter-fab"
+      data-filter-trigger
+      aria-label={lang === 'ca' ? 'Filtrar' : 'Filtrar'}
+      aria-expanded="false"
+      aria-controls="filter-sheet"
+    >
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
+        <line x1="4" y1="6" x2="20" y2="6"></line>
+        <line x1="8" y1="12" x2="16" y2="12"></line>
+        <line x1="11" y1="18" x2="13" y2="18"></line>
+      </svg>
+    </button>
+
     <h2 class="visually-hidden">
       {lang === 'ca' ? 'Programa per dies' : 'Programa por días'}
     </h2>
