@@ -5,27 +5,44 @@
   "events": [
     {
       "time": "08:00",
-      "title": "Despertà a càrrec la Comissió 2026.",
-      "type": "festes"
+      "title": "Despertà final",
+      "description": "Despertà a càrrec de la Comissió 2026.",
+      "type": "pasacalles",
+      "sponsor": "Comissió 2026"
     },
     {
-      "time": "11:00",
-      "title": "Cercavila per arreplegar a festers i festeres majors i infantils.",
-      "type": "infantil"
-    },
-    {
-      "time": "12:00",
-      "title": "Solemne Missa Major en honor al Santíssim Crist Calvari, cantada pel Grup Serrillàs patrocinat per la Comissió 2026. En acabar la missa es dispararà un bombardeig a càrrec la Pirotècnica BORREDÀ. Després, vi d'honor al Centre Social a càrrec la Comissió Festes 2026, on es farà lliurament dels diferents premis (carrosses, truc, carrers, disfresses…).",
+      "time": "10:00",
+      "title": "Missa",
+      "location": "Església",
+      "description": "Missa.",
       "type": "liturgia"
     },
     {
+      "time": "11:00",
+      "title": "Cercavila de recollida",
+      "description": "Cercavila per a arreplegar a festers i festeres majors i infantils.",
+      "type": "pasacalles"
+    },
+    {
+      "time": "12:00",
+      "title": "Missa Major",
+      "location": "Església",
+      "description": "Solemne Missa Major en honor al Santíssim Crist del Calvari, cantada pel Grup Serrillàs, patrocinada per la Comissió 2026. En acabar la missa es dispararà un bombardeig a càrrec de la Pirotècnia BORREDÀ. Després, vi d'honor al Centre Social a càrrec de la Comissió de Festes 2026, on es farà lliurament dels diferents premis: carrosses, truc, carrers, disfresses.",
+      "type": "liturgia",
+      "sponsor": "Comissió 2026"
+    },
+    {
       "time": "19:30",
-      "title": "Missa i solemne processó per acompanyar al Santíssim Crist fins a l'Ermita Calvari, acompanyats per la Colla Montgó-Benimussa, Banda Coda i la Banda Unió Musical Gata. A continuació, CASTELL focs artificials a càrrec la Pirotècnica BORREDÀ.",
+      "title": "Processó de pujada",
+      "location": "Església → Ermita del Calvari",
+      "description": "Missa i solemne processó per acompanyar al Santíssim Crist fins a l'Ermita del Calvari, acompanyats per la Colla Montgó-Benimussa, la Banda de Coda i la Banda Unió Musical de Gata. A continuació, CASTELL de focs artificials a càrrec de la Pirotècnia BORREDÀ.",
       "type": "liturgia"
     },
     {
       "time": "22:30",
-      "title": "CASTELL de focs artificials a càrrec de la Pirotècnic BORREDÀ.",
+      "title": "Castell de focs",
+      "location": "Ermita del Calvari",
+      "description": "Castell de focs artificials a càrrec de la Pirotècnia BORREDÀ.",
       "type": "pirotecnia"
     }
   ]

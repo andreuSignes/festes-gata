@@ -5,57 +5,73 @@
   "events": [
     {
       "time": "08:00",
-      "title": "Setena despertà a càrrec la Quintà 2026 L'ANRAMÀ.",
-      "type": "festes"
+      "title": "Setena despertà",
+      "description": "Setena despertà a càrrec de la Quintà 2026 L'ANRAMÀ.",
+      "type": "pasacalles"
     },
     {
       "time": "09:00",
-      "title": "Entrà bous i vaques a càrrec la ramaderia CRISTIAN SOLER Gata Gorgos i, a continuació solta vaques la mateixa ramaderia.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Entradà de bous i vaques",
+      "location": "Recinte del corro",
+      "description": "Entradà de bous i vaques a càrrec de la ramaderia CRISTIAN SOLER de Gata de Gorgos. A continuació, solta de vaques de la mateixa ramaderia.",
+      "type": "bous"
     },
     {
       "time": "13:00",
-      "title": "Bous a banda al baret dels bous a càrrec grup LOS CIGÜEÑOS, patrocinat per la Comissió 2026.",
+      "title": "Bous a Banda",
+      "location": "Baret dels bous",
+      "description": "Bous a Banda al baret dels bous a càrrec del grup LOS CIGÜEÑOS, patrocinat per la Comissió 2026.",
       "type": "musica",
-      "location": "Parc Enric Valor"
+      "sponsor": "Comissió 2026"
     },
     {
       "time": "17:00",
-      "title": "Semifinals i final campionat mundial TRUC al parc Enric Valor.",
+      "title": "Campionat de TRUC",
+      "location": "Parc Enric Valor",
+      "description": "Semifinals i final del Campionat Mundial de TRUC al parc Enric Valor.",
       "type": "festes"
     },
     {
       "time": "18:00",
-      "title": "Entrà transhumant mansets, eixida carrer Doctor Moratal fins al corro.",
-      "type": "festes"
+      "title": "Transhumància de mansos",
+      "location": "Carrer Doctor Moratal → Recinte del corro",
+      "description": "Entradà transhumant de mansos, eixida del carrer Doctor Moratal fins al corro.",
+      "type": "bous"
     },
     {
       "time": "19:00",
-      "title": "Entrà mansos i cavalls, eixida carrer Doctor Moratal fins al corro, a càrrec la ramaderia BENAVENT i cavallistas Gata i pobles veïns. A continuació, solta vaques i bou la ramaderia BENAVENT.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Entradà de mansos i cavalls",
+      "location": "Carrer Doctor Moratal → Recinte del corro",
+      "description": "Entradà de mansos i cavalls, eixida del carrer Doctor Moratal fins al corro, a càrrec de la ramaderia BENAVENT i cavallistes de Gata i pobles veïns. A continuació, solta de vaques i bou de la ramaderia BENAVENT.",
+      "type": "bous"
     },
     {
       "time": "22:00",
-      "title": "Sopar a les barraques.",
+      "title": "Sopar a les barraques",
+      "location": "Grup Escolar",
+      "description": "Sopar a les barraques.",
       "type": "comida"
     },
     {
       "time": "22:00",
-      "title": "Marxa nocturna organitzada pel GEG amb eixida des la seua seu al Grup Escolar.",
+      "title": "Marxa nocturna",
+      "location": "Grup Escolar",
+      "description": "Marxa nocturna organitzada pel GEG amb eixida des de la seua seu al Grup Escolar.",
       "type": "festes"
     },
     {
       "time": "23:00",
-      "title": "Actuació URBÀLIA RURANA format ball celebrant el seu 35 anniversari. Per a celebrar este anniversari vindrem vestits amb la indumentària típica la terra i la Comissió repartirà mistela per a tots.",
-      "type": "musica"
+      "title": "URBALIA RURANA",
+      "description": "Actuació d'URBALIA RURANA en format ball celebrant el seu 35 aniversari. Per a celebrar este aniversari, la Comissió repartirà mistela per a tots. Es recomana vindre amb la indumentària típica de la terra.",
+      "type": "musica",
+      "sponsor": "Comissió 2026"
     },
     {
       "time": "01:00",
-      "title": "Entrà 6 bous i 6 vaques la ramaderia FDO. MACHANCOSES.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Entradà de bous i vaques",
+      "location": "Recinte del corro",
+      "description": "Entradà de 6 bous i 6 vaques de la ramaderia FDO. MACHANCOSES. A continuació, solta de vaques i bou de la ramaderia CRISTIAN SOLER.",
+      "type": "bous"
     }
   ]
 }

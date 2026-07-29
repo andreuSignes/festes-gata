@@ -1,54 +1,70 @@
 {
   "date": "2026-07-31",
   "weekday": "Viernes",
-  "theme": "FESTIGATA",
+  "theme": "Festigata",
   "events": [
     {
       "time": "08:00",
-      "title": "Tercera despertà a cargo la Quintà 2026 L'ANRAMÀ.",
-      "type": "festes"
+      "title": "Tercera despertà",
+      "description": "Tercera despertà a cargo de la Quintà 2026 L'ANRAMÀ.",
+      "type": "pasacalles"
     },
     {
       "time": "11:00",
-      "title": "Divertido y refrescante parque acuático en el paseo Alicante a cargo ESPECTACLES L'AFICIÓ y fiesta la espuma.",
-      "type": "infantil"
+      "title": "Parque acuático y fiesta de la espuma",
+      "location": "Paseo de Alicante",
+      "description": "Divertido y refrescante parque acuático en el paseo de Alicante a cargo de Espectacles L'Afició, y fiesta de la espuma.",
+      "type": "infantil",
+      "sponsor": "Espectacles L'Afició"
     },
     {
       "time": "13:00",
-      "title": "Toros en la banda en el baret los toros a cargo GRUPO Ñ patrocinado por la Comisión 2026.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Bous a Banda",
+      "location": "Bareto de los toros",
+      "description": "Bous a Banda en el bareto de los toros a cargo del GRUPO Ñ, patrocinado por la Comisión 2026.",
+      "type": "musica",
+      "sponsor": "Comissió 2026"
     },
     {
       "time": "17:00",
-      "title": "Tercera y cuarta las eliminatorias Campeonato Mundial TRUC en el parque Enric Valor.",
+      "title": "Campeonato de TRUC",
+      "location": "Parque Enric Valor",
+      "description": "Tercera y cuarta eliminatoria del Campeonato Mundial de TRUC en el parque Enric Valor.",
       "type": "festes"
     },
     {
       "time": "19:00",
-      "title": "Entrada toros y vacas la Ganadería CRISTIAN SOLER Gata Gorgos.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Entrada de toros y vacas",
+      "location": "Recinto del corro",
+      "description": "Entrada de toros y vacas de la ganadería CRISTIAN SOLER de Gata de Gorgos.",
+      "type": "bous"
     },
     {
       "time": "19:15",
-      "title": "Suelta vacas y toro a cargo la ganadería FDO. MACHANCOSES Cheste.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Suelta de vacas y toro",
+      "location": "Recinto del corro",
+      "description": "Suelta de vacas y toro a cargo de la ganadería FDO. MACHANCOSES de Cheste.",
+      "type": "bous"
     },
     {
       "time": "22:00",
-      "title": "cena en las barracas.",
+      "title": "Cena en las barracas",
+      "location": "Grupo Escolar",
+      "description": "Cena en las barracas.",
       "type": "comida"
     },
     {
       "time": "23:00",
-      "title": "Cordà Infantil a cargo la Pirotècnia Borredà en la calle Moreres para los niños y niñas entre 8 y 16 años que tengan el carnet CRE.",
-      "type": "infantil"
+      "title": "Cordà infantil",
+      "location": "Calle Moreres",
+      "description": "Cordà infantil a cargo de la Pirotècnia BORREDÀ en la calle Moreres, para los niños y niñas entre 8 y 16 años que tengan el carnet CRE.",
+      "type": "pirotecnia"
     },
     {
       "time": "23:30",
-      "title": "FESTIGATA con las actuaciones DJ CABRAFOTUDA, ROMÀNTIC DIMONI y SANDRA MONFORT.",
+      "title": "FESTIGATA",
+      "location": "Paseo de Alicante",
+      "description": "FESTIGATA con las actuaciones de DJ CABRAFOTUDA, ROMÀNTIC DIMONI y SANDRA MONFORT.",
       "type": "musica"
     }
   ]

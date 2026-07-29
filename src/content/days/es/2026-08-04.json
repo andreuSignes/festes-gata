@@ -5,57 +5,73 @@
   "events": [
     {
       "time": "08:00",
-      "title": "Séptima despertà a cargo la Quintà 2026 L'ANRAMÀ.",
-      "type": "festes"
+      "title": "Séptima despertà",
+      "description": "Séptima despertà a cargo de la Quintà 2026 L'ANRAMÀ.",
+      "type": "pasacalles"
     },
     {
       "time": "09:00",
-      "title": "Entrada toros y vacas a cargo la ganadería CRISTIAN SOLER Gata Gorgos y, a continuación suelta vacas la misma ganadería.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Entrada de toros y vacas",
+      "location": "Recinto del corro",
+      "description": "Entrada de toros y vacas a cargo de la ganadería CRISTIAN SOLER de Gata de Gorgos. A continuación, suelta de vacas de la misma ganadería.",
+      "type": "bous"
     },
     {
       "time": "13:00",
-      "title": "Toros en la banda en el baret los toros a cargo grupo LOS CIGÜEÑOS, patrocinado por la Comisión 2026.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Bous a Banda",
+      "location": "Bareto de los toros",
+      "description": "Bous a Banda en el bareto de los toros a cargo del grupo LOS CIGÜEÑOS, patrocinado por la Comisión 2026.",
+      "type": "musica",
+      "sponsor": "Comissió 2026"
     },
     {
       "time": "17:00",
-      "title": "Semifinales y final campeonato mundial TRUC en el parque Enric Valor.",
+      "title": "Campeonato de TRUC",
+      "location": "Parque Enric Valor",
+      "description": "Semifinales y final del Campeonato Mundial de TRUC en el parque Enric Valor.",
       "type": "festes"
     },
     {
       "time": "18:00",
-      "title": "Entrada trashumante cabestros, salida la calle Doctor Moratal hasta el corro.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Trashumancia de mansos",
+      "location": "Calle Doctor Moratal → Recinto del corro",
+      "description": "Entrada trashumante de mansos, salida de la calle Doctor Moratal hasta el corro.",
+      "type": "bous"
     },
     {
       "time": "19:00",
-      "title": "Entrada mansos y caballos, salida la calle Doctor Moratal hasta el corro, a cargo la ganadería BENAVENT y caballistas Gata y pueblos vecinos. A continuación, suelta vacas y toro la ganadería BENAVENT.",
-      "type": "musica"
+      "title": "Entrada de mansos y caballos",
+      "location": "Calle Doctor Moratal → Recinto del corro",
+      "description": "Entrada de mansos y caballos, salida de la calle Doctor Moratal hasta el corro, a cargo de la ganadería BENAVENT y caballistas de Gata y pueblos vecinos. A continuación, suelta de vacas y toro de la ganadería BENAVENT.",
+      "type": "bous"
     },
     {
       "time": "22:00",
-      "title": "cena en las barracas.",
+      "title": "Cena en las barracas",
+      "location": "Grupo Escolar",
+      "description": "Cena en las barracas.",
       "type": "comida"
     },
     {
       "time": "22:00",
-      "title": "Marcha nocturna organizada por el GEG con salida desde su sede en el Grupo Escolar.",
+      "title": "Marcha nocturna",
+      "location": "Grupo Escolar",
+      "description": "Marcha nocturna organizada por el GEG con salida desde su sede en el Grupo Escolar.",
       "type": "festes"
     },
     {
       "time": "23:00",
-      "title": "Actuación URBÀLIA RURANA formato baile庆祝 su 35 aniversario. Para celebrar este aniversario vendremos vestidos con la indumentaria típica la tierra y la Comisión repartirá mistela para todos.",
-      "type": "musica"
+      "title": "URBALIA RURANA",
+      "description": "Actuación de URBALIA RURANA en formato baile celebrando su 35 aniversario. Para celebrar este aniversario, la Comisión repartirá mistela para todos. Se recomienda venir con la indumentaria típica de la tierra.",
+      "type": "musica",
+      "sponsor": "Comissió 2026"
     },
     {
       "time": "01:00",
-      "title": "Entrada 6 toros y 6 vacas la ganadería FDO. MACHANCOSES.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Entrada de toros y vacas",
+      "location": "Recinto del corro",
+      "description": "Entrada de 6 toros y 6 vacas de la ganadería FDO. MACHANCOSES. A continuación, suelta de vacas y toro de la ganadería CRISTIAN SOLER.",
+      "type": "bous"
     }
   ]
 }

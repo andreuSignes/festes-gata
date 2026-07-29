@@ -1,17 +1,29 @@
 {
   "date": "2026-07-18",
   "weekday": "Sábado",
-  "theme": "Día del festival",
+  "theme": "Presentación de la Quintà 2026",
   "events": [
     {
       "time": "22:00",
-      "title": "Concentración en la plaza Nova los Quintos Infantiles y Mayores 2026, así como los representantes las quintadas 2025, festeras y festeros, visitantes, autoridades locales y vecinas para ir hasta el Grupo Escolar acompañados por la Colla Montgó-Benimussa, Banda Coda y la Banda Unió Musical Gata.",
+      "title": "Pasacalles inaugural",
+      "location": "Plaza Nova → Grupo Escolar",
+      "description": "Concentración en la plaza Nova de los Quintos Infantiles y Mayores 2026, así como de los representantes de las quintadas 2025, festeras y festeros, visitantes, autoridades locales y vecinos, para ir hasta el Grupo Escolar acompañados por la Colla Montgó-Benimussa, la Banda de Coda y la Banda Unió Musical de Gata.",
       "type": "pasacalles"
     },
     {
       "time": "23:00",
-      "title": "Presentación la Quintá Infantil 2026 ELS ALOCATS y Quintá Mayor L'ANRAMÀ. Posteriormente procederemos a la proclamación los cargos 2026. Durante el acto tendremos la actuación la Escola Municipal Dansa Gata.",
-      "type": "liturgia"
+      "title": "Presentación de la Quintà 2026",
+      "location": "Grupo Escolar",
+      "description": "Presentación de la Quintà Infantil 2026 ELS ALOCATS y la Quintà Mayor L'ANRAMÀ. Posteriormente se procederá a la proclamación de los cargos 2026. Durante el acto contaremos con la actuación de la Escuela Municipal de Danza de Gata.",
+      "type": "festes"
+    },
+    {
+      "time": "00:00",
+      "title": "Orquesta MATRIX BAND",
+      "location": "Grupo Escolar",
+      "description": "Al finalizar la proclamación, la orquesta MATRIX BAND animará la velada hasta la madrugada.",
+      "type": "musica",
+      "sponsor": "Comissió 2026"
     }
   ]
 }

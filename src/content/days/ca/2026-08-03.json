@@ -5,54 +5,74 @@
   "events": [
     {
       "time": "08:00",
-      "title": "Sisena despertà a càrrec la Quintà 2026 L'ANRAMÀ.",
-      "type": "festes"
+      "title": "Sisena despertà",
+      "description": "Sisena despertà a càrrec de la Quintà 2026 L'ANRAMÀ.",
+      "type": "pasacalles"
     },
     {
       "time": "10:30",
-      "title": "Concentració a la plaça Nova la Quintà Infantil ELS ALOCATS. Per fer la despertà cadascú portarà el seu utensili per fer soroll.",
-      "type": "infantil"
+      "title": "Despertà infantil",
+      "location": "Plaça Nova",
+      "description": "Concentració a la plaça Nova de la Quintà Infantil ELS ALOCATS per a fer la despertà. Cadascú portarà el seu utensili per fer soroll.",
+      "type": "pasacalles"
     },
     {
       "time": "11:30",
-      "title": "Unflables i espectacle màgia al CSI per als més menuts. A continuació, la Comissió oferirà dinar a la Quintà Infantil ELS ALOCATS.",
+      "title": "Hinchables i màgia",
+      "location": "CSI",
+      "description": "Hinchables i espectacle de màgia al CSI per als més menuts. A continuació, la Comissió oferirà dinar a la Quintà Infantil ELS ALOCATS.",
       "type": "infantil"
     },
     {
       "time": "13:00",
-      "title": "Bous a banda al baret dels bous a càrrec grup MONROE BAND ROCK, patrocinat per la Comissió 2026.",
+      "title": "Bous a Banda",
+      "location": "Baret dels bous",
+      "description": "Bous a Banda al baret dels bous a càrrec del grup MONROE BAND ROCK, patrocinat per la Comissió 2026.",
       "type": "musica",
-      "location": "Parc Enric Valor"
+      "sponsor": "Comissió 2026"
     },
     {
       "time": "18:00",
-      "title": "Entrà i solta carretons per a tots els xiquets i xiquetes. A continuació es repartirà aigua llimó per als més menuts patrocinada per CA EL TRAMUSSER.",
-      "type": "infantil"
+      "title": "Carretons",
+      "location": "Recinte del corro",
+      "description": "Entradà i solta de carretons per a tots els xiquets i xiquetes. A continuació es repartirà aigua llimó per als més menuts, patrocinada per CA EL TRAMUSSER.",
+      "type": "infantil",
+      "sponsor": "CA EL TRAMUSSER"
     },
     {
       "time": "19:00",
-      "title": "Entrà 10 animals colorats i pintos a càrrec la ramaderia ELS COVES patrocinada per KIROS GATA.",
-      "type": "festes"
+      "title": "Entradà d'animals colorats",
+      "location": "Recinte del corro",
+      "description": "Entradà de 10 animals colorats i pintos a càrrec de la ramaderia ELS COVES, patrocinada per KIROS GATA.",
+      "type": "bous",
+      "sponsor": "KIROS GATA"
     },
     {
       "time": "19:15",
-      "title": "Solta vaques i bou a càrrec la ramaderia LA PALOMA Xaló.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Solta de vaques i bou",
+      "location": "Recinte del corro",
+      "description": "Solta de vaques i bou a càrrec de la ramaderia LA PALOMA de Xaló.",
+      "type": "bous"
     },
     {
       "time": "22:00",
-      "title": "Sopar a les barraques.",
+      "title": "Sopar a les barraques",
+      "location": "Grup Escolar",
+      "description": "Sopar a les barraques.",
       "type": "comida"
     },
     {
       "time": "23:30",
-      "title": "Concentració disfresses a la plaça Nova, on començarà una cercavila fins al Grup Escolar, acompanyats per la GATUKADA i Xaranga L'EMBOLIC.",
-      "type": "festes"
+      "title": "Cercavila de disfraces",
+      "location": "Plaça Nova → Grup Escolar",
+      "description": "Concentració de disfraces a la plaça Nova, on començarà una cercavila fins al Grup Escolar acompanyats per la GATUKADA i la Xaranga L'EMBOLIC.",
+      "type": "pasacalles"
     },
     {
       "time": "00:00",
-      "title": "Actuació l'orquestra LA VIVA i DJ fins les 05.30 h la matinada.",
+      "title": "Orquestra LA VIVA i DJ",
+      "location": "Grup Escolar",
+      "description": "Actuació de l'orquestra LA VIVA i DJ fins a les 05:30 de la matinada.",
       "type": "musica"
     }
   ]

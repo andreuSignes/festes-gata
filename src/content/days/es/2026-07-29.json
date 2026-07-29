@@ -5,45 +5,58 @@
   "events": [
     {
       "time": "07:00",
-      "title": "Primera despertà a cargo la Quintà 2026 L'ANRAMÀ.",
-      "type": "festes"
+      "title": "Primera despertà",
+      "description": "Primera despertà a cargo de la Quintà 2026 L'ANRAMÀ.",
+      "type": "pasacalles"
     },
     {
       "time": "08:00",
-      "title": "Entrada toros y vacas a cargo la ganadería local Cristian Soler. A continuación, suelta vacas la misma ganadería.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Entrada de toros y vacas",
+      "location": "Recinto del corro",
+      "description": "Entrada de toros y vacas a cargo de la ganadería local CRISTIAN SOLER. A continuación, suelta de vacas de la misma ganadería.",
+      "type": "bous"
     },
     {
       "time": "09:30",
-      "title": "La Comisión 2026 repartirá cocas y cerveza a todos los asistentes.",
-      "type": "festes"
+      "title": "Cocas y cerveza",
+      "description": "La Comisión 2026 repartirá cocas y cerveza para todos los asistentes.",
+      "type": "comida",
+      "sponsor": "Comissió 2026"
     },
     {
       "time": "13:00",
-      "title": "Toros en la banda en el baret los toros con el grupo MALECÓN, patrocinado por la Comisión 2026.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Bous a Banda",
+      "location": "Bareto de los toros",
+      "description": "Bous a Banda en el bareto de los toros con el grupo MALECÓN, patrocinado por la Comisión 2026.",
+      "type": "musica",
+      "sponsor": "Comissió 2026"
     },
     {
       "time": "18:00",
-      "title": "Inauguración oficial corro amenizada por la batucada GATUKADA y XARANGATA acompañados por las quintas y quintos mayores y pequeños, peñas y pueblo en general.",
+      "title": "Inauguración del corro",
+      "description": "Inauguración oficial del corro amenizada por la batucada GATUKADA y XARANGATA, acompañados por las quintas y quintos mayores y pequeños, peñas y pueblo en general.",
       "type": "festes"
     },
     {
       "time": "19:30",
-      "title": "Suelta vacas y toro la ganadería LA HERMANDAD Xàbia.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Suelta de vacas y toro",
+      "location": "Recinto del corro",
+      "description": "Suelta de vacas y toro a cargo de la ganadería LA HERMANDAD de Xàbia.",
+      "type": "bous"
     },
     {
       "time": "22:00",
-      "title": "Para continuar la fiesta inauguraremos las barracas con los disfraces la tarde y la Comisión repartirá REBUJITO para todos.",
-      "type": "festes"
+      "title": "Inauguración de las barracas",
+      "location": "Grupo Escolar",
+      "description": "Inauguración oficial de las barracas en el Grupo Escolar y cena. Se recomienda venir con el traje de la inauguración para beber REBUJITO que repartirá la Comisión 2026. Se entregarán los premios a las barracas mejor engalanadas.",
+      "type": "festes",
+      "sponsor": "Comissió 2026"
     },
     {
       "time": "00:00",
-      "title": "Espectacular actuación la orquesta MÓNACO PARTY hasta las 5 la madrugada.",
+      "title": "Orquesta MÓNACO PARTY",
+      "location": "Grupo Escolar",
+      "description": "Espectacular actuación de la orquesta MÓNACO PARTY hasta las 5 de la madrugada.",
       "type": "musica"
     }
   ]

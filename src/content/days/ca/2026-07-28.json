@@ -5,42 +5,60 @@
   "events": [
     {
       "time": "10:30",
-      "title": "Concentració carros i cavalls al parc Enric Valor.",
+      "title": "Concentració de carros",
+      "location": "Parc Enric Valor",
+      "description": "Concentració de carros i cavalls al parc Enric Valor.",
       "type": "pasacalles"
     },
     {
       "time": "11:00",
-      "title": "Entrà la «Murta» amb la participació quintos i quintas majors i menuts i tota la gent que vulga participar, acompanyats per la Colla Montgó-Benimussa.",
+      "title": "Entradà de la Murta",
+      "location": "Plaça Nova → Església",
+      "description": "Entradà de la Murta amb la participació dels quintos i quintes majors i menuts i tota la gent que vulga participar, acompanyats per la Colla Montgó-Benimussa.",
       "type": "pasacalles"
     },
     {
       "time": "13:00",
-      "title": "Volteig general campanes i vint-i-una salves que ens recorden que el Santíssim Crist està a l'església i GATA ESTÀ EN FESTES.",
+      "title": "Volteig de campanes",
+      "description": "Volteig general de campanes i vint-i-una salvas que ens recorden que el Santíssim Crist està a l'església i GATA ESTÀ EN FESTES.",
       "type": "liturgia"
     },
     {
       "time": "17:00",
-      "title": "Primera i segona eliminatòria campionat Mundial TRUC, organitzat per la Comissió 2027 al parc Enric Valor.",
-      "type": "festes"
+      "title": "Campionat de TRUC",
+      "location": "Parc Enric Valor",
+      "description": "Primera i segona eliminatòria del Campionat Mundial de TRUC, organitzat per la Comissió 2027 al parc Enric Valor.",
+      "type": "festes",
+      "sponsor": "Comissió 2027"
     },
     {
       "time": "20:00",
-      "title": "Concentració quintas, quintos, penyes i poble en general a la plaça Nova amb l'animació xarangues XARANGATA i LA GARANXA. La Comissió 2026 repartirà selecció d'embotits, fruits secs i cassalla. Cervesa a gogó patrocinada per Francisco Tomás e Hijos.",
-      "type": "comida"
+      "title": "Cervesa a gogó",
+      "location": "Plaça Nova",
+      "description": "Concentració de quintas, quintos, penyes i poble en general a la plaça Nova amb l'animació de les xarangues XARANGATA i LA GARANXA. La Comissió 2026 repartirà selecció d'embotits, fruits secs i cassalla. Cervesa a gogó patrocinada per Francisco Tomás e Hijos.",
+      "type": "festes",
+      "sponsor": "Francisco Tomás e Hijos"
     },
     {
       "time": "21:00",
-      "title": "Anirem tots junts fins l'Ajuntament per donar per començades les festes amb el Pregó a càrrec Sílvia Leyda Fornés i Vicen Mulet Ferrer junt amb les autoritats locals. En acabar seguirem la festa al parc Enric Valor.",
-      "type": "festes"
+      "title": "Pregó de festes",
+      "location": "Ajuntament",
+      "description": "Anirem tots junts fins a l'Ajuntament per donar per començades les festes amb el Pregó a càrrec de Sílvia Leyda Fornés i Vicen Mulet Ferrer junt amb les autoritats locals. En acabar seguirem la festa al parc Enric Valor.",
+      "type": "liturgia"
     },
     {
       "time": "22:30",
-      "title": "Sopar cabasset al parc Enric Valor. La Comissió 2026 répartirá cervesa. Vi patrocinat per Bodegas Xaló.",
-      "type": "comida"
+      "title": "Sopar de cabasset",
+      "location": "Parc Enric Valor",
+      "description": "Sopar de cabasset al parc Enric Valor. La Comissió 2026 repartirà cervesa. Vi patrocinat per Bodega Xaló.",
+      "type": "comida",
+      "sponsor": "Bodega Xaló"
     },
     {
       "time": "00:00",
-      "title": "Actuació BATISJAUS, amb el millor pop-rock sempre i DJ MOISÉS CARDONA i DJ WIBA fins que isca el sol.",
+      "title": "BATISJAUS i DJs",
+      "location": "Parc Enric Valor",
+      "description": "Actuació de BATISJAUS amb el millor pop-rock de sempre, i DJ MOISÉS CARDONA i DJ WIBA fins que isca el sol.",
       "type": "musica"
     }
   ]
