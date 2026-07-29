@@ -197,9 +197,9 @@ describe('daySchema', () => {
       expect(result.success).toBe(false);
     });
 
-    it('accepts empty string (no min length constraint)', () => {
+    it('rejects empty string (min(1) enforces non-empty weekday)', () => {
       const result = daySchema.safeParse({ ...validDay, weekday: '' });
-      expect(result.success).toBe(true);
+      expect(result.success).toBe(false);
     });
   });
 

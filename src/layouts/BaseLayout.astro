@@ -4,6 +4,7 @@ import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { buildHreflangTags } from '../lib/seo-hreflang';
+import { serializeJsonLd } from '../lib/json-ld';
 
 interface Props {
   title: string;
@@ -133,7 +134,7 @@ const hreflangTags = buildHreflangTags(
       src="https://static.cloudflareinsights.com/beacon.min.js"
       data-cf-beacon='{"token": "1c2253a7e67b4aaca8ae6f91728e65a2"}'></script>
     <meta name="twitter:image:alt" content={ogImageAlt[lang]} />
-    {jsonLd.map((item) => <script type="application/ld+json" set:html={JSON.stringify(item)} />)}
+    {jsonLd.map((item) => <script type="application/ld+json" set:html={serializeJsonLd(item)} />)}
     <ClientRouter />
   </head>
   <body>
