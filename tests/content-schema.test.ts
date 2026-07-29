@@ -2,35 +2,28 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { daySchema } from '../src/content/schema';
+import { EVENT_TYPES } from '../src/lib/event-types';
+import { LOCALES } from '../src/lib/locale';
 
 const CONTENT_DIR = join(__dirname, '../src/content/days');
-const LOCALES = ['ca', 'es'] as const;
-
-const VALID_EVENT_TYPES = [
-  'pasacalles',
-  'bous',
-  'verbena',
-  'musica',
-  'liturgia',
-  'infantil',
-  'comida',
-  'festes',
-  'pirotecnia',
-] as const;
 
 describe('content-schema', () => {
   const jsonFilesByLocale = LOCALES.map((locale) => ({
     locale,
     files: readdirSync(join(CONTENT_DIR, locale)).filter((f) => f.endsWith('.json')),
   }));
+  const [caFiles, esFiles] = jsonFilesByLocale;
+  if (!caFiles || !esFiles) {
+    throw new Error('Expected exactly two locales (ca, es)');
+  }
 
   it('should have the same number of day files in ca and es', () => {
-    expect(jsonFilesByLocale[0].files.length).toBe(jsonFilesByLocale[1].files.length);
+    expect(caFiles.files.length).toBe(esFiles.files.length);
   });
 
   it('should have filename sets in sync across ca and es', () => {
-    const caSet = new Set(jsonFilesByLocale[0].files);
-    const esSet = new Set(jsonFilesByLocale[1].files);
+    const caSet = new Set(caFiles.files);
+    const esSet = new Set(esFiles.files);
     for (const file of caSet) {
       expect(esSet.has(file), `${file} is in ca but missing from es`).toBe(true);
     }
@@ -90,7 +83,7 @@ describe('content-schema', () => {
         for (let i = 0; i < events.length; i++) {
           const event = events[i];
           expect(
-            VALID_EVENT_TYPES.includes(event.type),
+            (EVENT_TYPES as readonly string[]).includes(event.type),
             `${locale}/${file}: event at index ${i} has invalid type "${event.type}"`
           ).toBe(true);
         }

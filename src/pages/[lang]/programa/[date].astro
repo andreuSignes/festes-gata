@@ -3,6 +3,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import DaySection from '../../../components/DaySection.astro';
 import { buildDayEvent, buildBreadcrumbList } from '../../../lib/json-ld';
+import { type Locale } from '../../../lib/locale';
 
 type DayCollectionEntry = CollectionEntry<'days-ca' | 'days-es'>;
 
@@ -25,13 +26,13 @@ export async function getStaticPaths() {
 
 interface Props {
   day: DayCollectionEntry;
-  lang: 'ca' | 'es';
+  lang: Locale;
 }
 
 const { day, lang } = Astro.props;
 const homeHref = `${import.meta.env.BASE_URL}/${lang}/`;
 
-const labels: Record<'ca' | 'es', { back: string }> = {
+const labels: Record<Locale, { back: string }> = {
   ca: { back: 'Tornar al programa' },
   es: { back: 'Volver al programa' },
 };

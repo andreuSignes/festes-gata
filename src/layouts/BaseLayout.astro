@@ -5,11 +5,13 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { buildHreflangTags } from '../lib/seo-hreflang';
 import { serializeJsonLd } from '../lib/json-ld';
+import { type Locale } from '../lib/locale';
+import { getSiteOrigin, normalizeBase } from '../lib/site-config';
 
 interface Props {
   title: string;
   description: string;
-  lang: 'ca' | 'es';
+  lang: Locale;
   ogImage?: string;
   jsonLd?: object[];
   robots?: string;
@@ -19,7 +21,7 @@ const {
   title,
   description,
   lang,
-  ogImage = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/og/default.png`,
+  ogImage = `${normalizeBase(import.meta.env.BASE_URL)}/og/default.png`,
   jsonLd = [],
   robots = 'index, follow, max-image-preview:large, max-snippet:-1',
 } = Astro.props;
@@ -33,20 +35,20 @@ const ogImgUrl = new URL(ogImage, Astro.site).toString();
 // routes (`/${lang}/`). Per-day detail pages and the universal 404
 // stay script-free. Astro bundles the script once and emits a single
 // <script src="...">` tag on each landing HTML.
-const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const baseUrl = normalizeBase(import.meta.env.BASE_URL);
 const landingPath = `${baseUrl}/${lang}/`;
 const isLanding = Astro.url.pathname === landingPath;
 
-const localeMap = {
+const localeMap: Record<Locale, string> = {
   ca: 'ca_ES',
   es: 'es_ES',
 };
-const otherLocaleMap: Record<'ca' | 'es', 'ca_ES' | 'es_ES'> = {
+const otherLocaleMap: Record<Locale, 'ca_ES' | 'es_ES'> = {
   ca: 'es_ES',
   es: 'ca_ES',
 };
 
-const ogImageAlt: Record<'ca' | 'es', string> = {
+const ogImageAlt: Record<Locale, string> = {
   ca: 'Programa de les Festes de Gata 2026',
   es: 'Programa de las Fiestas de Gata 2026',
 };
@@ -54,7 +56,7 @@ const ogImageAlt: Record<'ca' | 'es', string> = {
 const hreflangTags = buildHreflangTags(
   Astro.url.pathname,
   lang,
-  Astro.site ?? Astro.url.origin,
+  getSiteOrigin(Astro.site),
   import.meta.env.BASE_URL
 );
 ---
@@ -73,7 +75,11 @@ const hreflangTags = buildHreflangTags(
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#e5318a" />
     <script is:inline>
+      // Locale storage key MUST stay in sync with `LOCALE_STORAGE_KEY`
+      // in `src/lib/locale.ts`. Versioned suffix (`:v1`) so a future
+      // migration can coexist with the old value.
       (function () {
+        var LOCALE_KEY = 'festes-gata:locale:v1';
         var b = document.documentElement.dataset.base || '';
         var re = new RegExp('^' + (b ? b + '/' : '/') + '(ca|es)(/|$)');
         var m = location.pathname.match(re);
@@ -82,7 +88,7 @@ const hreflangTags = buildHreflangTags(
         var tail = location.pathname.slice(m.index + m[0].length - (m[2] === '/' ? 1 : 0));
         var stored = null;
         try {
-          stored = localStorage.getItem('festes-gata:locale');
+          stored = localStorage.getItem(LOCALE_KEY);
         } catch (e) {
           void e;
         }

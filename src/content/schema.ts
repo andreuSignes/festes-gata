@@ -1,5 +1,6 @@
 import { z } from 'astro:content';
 import type { output } from 'zod';
+import { EVENT_TYPES, TIME_RE } from '../lib/event-types';
 
 // String bounds — `.min(1)` rejects empty strings (UX/integrity),
 // `.max(N)` caps payload size and prevents the JSON-LD `</script>`
@@ -14,22 +15,12 @@ const THEME_MAX = 200;
 const WEEKDAY_MAX = 50;
 
 export const eventSchema = z.object({
-  time: z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/),
+  time: z.string().regex(TIME_RE),
   title: z.string().min(1).max(TITLE_MAX),
   location: z.string().min(1).max(LOCATION_MAX).optional(),
   description: z.string().min(1).max(DESCRIPTION_MAX).optional(),
   sponsor: z.string().min(1).max(SPONSOR_MAX).optional(),
-  type: z.enum([
-    'pasacalles',
-    'bous',
-    'verbena',
-    'musica',
-    'liturgia',
-    'infantil',
-    'comida',
-    'festes',
-    'pirotecnia',
-  ]),
+  type: z.enum(EVENT_TYPES),
   tags: z.array(z.string().min(1).max(50)).max(20).optional(),
 });
 

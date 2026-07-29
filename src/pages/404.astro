@@ -13,13 +13,14 @@
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import type { Locale } from '../lib/event-type-labels';
+import { detectLocaleFromPathname, DEFAULT_LOCALE } from '../lib/locale';
+import { homeUrl } from '../lib/site-config';
 
 const base = import.meta.env.BASE_URL;
 
 const pathname = Astro.url.pathname;
-const detected = pathname.match(/^\/(ca|es)(\/|$)/)?.[1];
-const lang: Locale = detected === 'es' ? 'es' : 'ca';
-const homeHref = `${base}/${lang}/`;
+const lang: Locale = detectLocaleFromPathname(pathname, base) ?? DEFAULT_LOCALE;
+const homeHref = homeUrl(Astro.site, base, lang);
 
 const copy: Record<
   Locale,

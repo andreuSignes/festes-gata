@@ -2,6 +2,15 @@
  * Pure validator for festival day JSON objects.
  * Validates event/time/type structure without file I/O.
  * @module validate-content
+ *
+ * NOTE: This script is a `.mjs` file so it can be invoked by
+ * `pnpm check:content` without a TypeScript build step. The
+ * `TIME_RE` regex and `VALID_TYPES` set below MUST stay in sync
+ * with the TypeScript source of truth in `src/lib/event-types.ts`
+ * (`TIME_RE` and `EVENT_TYPES`). The Zod schema in
+ * `src/content/schema.ts` rewrites both lists at build time, so a
+ * drift between this validator and the schema is detected by
+ * `pnpm build` even if `pnpm check:content` is silent.
  */
 
 /** @typedef {{ valid: true }} ValidResult */

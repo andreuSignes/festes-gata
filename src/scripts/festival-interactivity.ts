@@ -27,19 +27,16 @@
  *    honors `prefers-reduced-motion: reduce` by switching to
  *    `behavior: 'auto'`.
  *
+ * `EventType` and `Locale` are imported from the shared
+ * `src/lib/event-types.ts` and `src/lib/locale.ts` so the same enum
+ * list drives the Zod schema, the badges, the filter chips, and this
+ * client-side filter logic.
+ *
  * Library-free, library-free. See `design.md` §5.
  */
 
-type EventType =
-  | 'pasacalles'
-  | 'bous'
-  | 'verbena'
-  | 'musica'
-  | 'liturgia'
-  | 'infantil'
-  | 'comida'
-  | 'festes'
-  | 'pirotecnia';
+import { EVENT_TYPES, type EventType } from '../lib/event-types';
+import type { Locale } from '../lib/locale';
 
 function initBottomSheet(): void {
   const trigger = document.querySelector<HTMLButtonElement>('[data-filter-trigger]');
@@ -85,23 +82,11 @@ function initBottomSheet(): void {
   });
 }
 
-function initFilters(lang: 'ca' | 'es'): void {
+function initFilters(lang: Locale): void {
   const bar = document.querySelector<HTMLElement>('[data-filter-bar]');
   if (!bar) return;
 
-  const allTypes: EventType[] = [
-    'pasacalles',
-    'bous',
-    'verbena',
-    'musica',
-    'liturgia',
-    'infantil',
-    'comida',
-    'festes',
-    'pirotecnia',
-  ];
-
-  const active = new Set<EventType>(allTypes);
+  const active = new Set<EventType>(EVENT_TYPES);
 
   // Query chips from BOTH the bar (desktop) and the sheet (mobile)
   const barButtons = bar.querySelectorAll<HTMLButtonElement>('[data-filter-type]');
@@ -120,7 +105,7 @@ function initFilters(lang: 'ca' | 'es'): void {
   const allReset = [...resetEls, ...sheetResetEls];
   const allClear = [...clearEls, ...sheetClearEls];
 
-  const emptyCopy: Record<'ca' | 'es', string> = {
+  const emptyCopy: Record<Locale, string> = {
     ca: 'No hi ha actes',
     es: 'No hay actos',
   };
@@ -129,7 +114,7 @@ function initFilters(lang: 'ca' | 'es'): void {
     const badge = bar!.querySelector<HTMLElement>('[data-filter-count]');
     if (!badge) return;
     const count = active.size;
-    const total = allTypes.length;
+    const total = EVENT_TYPES.length;
     const label = lang === 'ca' ? 'actius' : 'activos';
     const newText = `${count}/${total} ${label}`;
     if (badge.textContent !== newText) {
@@ -194,7 +179,7 @@ function initFilters(lang: 'ca' | 'es'): void {
   allReset.forEach((reset) => {
     reset.addEventListener('click', () => {
       active.clear();
-      allTypes.forEach((t) => active.add(t));
+      EVENT_TYPES.forEach((t: EventType) => active.add(t));
       applyFilter();
       updateFilterCount();
       reset.focus();
@@ -369,7 +354,7 @@ function run(): void {
   initialized = true;
 
   const html = document.documentElement;
-  const lang: 'ca' | 'es' = html.lang === 'es' ? 'es' : 'ca';
+  const lang: Locale = html.lang === 'es' ? 'es' : 'ca';
   initFilters(lang);
   initTodayScroll();
   initScrollReveal();
