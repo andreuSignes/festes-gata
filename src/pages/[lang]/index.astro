@@ -31,7 +31,9 @@ const titles: Record<'ca' | 'es', { page: string; description: string }> = {
 };
 
 const { page: title, description } = titles[lang];
-const jsonLd = [buildOrganization(lang), buildFestival(lang)];
+const site = Astro.site ?? new URL('https://andreuSignes.github.io');
+const base = import.meta.env.BASE_URL;
+const jsonLd = [buildOrganization(site.toString(), base, lang), buildFestival(lang)];
 
 // Compute today's date in Europe/Madrid at build time (same timezone as festival dates).
 // This drives the today-highlight on the landing page.

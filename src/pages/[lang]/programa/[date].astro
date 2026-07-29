@@ -29,15 +29,19 @@ interface Props {
 }
 
 const { day, lang } = Astro.props;
-const base = import.meta.env.BASE_URL;
-const homeHref = `${base}/${lang}/`;
+const homeHref = `${import.meta.env.BASE_URL}/${lang}/`;
 
 const labels: Record<'ca' | 'es', { back: string }> = {
   ca: { back: 'Tornar al programa' },
   es: { back: 'Volver al programa' },
 };
 
-const jsonLd = [buildDayEvent(day.data, lang), buildBreadcrumbList(day.data.date, lang)];
+const site = Astro.site ?? new URL('https://andreuSignes.github.io');
+const base = import.meta.env.BASE_URL;
+const jsonLd = [
+  buildDayEvent(day.data, lang),
+  buildBreadcrumbList(day.data.date, lang, site.toString(), base),
+];
 ---
 
 <BaseLayout

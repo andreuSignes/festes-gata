@@ -44,11 +44,28 @@ const FESTIVAL_NAMES: Record<Locale, string> = {
 
 const NOON_FALLBACK = '12:00';
 
-// Base URL for absolute `BreadcrumbList` items. Astro.site is the
-// project origin (`https://andreuSignes.github.io`); the
-// `base: '/festes-gata'` prefix is added below per locale.
-const SITE_ORIGIN = 'https://andreuSignes.github.io';
-const BASE_PREFIX = '/festes-gata';
+/**
+ * Strip trailing slashes from a site origin so concatenation with
+ * `base` is order-independent. Tolerates `URL` instances and strings.
+ */
+function normalizeOrigin(origin: string): string {
+  return origin.replace(/\/+$/, '');
+}
+
+/**
+ * Strip a single trailing slash from a base prefix so concatenation
+ * with the locale segment is order-independent.
+ */
+function normalizeBase(base: string): string {
+  return base.replace(/\/$/, '');
+}
+
+/**
+ * Build an absolute URL for the locale root: `${origin}${base}/${lang}/`.
+ */
+function localeUrl(site: string, base: string, lang: Locale): string {
+  return `${normalizeOrigin(site)}${normalizeBase(base)}/${lang}/`;
+}
 
 const PLACE: JsonLdObject = {
   '@context': 'https://schema.org',
@@ -75,12 +92,12 @@ export function dateTimeWithOffset(date: string, time: string): string {
   return `${date}T${time}:00${TIMEZONE_OFFSET}`;
 }
 
-export function buildOrganization(_lang: Locale): JsonLdObject {
+export function buildOrganization(site: string, base: string, _lang: Locale): JsonLdObject {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Comissió de Festes de Gata 2026',
-    url: `${SITE_ORIGIN}${BASE_PREFIX}/ca/`,
+    url: localeUrl(site, base, 'ca'),
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Gata de Gorgos',
@@ -119,8 +136,13 @@ export function buildDayEvent(day: DayProgram, lang: Locale): JsonLdObject {
   };
 }
 
-export function buildBreadcrumbList(date: string, lang: Locale): JsonLdObject {
-  const baseUrl = `${SITE_ORIGIN}${BASE_PREFIX}/${lang}`;
+export function buildBreadcrumbList(
+  date: string,
+  lang: Locale,
+  site: string,
+  base: string
+): JsonLdObject {
+  const baseUrl = localeUrl(site, base, lang).replace(/\/$/, '');
   const homeLabel = lang === 'ca' ? 'Inici' : 'Inicio';
   return {
     '@context': 'https://schema.org',
