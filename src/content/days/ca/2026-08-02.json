@@ -5,41 +5,60 @@
   "events": [
     {
       "time": "08:00",
-      "title": "Cinquena despertà a càrrec la Quintà 2026 L'ANRAMÀ.",
-      "type": "festes"
+      "title": "Cinquena despertà",
+      "description": "Cinquena despertà a càrrec de la Quintà 2026 L'ANRAMÀ.",
+      "type": "pasacalles"
     },
     {
       "time": "10:00",
-      "title": "Campionat d'escacs Festes 2026 al CSI, patrocinat per la Regidoria d'Esports l'Ajuntament Gata Gorgos.",
-      "type": "festes"
+      "title": "Campionat d'escacs",
+      "location": "CSI",
+      "description": "Campionat d'escacs Festes 2026 al CSI, patrocinat per la Regidoria d'Esports de l'Ajuntament de Gata de Gorgos. Premis patrocinats per la Comissió 2026.",
+      "type": "festes",
+      "sponsor": "Comissió 2026"
+    },
+    {
+      "time": "12:00",
+      "title": "Santa Missa",
+      "location": "Església",
+      "description": "Santa Missa.",
+      "type": "liturgia"
     },
     {
       "time": "13:00",
-      "title": "Bous a banda al baret dels bous amb el grup REMAKE, patrocinat per la Comissió 2026.",
+      "title": "Bous a Banda",
+      "location": "Baret dels bous",
+      "description": "Bous a Banda al baret dels bous amb el grup REMAKE, patrocinat per la Comissió 2026.",
       "type": "musica",
-      "location": "Parc Enric Valor"
+      "sponsor": "Comissió 2026"
     },
     {
       "time": "19:00",
-      "title": "Concentració carrosses i grups a peu a l'esplanada Grup Escolar. A continuació gran desfilada carrosses amenitzada amb xarangues, Colla Montgó-Benimussa, batukada GATUKADA i la Banda Unió Musical Gata.",
+      "title": "Cercavila de carrosses",
+      "location": "Explanada del Grup Escolar",
+      "description": "Concentració de carrosses i grups a peu a l'explanada del Grup Escolar. A continuació, gran desfilada de carrosses amenitzada amb xarangues, la Colla Montgó-Benimussa, la batukada GATUKADA i la Banda Unió Musical de Gata.",
       "type": "pasacalles"
     },
     {
       "time": "23:00",
-      "title": "Espectacular actuació grup AVALANX PROJECT, vinguts Menorca amb un espectacle electroacústic que ens deixarà bocabadats.",
+      "title": "AVALANX PROJECT",
+      "location": "Passeig d'Alacant",
+      "description": "Espectacular actuació del grup AVALANX PROJECT, vinguts de Menorca, amb un espectacle electroacústic que ens deixarà bocabadats.",
       "type": "musica"
     },
     {
       "time": "01:30",
-      "title": "Gran CORREFOC amb l'espectacle «THE PURGE», a càrrec la colla DIMONIS DE MISLATA. Començarà al carrer la Pau i acabarà al passeig d'Alacant amb un final ple foc.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Gran Correfoc",
+      "location": "Carrer la Pau → Passeig d'Alacant",
+      "description": "Gran CORREFOC amb l'espectacle «THE PURGE» a càrrec de la Colla de DIMONIS DE MISLATA. Començarà al carrer la Pau i acabarà al passeig d'Alacant amb un final ple de foc.",
+      "type": "pirotecnia"
     },
     {
       "time": "02:30",
-      "title": "Solta vaques i bou a carrec la ramaderia ELS COVES Pedreguer.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Solta de vaques i bou",
+      "location": "Recinte del corro",
+      "description": "Solta de vaques i bou a càrrec de la ramaderia ELS COVES de Pedreguer.",
+      "type": "bous"
     }
   ]
 }

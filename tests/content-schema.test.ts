@@ -7,6 +7,11 @@ import { LOCALES } from '../src/lib/locale';
 
 const CONTENT_DIR = join(__dirname, '../src/content/days');
 
+type DayEntry = {
+  date: string;
+  events: { time: string; type: string }[];
+};
+
 describe('content-schema', () => {
   const jsonFilesByLocale = LOCALES.map((locale) => ({
     locale,
@@ -57,6 +62,28 @@ describe('content-schema', () => {
 
     expect(totalEvents).toBeGreaterThan(0);
     expect(validatedDays.length).toBeGreaterThan(0);
+  });
+
+  it('should have parity between ca and es (same dates, same event counts and times)', () => {
+    // Locale parity beyond file existence: every day must have the same
+    // event count and the same event times in both locales (titles,
+    // descriptions, and locations differ).
+    const caSet = new Set(caFiles.files);
+    const esSet = new Set(esFiles.files);
+    const sharedFiles = [...caSet].filter((f) => esSet.has(f)).sort();
+
+    for (const file of sharedFiles) {
+      const caData = JSON.parse(readFileSync(join(CONTENT_DIR, 'ca', file), 'utf-8')) as DayEntry;
+      const esData = JSON.parse(readFileSync(join(CONTENT_DIR, 'es', file), 'utf-8')) as DayEntry;
+
+      expect(caData.events.length, `${file}: ca/es event count mismatch`).toBe(
+        esData.events.length
+      );
+      expect(
+        caData.events.map((e) => e.time),
+        `${file}: ca/es event times must match`
+      ).toEqual(esData.events.map((e) => e.time));
+    }
   });
 
   it('should have filename date equal to JSON date field for every file', () => {

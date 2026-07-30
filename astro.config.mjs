@@ -37,13 +37,14 @@ export default defineConfig({
       // `/es/404/`) are caught by the `/404` substring test.
       //
       // `@astrojs/sitemap` 3.x passes the **full URL** to `filter`
-      // (e.g. `https://festes-gata.pages.dev/`), so the
+      // (e.g. `https://andreusignes.github.io/festes-gata/`), so the
       // bare `page !== '/'` check would never match — compare against
-      // the URL pathname instead, which is `/` for the root redirector.
+      // the URL pathname instead, which is `/festes-gata/` for the
+      // root redirector.
       filter: (page) => {
         if (page.includes('/404')) return false;
         const pathname = new URL(page).pathname;
-        return pathname !== '/';
+        return pathname !== '/' && pathname !== '/festes-gata/';
       },
       // lastmod: Date — sets a static <lastmod> for every sitemap entry.
       // @astrojs/sitemap 3.x does not auto-derive per-URL lastmod from

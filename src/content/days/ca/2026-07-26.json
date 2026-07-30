@@ -5,8 +5,11 @@
   "events": [
     {
       "time": "20:00",
-      "title": "Passacarrer amb dolçaina i tabal, la Comissió 2026 i els quintos majors i menuts, per visitar els carrers engalanats la población. En el mateix passacarrer tindrem un jurat per decidir els premis al millor carrer engalanat.",
-      "type": "festes"
+      "title": "Pasacalles de les quintades",
+      "location": "Carrers del poble",
+      "description": "Pasacalles amb dolçaina i tabal a càrrec de la Comissió 2026 i dels quintos majors i menuts, que recorreran els carrers engalanats del poble. Durant el mateix pasacalles comptarem amb un jurat que decidirà els premis al millor carrer engalanat.",
+      "type": "pasacalles",
+      "sponsor": "Comissió 2026"
     }
   ]
 }

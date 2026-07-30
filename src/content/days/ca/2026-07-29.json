@@ -5,45 +5,58 @@
   "events": [
     {
       "time": "07:00",
-      "title": "Primera despertà a càrrec la Quintà 2026 L'ANRAMÀ.",
-      "type": "festes"
+      "title": "Primera despertà",
+      "description": "Primera despertà a càrrec de la Quintà 2026 L'ANRAMÀ.",
+      "type": "pasacalles"
     },
     {
       "time": "08:00",
-      "title": "Entrà bous i vaques a càrrec la ramaderia local Cristian Soler. A continuació, solta vaques la mateixa ramaderia.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Entradà de bous i vaques",
+      "location": "Recinte del corro",
+      "description": "Entradà de bous i vaques a càrrec de la ramaderia local CRISTIAN SOLER. A continuació, solta de vaques de la mateixa ramaderia.",
+      "type": "bous"
     },
     {
       "time": "09:30",
-      "title": "La Comissió 2026 repartirà coques i cervesa a tots els assistents.",
-      "type": "comida"
+      "title": "Cocas i cervesa",
+      "description": "La Comissió 2026 repartirà cocas i cervesa per a tots els assistents.",
+      "type": "comida",
+      "sponsor": "Comissió 2026"
     },
     {
       "time": "13:00",
-      "title": "Bous a banda al baret dels bous amb el grup MALECÓN, patrocinat per la Comissió 2026.",
+      "title": "Bous a Banda",
+      "location": "Baret dels bous",
+      "description": "Bous a Banda al baret dels bous amb el grup MALECÓN, patrocinat per la Comissió 2026.",
       "type": "musica",
-      "location": "Parc Enric Valor"
+      "sponsor": "Comissió 2026"
     },
     {
       "time": "18:00",
-      "title": "Inauguració oficial corro amenitzada per la batukada GATUKADA i XARANGATA acompanyats per les quintas i quintos majors i menuts, penyes i poble en general.",
+      "title": "Inauguració del corro",
+      "description": "Inauguració oficial del corro amenitzada per la batukada GATUKADA i XARANGATA, acompanyats per les quintas i quintos majors i menuts, penyes i poble en general.",
       "type": "festes"
     },
     {
       "time": "19:30",
-      "title": "Solta vaques i bou la ramaderia LA HERMANDAD Xàbia.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Solta de vaques i bou",
+      "location": "Recinte del corro",
+      "description": "Solta de vaques i bou a càrrec de la ramaderia LA HERMANDAD de Xàbia.",
+      "type": "bous"
     },
     {
       "time": "22:00",
-      "title": "Per a continuar la festa inaugurarem les barraques amb les disfresses la vesprada i la Comissió repartirà REBUJITO per a tots.",
-      "type": "festes"
+      "title": "Inauguració de les barraques",
+      "location": "Grup Escolar",
+      "description": "Inauguració oficial de les barraques al Grup Escolar i sopar. Es recomana vindre amb el traje de la inauguració per a beure REBUJITO que repartirà la Comissió 2026. Es donaran els premis a les barraques millor engalanades.",
+      "type": "festes",
+      "sponsor": "Comissió 2026"
     },
     {
       "time": "00:00",
-      "title": "Espectacular actuació l'orquestra MÓNACO PARTY fins les 5 la matinada.",
+      "title": "Orquestra MÓNACO PARTY",
+      "location": "Grup Escolar",
+      "description": "Espectacular actuació de l'orquestra MÓNACO PARTY fins a les 5 de la matinada.",
       "type": "musica"
     }
   ]

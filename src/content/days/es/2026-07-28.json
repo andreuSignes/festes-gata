@@ -5,43 +5,60 @@
   "events": [
     {
       "time": "10:30",
-      "title": "Concentración carros y caballos en el parque Enric Valor.",
-      "type": "musica"
+      "title": "Concentración de carros",
+      "location": "Parque Enric Valor",
+      "description": "Concentración de carros y caballos en el parque Enric Valor.",
+      "type": "pasacalles"
     },
     {
       "time": "11:00",
-      "title": "Entrada la «Murta» con la participación los quintos y quintas mayores y pequeños y toda la gente que quiera participar, accompagnés por la Colla Montgó-Benimussa.",
-      "type": "bous",
-      "location": "Parc Enric Valor"
+      "title": "Entrada de la Murta",
+      "location": "Plaza Nova → Iglesia",
+      "description": "Entrada de la Murta con la participación de los quintos y quintas mayores y pequeños y toda la gente que quiera participar, acompañados por la Colla Montgó-Benimussa.",
+      "type": "pasacalles"
     },
     {
       "time": "13:00",
-      "title": "Volteo general campanas y veintiuna salvas que nos recuerdan que el Santísimo Cristo está en la iglesia y GATA ESTÁ EN FESTAS.",
-      "type": "festes"
+      "title": "Volteo de campanas",
+      "description": "Volteo general de campanas y veintiuna salvas que nos recuerdan que el Santísimo Cristo está en la iglesia y GATA ESTÁ EN FIESTAS.",
+      "type": "liturgia"
     },
     {
       "time": "17:00",
-      "title": "Primera y segunda eliminatoria campeonato Mundial TRUC, organizado por la Comisión 2027 en el parque Enric Valor.",
-      "type": "festes"
+      "title": "Campeonato de TRUC",
+      "location": "Parque Enric Valor",
+      "description": "Primera y segunda eliminatoria del Campeonato Mundial de TRUC, organizado por la Comisión 2027 en el parque Enric Valor.",
+      "type": "festes",
+      "sponsor": "Comissió 2027"
     },
     {
       "time": "20:00",
-      "title": "Concentración quintas, quintos, peñas y pueblo en general en la plaza Nova con la animación charangas XARANGATA y LA GARANXA. La Comisión 2026 repartirá selección embutidos, frutos secos y cazalla. Cerveza a gogó patrocinada por Francisco Tomás e Hijos.",
-      "type": "festes"
+      "title": "Cerveza a gogó",
+      "location": "Plaza Nova",
+      "description": "Concentración de quintas, quintos, peñas y pueblo en general en la plaza Nova con la animación de las charangas XARANGATA y LA GARANXA. La Comisión 2026 repartirá selección de embutidos, frutos secos y cazalla. Cerveza a gogó patrocinada por Francisco Tomás e Hijos.",
+      "type": "festes",
+      "sponsor": "Francisco Tomás e Hijos"
     },
     {
       "time": "21:00",
-      "title": "Iremos todos juntos hasta el Ayuntamiento para dar por comenzadas las fiestas con el Pregón a cargo Sílvia Leyda Fornés y Vicen Mulet Ferrer junto con las autoridades locales. Al finalizar seguiremos la fiesta en el parque Enric Valor.",
-      "type": "festes"
+      "title": "Pregón de fiestas",
+      "location": "Ayuntamiento",
+      "description": "Iremos todos juntos hasta el Ayuntamiento para dar por comenzadas las fiestas con el Pregón a cargo de Sílvia Leyda Fornés y Vicen Mulet Ferrer junto con las autoridades locales. Al finalizar seguiremos la fiesta en el parque Enric Valor.",
+      "type": "liturgia"
     },
     {
       "time": "22:30",
-      "title": "cena sobaco (de cabasset) en el parque Enric Valor. La Comisión 2026 repartirá cerveza. Vino patrocinado por Bodegas Xaló.",
-      "type": "comida"
+      "title": "Cena de cabasset",
+      "location": "Parque Enric Valor",
+      "description": "Cena de cabasset en el parque Enric Valor. La Comisión 2026 repartirá cerveza. Vino patrocinado por Bodega Xaló.",
+      "type": "comida",
+      "sponsor": "Bodega Xaló"
     },
     {
       "time": "00:00",
-      "title": "Actuación BATISJAUS, con el mejor pop-rock siempre y DJ MOISÉS CARDONA y DJ WIBA hasta que salga el sol.",
+      "title": "BATISJAUS y DJs",
+      "location": "Parque Enric Valor",
+      "description": "Actuación de BATISJAUS con el mejor pop-rock de siempre, y DJ MOISÉS CARDONA y DJ WIBA hasta que salga el sol.",
       "type": "musica"
     }
   ]
