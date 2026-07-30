@@ -14,8 +14,13 @@ permissions:
   contents: read
 
 jobs:
-  validate:
-    name: Validate
+  validate-pr:
+    # GitHub reports the status-check context as the **job key** (not the
+    # display name). The key MUST match the `contexts:` list in
+    # `.github/settings.yml` `required_status_checks.contexts` exactly,
+    # otherwise the branch-protection rule silently never matches and
+    # `main` can be merged without a passing CI run.
+    name: Validate PR
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -43,6 +48,23 @@ jobs:
       - name: Validate content (filename + date parity + enum)
         run: pnpm run check:content
 
+      - name: Lint
+        # `eslint-plugin-security` reports insecure patterns as
+        # warnings; we treat them as informational here so a single
+        # legacy sink doesn't block green CI. Move to errors in a
+        # follow-up once the warnings are confirmed-and-suppressed.
+        run: pnpm run lint
+
+      - name: Format check
+        run: pnpm run format:check
+
+      - name: Audit (production deps)
+        # `--prod` excludes devDependencies; `--audit-level` only fails
+        # on moderate/high/critical advisories. `pnpm audit` runs
+        # against the npm Advisory DB and is the cheapest CVE gate
+        # available without depending on Dependabot's weekly cadence.
+        run: pnpm audit --prod --audit-level=moderate
+
       - name: Run tests
         run: pnpm test:coverage
 
@@ -57,12 +79,5 @@ jobs:
       - name: Astro check (TypeScript + Astro diagnostics)
         run: pnpm run check
 
-      # Lint and format:check are intentionally out of scope for this PR.
-      # The repo has 4 pre-existing ESLint parsing errors on .astro files
-      # (DayCard, EventItem, BaseLayout, programa/[date]) and 2 Prettier
-      # warnings on AGENTS.md and src/styles/global.css. Per the repo's
-      # standing rule, those are addressed in a dedicated follow-up PR,
-      # not by widening the CI scope here. Once that PR lands, re-add
-      # `pnpm run lint` and `pnpm run format:check` steps in order.
       - name: Build (Zod schemas + static generation)
         run: pnpm run build

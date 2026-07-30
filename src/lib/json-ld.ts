@@ -28,6 +28,36 @@ export interface JsonLdObject {
   [key: string]: unknown;
 }
 
+const SCRIPT_CLOSE_RE = /<\/(script)/gi;
+const U2028 = '\u2028';
+const U2029 = '\u2029';
+
+/**
+ * Safely serialise a JSON-LD value for embedding inside a
+ * `<script type="application/ld+json">` block via Astro's `set:html`.
+ *
+ * `JSON.stringify` alone does NOT escape the bytes `<`, `>`, or `&`,
+ * and does NOT escape the U+2028 / U+2029 line-separator characters,
+ * which are valid JSON but break JS string literals. A string field
+ * containing the literal sequence `</script>` would close the
+ * surrounding `<script>` element early and start a new script
+ * execution context (XSS).
+ *
+ * The escape map below is the OWASP-recommended `</script>` mitigation
+ * (`\u003c` for `<`, plus the U+2028/9 safe escapes). It is applied
+ * AFTER `JSON.stringify` so the output is still valid JSON plus the
+ * minimum extra escapes.
+ */
+export function serializeJsonLd(value: unknown): string {
+  return JSON.stringify(value)
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/&/g, '\\u0026')
+    .replace(/\u2028/g, '\\u2028')
+    .replace(/\u2029/g, '\\u2029')
+    .replace(SCRIPT_CLOSE_RE, '\\u003c/$1');
+}
+
 // CEST offset during the festival window (26 Jul → 06 Aug) —
 // Europe/Madrid. Hard-coded as a literal because the festival lives
 // in a single calendar window when DST is always in effect.
@@ -44,11 +74,28 @@ const FESTIVAL_NAMES: Record<Locale, string> = {
 
 const NOON_FALLBACK = '12:00';
 
-// Base URL for absolute `BreadcrumbList` items. Astro.site is the
-// project origin (`https://andreuSignes.github.io`); the
-// `base: '/festes-gata'` prefix is added below per locale.
-const SITE_ORIGIN = 'https://andreuSignes.github.io';
-const BASE_PREFIX = '/festes-gata';
+/**
+ * Strip trailing slashes from a site origin so concatenation with
+ * `base` is order-independent. Tolerates `URL` instances and strings.
+ */
+function normalizeOrigin(origin: string): string {
+  return origin.replace(/\/+$/, '');
+}
+
+/**
+ * Strip a single trailing slash from a base prefix so concatenation
+ * with the locale segment is order-independent.
+ */
+function normalizeBase(base: string): string {
+  return base.replace(/\/$/, '');
+}
+
+/**
+ * Build an absolute URL for the locale root: `${origin}${base}/${lang}/`.
+ */
+function localeUrl(site: string, base: string, lang: Locale): string {
+  return `${normalizeOrigin(site)}${normalizeBase(base)}/${lang}/`;
+}
 
 const PLACE: JsonLdObject = {
   '@context': 'https://schema.org',
@@ -75,12 +122,12 @@ export function dateTimeWithOffset(date: string, time: string): string {
   return `${date}T${time}:00${TIMEZONE_OFFSET}`;
 }
 
-export function buildOrganization(_lang: Locale): JsonLdObject {
+export function buildOrganization(site: string, base: string, _lang: Locale): JsonLdObject {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Comissió de Festes de Gata 2026',
-    url: `${SITE_ORIGIN}${BASE_PREFIX}/ca/`,
+    url: localeUrl(site, base, 'ca'),
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Gata de Gorgos',
@@ -119,8 +166,13 @@ export function buildDayEvent(day: DayProgram, lang: Locale): JsonLdObject {
   };
 }
 
-export function buildBreadcrumbList(date: string, lang: Locale): JsonLdObject {
-  const baseUrl = `${SITE_ORIGIN}${BASE_PREFIX}/${lang}`;
+export function buildBreadcrumbList(
+  date: string,
+  lang: Locale,
+  site: string,
+  base: string
+): JsonLdObject {
+  const baseUrl = localeUrl(site, base, lang).replace(/\/$/, '');
   const homeLabel = lang === 'ca' ? 'Inici' : 'Inicio';
   return {
     '@context': 'https://schema.org',

@@ -1,26 +1,21 @@
 /**
- * Shared, locale-aware labels for the ten event types defined in
- * `src/content/config.ts`. Used by `Badge`, `EventItem`, the upcoming
- * `FilterBar` (PR #3), and any future copy that needs a human-readable
- * event-type name. CA/ES strings are pinned in
- * `openspec/changes/festes-gata-ui-2026/specs/design-system/spec.md`.
+ * Locale-aware labels + emoji for the event-type taxonomy defined in
+ * `src/lib/event-types.ts`. Used by `Badge`, `EventItem`, `FilterBar`,
+ * and any future copy that needs a human-readable event-type name.
  *
- * The keys are locale-neutral (they match the Zod enum) — only the
- * values change between locales. Tone hooks (`badge--{type}`) and data
- * attributes (`data-event-type="{type}"`) are unaffected.
+ * The keys MUST match `EVENT_TYPES` from `event-types.ts` exactly; this
+ * is enforced at the type level by the `Record<EventType, …>` shape and
+ * at runtime by the `event-types` test suite.
+ *
+ * `Locale` is re-exported from `src/lib/locale.ts` so existing callers
+ * (`EventItem`, `EventList`, `FilterBar`, `DaySection`) keep their
+ * single import path.
  */
-export type EventType =
-  | 'pasacalles'
-  | 'bous'
-  | 'verbena'
-  | 'musica'
-  | 'liturgia'
-  | 'infantil'
-  | 'comida'
-  | 'festes'
-  | 'pirotecnia';
+import { EVENT_TYPES, type EventType } from './event-types';
+import type { Locale } from './locale';
 
-export type Locale = 'ca' | 'es';
+export { EVENT_TYPES };
+export type { EventType, Locale };
 
 export const eventTypeLabels: Record<EventType, Record<Locale, string>> = {
   pasacalles: { ca: 'Passacarrers', es: 'Pasacalles' },

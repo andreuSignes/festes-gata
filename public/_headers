@@ -1,0 +1,46 @@
+# HTTP security headers for festes-gata
+#
+# Served on GitHub Pages for every static file under the project
+# (https://andreuSignes.github.io/festes-gata/). GitHub Pages passes
+# `/_headers` directives through to the response unchanged.
+#
+# Header order:
+#   1. HSTS — force HTTPS for one year (covers the festival window)
+#   2. X-Content-Type-Options — block MIME sniffing
+#   3. Referrer-Policy — send only the origin on cross-origin nav
+#   4. Permissions-Policy — disable powerful APIs the site never uses
+#   5. Content-Security-Policy — defence-in-depth against XSS
+#   6. Cross-Origin-Opener-Policy — isolate the browsing context
+#
+# CSP rationale:
+#   * `default-src 'self'` — only load same-origin by default.
+#   * `script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com`
+#     — `unsafe-inline` is required for the two `<script is:inline>`
+#     redirect blocks in `src/pages/index.astro:15` and
+#     `src/layouts/BaseLayout.astro:81`, plus the inline CF beacon
+#     attributes. Removing `unsafe-inline` requires per-page nonces
+#     (work-unit documented in audit/security-solid).
+#   * `style-src 'self' 'unsafe-inline'` — Astro emits scoped inline
+#     `<style>` blocks; they are necessary for the per-component CSS
+#     scoping model.
+#   * `font-src 'self' data:` — fonts come from the fontsource-variable
+#     packages self-hosted by `src/styles/global.css`. `data:` covers
+#     inline SVG fonts in `public/favicon.svg`.
+#   * `img-src 'self' data:` — images are local + the inline `ogImage`
+#     data URLs.
+#   * `connect-src 'self' https://cloudflareinsights.com` — the CF
+#     beacon endpoints.
+#   * `frame-ancestors 'none'` — no embedding (festivals don't need to
+#     be framed).
+#   * `base-uri 'self'` — `<base>` cannot be redirected off-origin.
+#   * `form-action 'self'` — no off-origin form submissions (the site
+#     has no forms; if a future PR adds one, revisit).
+#   * `object-src 'none'` — no `<object>` / `<embed>`.
+
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), accelerometer=(), gyroscope=(), magnetometer=(), fullscreen=(self), autoplay=(self)
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self' https://cloudflareinsights.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'
+  Cross-Origin-Opener-Policy: same-origin

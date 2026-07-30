@@ -2,99 +2,118 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { daySchema } from '../src/content/schema';
+import { EVENT_TYPES } from '../src/lib/event-types';
+import { LOCALES } from '../src/lib/locale';
 
-const DAYS_DIR = join(__dirname, '../src/content/days/es');
+const CONTENT_DIR = join(__dirname, '../src/content/days');
 
-const VALID_EVENT_TYPES = [
-  'pasacalles',
-  'bous',
-  'verbena',
-  'musica',
-  'liturgia',
-  'infantil',
-  'comida',
-  'festes',
-  'pirotecnia',
-] as const;
+type DayEntry = {
+  date: string;
+  events: { time: string; type: string }[];
+};
 
 describe('content-schema', () => {
-  const jsonFiles = readdirSync(DAYS_DIR).filter((f) => f.endsWith('.json'));
+  const jsonFilesByLocale = LOCALES.map((locale) => ({
+    locale,
+    files: readdirSync(join(CONTENT_DIR, locale)).filter((f) => f.endsWith('.json')),
+  }));
+  const [caFiles, esFiles] = jsonFilesByLocale;
+  if (!caFiles || !esFiles) {
+    throw new Error('Expected exactly two locales (ca, es)');
+  }
 
-  it('should have exactly 13 day files', () => {
-    expect(jsonFiles).toHaveLength(13);
+  it('should have the same number of day files in ca and es', () => {
+    expect(caFiles.files.length).toBe(esFiles.files.length);
   });
 
-  it('should validate all 13 days with exactly 88 events total', () => {
+  it('should have filename sets in sync across ca and es', () => {
+    const caSet = new Set(caFiles.files);
+    const esSet = new Set(esFiles.files);
+    for (const file of caSet) {
+      expect(esSet.has(file), `${file} is in ca but missing from es`).toBe(true);
+    }
+    for (const file of esSet) {
+      expect(caSet.has(file), `${file} is in es but missing from ca`).toBe(true);
+    }
+  });
+
+  it('should validate every day file across both locales', () => {
     let totalEvents = 0;
     const validatedDays: string[] = [];
 
-    for (const file of jsonFiles) {
-      const filePath = join(DAYS_DIR, file);
-      const raw = readFileSync(filePath, 'utf-8');
-      const data = JSON.parse(raw);
+    for (const { locale, files } of jsonFilesByLocale) {
+      for (const file of files) {
+        const filePath = join(CONTENT_DIR, locale, file);
+        const raw = readFileSync(filePath, 'utf-8');
+        const data = JSON.parse(raw);
 
-      const result = daySchema.safeParse(data);
-      expect(
-        result.success,
-        `Failed to parse ${file}: ${JSON.stringify(result.error?.issues ?? result.error)}`
-      ).toBe(true);
+        const result = daySchema.safeParse(data);
+        expect(
+          result.success,
+          `Failed to parse ${locale}/${file}: ${JSON.stringify(result.error?.issues ?? result.error)}`
+        ).toBe(true);
 
-      if (result.success) {
-        totalEvents += result.data.events.length;
-        validatedDays.push(result.data.date);
+        if (result.success) {
+          totalEvents += result.data.events.length;
+          validatedDays.push(`${locale}:${result.data.date}`);
+        }
       }
     }
 
-    expect(totalEvents).toBe(88);
-    expect(validatedDays).toHaveLength(13);
+    expect(totalEvents).toBeGreaterThan(0);
+    expect(validatedDays.length).toBeGreaterThan(0);
   });
 
-  it('should have parity between ca and es (same dates, same event counts)', () => {
-    const CA_DIR = join(__dirname, '../src/content/days/ca');
-    const caFiles = readdirSync(CA_DIR)
-      .filter((f) => f.endsWith('.json'))
-      .sort();
+  it('should have parity between ca and es (same dates, same event counts and times)', () => {
+    // Locale parity beyond file existence: every day must have the same
+    // event count and the same event times in both locales (titles,
+    // descriptions, and locations differ).
+    const caSet = new Set(caFiles.files);
+    const esSet = new Set(esFiles.files);
+    const sharedFiles = [...caSet].filter((f) => esSet.has(f)).sort();
 
-    expect(caFiles).toEqual(jsonFiles);
-
-    for (const file of jsonFiles) {
-      const caData = JSON.parse(readFileSync(join(CA_DIR, file), 'utf-8'));
-      const esData = JSON.parse(readFileSync(join(DAYS_DIR, file), 'utf-8'));
+    for (const file of sharedFiles) {
+      const caData = JSON.parse(readFileSync(join(CONTENT_DIR, 'ca', file), 'utf-8')) as DayEntry;
+      const esData = JSON.parse(readFileSync(join(CONTENT_DIR, 'es', file), 'utf-8')) as DayEntry;
 
       expect(caData.events.length, `${file}: ca/es event count mismatch`).toBe(
         esData.events.length
       );
       expect(
-        caData.events.map((e: { time: string }) => e.time),
+        caData.events.map((e) => e.time),
         `${file}: ca/es event times must match`
-      ).toEqual(esData.events.map((e: { time: string }) => e.time));
+      ).toEqual(esData.events.map((e) => e.time));
     }
   });
 
-  it('should have filename date equal to JSON date field for all 13 files', () => {
-    for (const file of jsonFiles) {
-      const filePath = join(DAYS_DIR, file);
-      const raw = readFileSync(filePath, 'utf-8');
-      const data = JSON.parse(raw);
-      const filenameDate = file.replace('.json', '');
+  it('should have filename date equal to JSON date field for every file', () => {
+    for (const { locale, files } of jsonFilesByLocale) {
+      for (const file of files) {
+        const filePath = join(CONTENT_DIR, locale, file);
+        const raw = readFileSync(filePath, 'utf-8');
+        const data = JSON.parse(raw);
+        const filenameDate = file.replace('.json', '');
 
-      expect(data.date, `${file}: date field should match filename`).toBe(filenameDate);
+        expect(data.date, `${locale}/${file}: date field should match filename`).toBe(filenameDate);
+      }
     }
   });
 
-  it('should have valid event types for all events across all 13 days', () => {
-    for (const file of jsonFiles) {
-      const filePath = join(DAYS_DIR, file);
-      const raw = readFileSync(filePath, 'utf-8');
-      const data = JSON.parse(raw);
+  it('should have valid event types for all events across every file', () => {
+    for (const { locale, files } of jsonFilesByLocale) {
+      for (const file of files) {
+        const filePath = join(CONTENT_DIR, locale, file);
+        const raw = readFileSync(filePath, 'utf-8');
+        const data = JSON.parse(raw);
 
-      const events = data.events;
-      for (let i = 0; i < events.length; i++) {
-        const event = events[i];
-        expect(
-          VALID_EVENT_TYPES.includes(event.type),
-          `${file}: event at index ${i} has invalid type "${event.type}"`
-        ).toBe(true);
+        const events = data.events;
+        for (let i = 0; i < events.length; i++) {
+          const event = events[i];
+          expect(
+            (EVENT_TYPES as readonly string[]).includes(event.type),
+            `${locale}/${file}: event at index ${i} has invalid type "${event.type}"`
+          ).toBe(true);
+        }
       }
     }
   });

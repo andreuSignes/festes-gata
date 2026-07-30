@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import EventList from './EventList.astro';
 import type { Locale } from '../lib/event-type-labels';
+import { parseLocale, DEFAULT_LOCALE } from '../lib/locale';
 
 interface Props {
   day: CollectionEntry<'days-ca' | 'days-es'>;
@@ -24,8 +25,10 @@ interface Props {
 
 const { day, lang: langProp, headingLevel = 2, isToday = false } = Astro.props;
 
-// Explicit prop wins for reuse; otherwise read from the parent route.
-const lang: Locale = langProp ?? (Astro.params.lang as Locale | undefined) ?? 'ca';
+// Explicit prop wins for reuse; otherwise (defensively) parse the
+// route param. `parseLocale` rejects unknown values instead of
+// letting TypeScript silently cast an off-spec locale to `Locale`.
+const lang: Locale = langProp ?? parseLocale(Astro.params.lang) ?? DEFAULT_LOCALE;
 
 const id = `day-${day.id}`;
 const titleId = `${id}-title`;

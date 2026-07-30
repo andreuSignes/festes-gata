@@ -10,6 +10,15 @@
  * saturation on primary/secondary/event tones, and ~90% alpha on
  * event-tone badge backgrounds. No new hues introduced.
  */
+/* Self-hosted variable fonts (Fredoka display, Nunito body). Loaded
+ * here — instead of via Google Fonts in `BaseLayout.astro` — so that
+ * (a) the visitor's IP/UA never leaves the origin, and (b) the CSP
+ * `font-src 'self'` allows them without 'unsafe-inline' or an
+ * external host. The packages are devDependencies resolved at build
+ * time by Vite.
+ */
+@import '@fontsource-variable/fredoka';
+@import '@fontsource-variable/nunito';
 @import 'tailwindcss';
 
 /* === Design tokens === */

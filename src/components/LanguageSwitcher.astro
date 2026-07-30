@@ -1,31 +1,36 @@
 ---
+import { LOCALES, type Locale, localizedPath } from '../lib/locale';
+
 interface Props {
-  currentLocale: string;
+  currentLocale: Locale;
   currentPath: string;
 }
 
 const { currentLocale, currentPath } = Astro.props;
 const base = import.meta.env.BASE_URL;
 
-const locales = [
-  { code: 'ca', label: 'VAL' },
-  { code: 'es', label: 'ESP' },
-];
+const labels: Record<Locale, string> = {
+  ca: 'VAL',
+  es: 'ESP',
+};
 
-const selectLabel = currentLocale === 'ca' ? 'Llengua' : 'Idioma';
+const selectLabel: Record<Locale, string> = {
+  ca: 'Llengua',
+  es: 'Idioma',
+};
 ---
 
 <div class="lang-switcher">
-  <select class="lang-select" aria-label={selectLabel} data-lang-select>
+  <select class="lang-select" aria-label={selectLabel[currentLocale]} data-lang-select>
     {
-      locales.map((locale) => (
+      LOCALES.map((locale) => (
         <option
-          value={`${base}/${locale.code}${currentPath}`}
-          selected={currentLocale === locale.code}
-          lang={locale.code}
-          data-locale={locale.code}
+          value={localizedPath(locale, base, currentPath)}
+          selected={currentLocale === locale}
+          lang={locale}
+          data-locale={locale}
         >
-          {locale.label}
+          {labels[locale]}
         </option>
       ))
     }
@@ -34,15 +39,15 @@ const selectLabel = currentLocale === 'ca' ? 'Llengua' : 'Idioma';
   <noscript>
     <ul class="lang-list">
       {
-        locales.map((locale) => (
+        LOCALES.map((locale) => (
           <li>
             <a
-              href={`${base}/${locale.code}${currentPath}`}
-              class:list={['lang-link', { 'is-active': currentLocale === locale.code }]}
-              hreflang={locale.code}
-              lang={locale.code}
+              href={localizedPath(locale, base, currentPath)}
+              class:list={['lang-link', { 'is-active': currentLocale === locale }]}
+              hreflang={locale}
+              lang={locale}
             >
-              {locale.label}
+              {labels[locale]}
             </a>
           </li>
         ))
@@ -52,14 +57,18 @@ const selectLabel = currentLocale === 'ca' ? 'Llengua' : 'Idioma';
 </div>
 
 <script is:inline>
-  document.querySelectorAll('[data-lang-select]').forEach((select) => {
-    select.addEventListener('change', (event) => {
-      const target = event.target;
+  // Locale storage key is replicated as a literal here because this
+  // is an inlined script that cannot import from `src/lib/locale.ts`.
+  // KEEP IN SYNC with `LOCALE_STORAGE_KEY` in `src/lib/locale.ts`.
+  var FESTES_GATA_LOCALE_KEY = 'festes-gata:locale:v1';
+  document.querySelectorAll('[data-lang-select]').forEach(function (select) {
+    select.addEventListener('change', function (event) {
+      var target = event.target;
       if (target instanceof HTMLSelectElement && target.value) {
-        const opt = target.options[target.selectedIndex];
+        var opt = target.options[target.selectedIndex];
         if (opt && opt.dataset.locale) {
           try {
-            localStorage.setItem('festes-gata:locale', opt.dataset.locale);
+            localStorage.setItem(FESTES_GATA_LOCALE_KEY, opt.dataset.locale);
           } catch (e) {
             void e;
           }

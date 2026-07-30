@@ -83,7 +83,7 @@ Playwright-headed workflow step (see `.github/workflows/ci.yml`).
   description?: string,
   sponsor?: string,
   type: 'pasacalles' | 'bous' | 'verbena' | 'musica' | 'liturgia'
-      | 'infantil' | 'comida' | 'festes' | 'otro',
+      | 'infantil' | 'comida' | 'festes' | 'pirotecnia',
   tags?: string[],
 }
 ```

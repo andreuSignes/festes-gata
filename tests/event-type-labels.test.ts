@@ -1,25 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import {
-  eventTypeLabels,
-  eventTypeEmoji,
-  getEventTypeLabel,
-  type EventType,
-  type Locale,
-} from '../src/lib/event-type-labels';
-
-const EVENT_TYPES: EventType[] = [
-  'pasacalles',
-  'bous',
-  'verbena',
-  'musica',
-  'liturgia',
-  'infantil',
-  'comida',
-  'festes',
-  'pirotecnia',
-];
-
-const LOCALES: Locale[] = ['ca', 'es'];
+import { EVENT_TYPES } from '../src/lib/event-types';
+import { LOCALES } from '../src/lib/locale';
+import { eventTypeLabels, eventTypeEmoji, getEventTypeLabel } from '../src/lib/event-type-labels';
 
 describe('eventTypeLabels', () => {
   it('has all 9 event types as keys', () => {

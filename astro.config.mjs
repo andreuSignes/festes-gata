@@ -4,6 +4,14 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
+//
+// `site` + `base` are the single source of truth for every absolute URL
+// the site emits (canonical, hreflang, OG image, sitemap, JSON-LD).
+// Hosting is GitHub Pages under `https://andreuSignes.github.io/festes-gata`;
+// the `base: '/festes-gata'` prefix is required for the user-site project
+// (vs. an org site) and MUST match `BASE_PREFIX` derived by consumers (e.g.
+// `src/lib/json-ld.ts`). Drift between this config and any caller produces
+// broken canonical/sitemap/JSON-LD URLs (see audit/security-solid).
 export default defineConfig({
   site: 'https://andreuSignes.github.io',
   base: '/festes-gata',

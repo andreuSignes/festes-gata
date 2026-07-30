@@ -2,8 +2,9 @@
 #
 # Repository-as-code for dependency updates. The CI workflow at
 # `.github/workflows/ci.yml` runs `pnpm run check:content`,
-# `pnpm run check` and `pnpm run build` on every PR, so any dep bump
-# lands pre-validated.
+# `pnpm run lint`, `pnpm run format:check`, `pnpm audit`,
+# `pnpm run test:coverage`, `pnpm run check`, and `pnpm run build`
+# on every PR, so any dep bump lands pre-validated.
 #
 # Pinned schedule: weekly Monday 09:00 Europe/Madrid — frequent enough
 # to surface security advisories without flooding the PR queue.
@@ -12,6 +13,13 @@
 # bump in, say, `astro` doesn't entangle with a Prettier patch. Astro
 # core (`astro`, `@astrojs/*`) is grouped together since they share a
 # release cadence.
+#
+# GitHub Actions ecosystem: keeps `actions/checkout`, `actions/setup-node`,
+# `pnpm/action-setup`, `codecov/codecov-action`, `actions/upload-pages-artifact`,
+# `actions/deploy-pages` up to date. SHA-pinning would be stronger
+# (read-only with respect to upstream tag mutations) but means every
+# upstream bump is a manual PR; for a single-maintainer repo the
+# Dependabot-PR flow is the lower-friction compromise.
 
 version: 2
 
@@ -25,12 +33,11 @@ updates:
       timezone: 'Europe/Madrid'
     open-pull-requests-limit: 5
     # Ignore major bumps for tools that touch lots of files on upgrade;
-    # we want humans reviewing those, not auto-PRs.
+    # we want humans reviewing those, not auto-PRs. `astro` and
+    # `@astrojs/*` are deliberately INCLUDED in major updates because
+    # security fixes often ship in majors (CVE-2024-47831 was a 4.x
+    # actions-injection fix — that kind of fix should NOT be silenced).
     ignore:
-      - dependency-name: 'astro'
-        update-types: ['version-update:semver-major']
-      - dependency-name: '@astrojs/*'
-        update-types: ['version-update:semver-major']
       - dependency-name: 'eslint'
         update-types: ['version-update:semver-major']
       - dependency-name: '@typescript-eslint/*'
@@ -48,3 +55,17 @@ updates:
       dev-dependencies:
         applies-to: version-updates
         dependency-type: 'development'
+
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '09:00'
+      timezone: 'Europe/Madrid'
+    open-pull-requests-limit: 3
+    groups:
+      actions-stack:
+        applies-to: version-updates
+        patterns:
+          - '*'
